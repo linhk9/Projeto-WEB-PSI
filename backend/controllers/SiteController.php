@@ -30,7 +30,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['logout', 'index'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['admin', 'funcionario'],
                     ],
                 ],
             ],
@@ -80,7 +80,12 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            if (Yii::$app->user->can('admin') || Yii::$app->user->can('funcionario')) {
+                return $this->goBack();
+            }
+
+            Yii::$app->user->logout();
+            return $this->goHome();
         }
 
         $model->password = '';

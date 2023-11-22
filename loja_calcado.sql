@@ -71,6 +71,61 @@ CREATE TABLE IF NOT EXISTS `auth_rule` (
 
 -- A despejar dados para tabela loja_calcado.auth_rule: ~0 rows (aproximadamente)
 
+-- A despejar estrutura para tabela loja_calcado.carrinho_compras
+CREATE TABLE IF NOT EXISTS `carrinho_compras` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_produto` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_produto_carrinho_idx` (`id_produto`),
+  CONSTRAINT `FK_produto_carrinho` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- A despejar dados para tabela loja_calcado.carrinho_compras: ~0 rows (aproximadamente)
+
+-- A despejar estrutura para tabela loja_calcado.faturas
+CREATE TABLE IF NOT EXISTS `faturas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) DEFAULT NULL,
+  `data` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_user_faturas_idx` (`id_user`),
+  CONSTRAINT `FK_user_faturas` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- A despejar dados para tabela loja_calcado.faturas: ~0 rows (aproximadamente)
+
+-- A despejar estrutura para tabela loja_calcado.fatura_linhas
+CREATE TABLE IF NOT EXISTS `fatura_linhas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_fatura` int(11) DEFAULT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
+  `preco` float DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_fatura_faturalinhas_idx` (`id_fatura`),
+  KEY `FK_produto_faturalinhas_idx` (`id_produto`),
+  CONSTRAINT `FK_fatura_faturalinha` FOREIGN KEY (`id_fatura`) REFERENCES `faturas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_produto_faturalinha` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- A despejar dados para tabela loja_calcado.fatura_linhas: ~0 rows (aproximadamente)
+
+-- A despejar estrutura para tabela loja_calcado.favoritos
+CREATE TABLE IF NOT EXISTS `favoritos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) DEFAULT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_user_favorito_idx` (`id_user`),
+  KEY `FK_produto_favorito_idx` (`id_produto`),
+  CONSTRAINT `FK_produto_favorito` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_user_favorito` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- A despejar dados para tabela loja_calcado.favoritos: ~0 rows (aproximadamente)
+
 -- A despejar estrutura para tabela loja_calcado.migration
 CREATE TABLE IF NOT EXISTS `migration` (
   `version` varchar(180) NOT NULL,
@@ -87,6 +142,64 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 	('m180523_151638_rbac_updates_indexes_without_prefix', 1697800401),
 	('m190124_110200_add_verification_token_column_to_user_table', 1697379678),
 	('m200409_110543_rbac_update_mssql_trigger', 1697800401);
+
+-- A despejar estrutura para tabela loja_calcado.produtos
+CREATE TABLE IF NOT EXISTS `produtos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) DEFAULT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
+  `preco` float DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `categoria` int(11) DEFAULT NULL,
+  `imagem` longtext DEFAULT NULL,
+  `marca` varchar(45) DEFAULT NULL,
+  `tamanho` enum('41') DEFAULT NULL,
+  `cores` enum('Branco','Preto') DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_categoria_produto_idx` (`categoria`),
+  CONSTRAINT `FK_categoria_produto` FOREIGN KEY (`categoria`) REFERENCES `produtos_categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- A despejar dados para tabela loja_calcado.produtos: ~0 rows (aproximadamente)
+
+-- A despejar estrutura para tabela loja_calcado.produtos_avaliacoes
+CREATE TABLE IF NOT EXISTS `produtos_avaliacoes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) DEFAULT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `nota` int(11) DEFAULT NULL,
+  `comentario` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_user_avaliacao_idx` (`id_user`),
+  KEY `FK_produto_avaliacao_idx` (`id_produto`),
+  CONSTRAINT `FK_produto_avaliacao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_user_avaliacao` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- A despejar dados para tabela loja_calcado.produtos_avaliacoes: ~0 rows (aproximadamente)
+
+-- A despejar estrutura para tabela loja_calcado.produtos_categorias
+CREATE TABLE IF NOT EXISTS `produtos_categorias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- A despejar dados para tabela loja_calcado.produtos_categorias: ~0 rows (aproximadamente)
+
+-- A despejar estrutura para tabela loja_calcado.promocoes
+CREATE TABLE IF NOT EXISTS `promocoes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_produto` int(11) DEFAULT NULL,
+  `desconto` int(11) DEFAULT NULL,
+  `data_inicio` datetime DEFAULT NULL,
+  `data_termino` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_produto_promocao_idx` (`id_produto`),
+  CONSTRAINT `FK_produto_promocao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- A despejar dados para tabela loja_calcado.promocoes: ~0 rows (aproximadamente)
 
 -- A despejar estrutura para tabela loja_calcado.user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -106,10 +219,25 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
--- A despejar dados para tabela loja_calcado.user: ~2 rows (aproximadamente)
+-- A despejar dados para tabela loja_calcado.user: ~3 rows (aproximadamente)
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `verification_token`) VALUES
 	(1, 'Rodrigo', 'FfnNM3Xmth_2fD5XiSLGrmHDKlAOT-GA', '$2y$13$KIcnr55NIwQlP0XwCJFs1e1gshNYwLmCkjGekNLs2xiX3xD2FwXm6', NULL, 'Rodrigo@gmail.com', 10, 1697379940, 1697379940, 't3Vg7JpiM1RzaDbJaZScC6MoBBO9ZFrE_1697379940'),
 	(2, 'Filipe', 'Kw11-yzWfLi7hPsD1Dc8__sHdMkuEHds', '$2y$13$FhF8e1l1GFcBrhr8j2hBuOGWY7uXIjOAYgQ8L.JE7JxMyWvMrh0sG', NULL, '2211921@my.ipleiria.pt', 10, 1697796992, 1697796992, 'tXK_G1FXri8NNYnSL1qAGVcbyD4Nim7z_1697796992');
+
+-- A despejar estrutura para tabela loja_calcado.userdata
+CREATE TABLE IF NOT EXISTS `userdata` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) DEFAULT NULL,
+  `primeiroNome` varchar(45) DEFAULT NULL,
+  `ultimoNome` varchar(45) DEFAULT NULL,
+  `telemovel` int(11) DEFAULT NULL,
+  `morada` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_user_userdata_idx` (`id_user`),
+  CONSTRAINT `FK_user_userdata` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- A despejar dados para tabela loja_calcado.userdata: ~0 rows (aproximadamente)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
