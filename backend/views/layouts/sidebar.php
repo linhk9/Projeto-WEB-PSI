@@ -14,7 +14,6 @@
                     ['label' => 'Gerir Utilizadores', 'url' => ['userdata/index'], 'icon' => 'user'],
                     ['label' => 'Gerir Produtos', 'url' => ['site/index'], 'icon' => 'box'],
                     ['label' => 'Gerir Categorias', 'url' => ['site/index'], 'icon' => 'list'],
-                    ['label' => 'Gerir Avaliações', 'url' => ['site/index'], 'icon' => 'file'],
                     ['label' => 'Gerir Promoções', 'url' => ['site/index'], 'icon' => 'percentage'],
                 ],
             ]);

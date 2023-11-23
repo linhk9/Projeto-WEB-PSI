@@ -56,6 +56,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
+                'label' => 'Role',
+                'value' => function($model) {
+                    if (\Yii::$app->user->can('cliente')) {
+                        return 'Cliente';
+                    }
+
+                    if (\Yii::$app->user->can('funcionario')) {
+                        return 'Funcionário';
+                    }
+
+                    if (\Yii::$app->user->can('admin')) {
+                        return 'Administrador';
+                    }
+
+                    return 'Desconhecido';
+                }
+            ],
+            [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Userdata $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
