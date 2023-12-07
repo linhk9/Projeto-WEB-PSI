@@ -22,6 +22,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'morada')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'role')->dropDownList([
+        'client' => 'Cliente',
+        'funcionario' => 'Funcionário',
+        'admin' => 'Administrador',
+    ]) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>

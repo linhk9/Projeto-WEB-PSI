@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 23, 2023 at 05:26 PM
+-- Generation Time: Dec 07, 2023 at 09:53 AM
 -- Server version: 11.1.2-MariaDB-log
 -- PHP Version: 8.1.10
 
@@ -38,7 +38,10 @@ CREATE TABLE `auth_assignment` (
 --
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
-('admin', '2', NULL);
+('admin', '1', 1701341602),
+('admin', '10', 1701340330),
+('admin', '2', 1701337181),
+('cliente', '3', 1701337181);
 
 -- --------------------------------------------------------
 
@@ -61,44 +64,44 @@ CREATE TABLE `auth_item` (
 --
 
 INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
-('adicionarCarrinho_FO', 2, 'Adicionar Carrinho', NULL, NULL, 1700759672, 1700759672),
-('adicionarFavorito_FO', 2, 'Adicionar Favoritos', NULL, NULL, 1700759672, 1700759672),
-('admin', 1, NULL, NULL, NULL, 1700759672, 1700759672),
-('apagarAvaliacao_FO', 2, 'Apagar Avaliacao', NULL, NULL, 1700759672, 1700759672),
-('apagarCarrinho_FO', 2, 'Apagar Carrinho', NULL, NULL, 1700759672, 1700759672),
-('apagarCategorias', 2, 'Apagar Categorias', NULL, NULL, 1700759672, 1700759672),
-('apagarFaturas', 2, 'Apagar Faturas', NULL, NULL, 1700759672, 1700759672),
-('apagarProdutos', 2, 'Apagar Produtos', NULL, NULL, 1700759672, 1700759672),
-('apagarPromocoes', 2, 'Apagar Promocoes', NULL, NULL, 1700759672, 1700759672),
-('apagarUtilizadores', 2, 'Apagar Utilizadores', NULL, NULL, 1700759672, 1700759672),
-('atualizarCarrinho_FO', 2, 'Atualizar Carrinho', NULL, NULL, 1700759672, 1700759672),
-('atualizarCategorias', 2, 'Atualizar Categorias', NULL, NULL, 1700759672, 1700759672),
-('atualizarFaturas', 2, 'Atualizar Faturas', NULL, NULL, 1700759672, 1700759672),
-('atualizarProdutos', 2, 'Atualizar Produtos', NULL, NULL, 1700759672, 1700759672),
-('atualizarPromocoes', 2, 'Atualizar Promocoes', NULL, NULL, 1700759672, 1700759672),
-('atualizarUtilizador_FO', 2, 'Atualizar Perfil', NULL, NULL, 1700759672, 1700759672),
-('atualizarUtilizadores', 2, 'Atualizar Utilizadores', NULL, NULL, 1700759672, 1700759672),
-('cliente', 1, NULL, NULL, NULL, 1700759672, 1700759672),
-('criarCategorias', 2, 'Criar Categorias', NULL, NULL, 1700759672, 1700759672),
-('criarProdutos', 2, 'Criar Produtos', NULL, NULL, 1700759672, 1700759672),
-('criarPromocoes', 2, 'Criar Promocoes', NULL, NULL, 1700759672, 1700759672),
-('criarUtilizadores', 2, 'Criar Utilizadores', NULL, NULL, 1700759672, 1700759672),
-('editarAvaliacao_FO', 2, 'Editar Avaliacao', NULL, NULL, 1700759672, 1700759672),
-('funcionario', 1, NULL, NULL, NULL, 1700759672, 1700759672),
-('gerirCarrinho_FO', 2, 'Gerir Carrinho', NULL, NULL, 1700759672, 1700759672),
-('gerirCategorias', 2, 'Gerir Categorias', NULL, NULL, 1700759672, 1700759672),
-('gerirFaturas', 2, 'Gerir Faturas', NULL, NULL, 1700759672, 1700759672),
-('gerirFaturas_FO', 2, 'Gerir Faturas', NULL, NULL, 1700759672, 1700759672),
-('gerirProdutos', 2, 'Gerir Produtos', NULL, NULL, 1700759672, 1700759672),
-('gerirPromocoes', 2, 'Gerir Promocoes', NULL, NULL, 1700759672, 1700759672),
-('gerirUtilizadores', 2, 'Gerir Utilizadores', NULL, NULL, 1700759672, 1700759672),
-('listaAvaliacao_FO', 2, 'Listar Avaliacoes', NULL, NULL, 1700759672, 1700759672),
-('mudarRoleUtilizador', 2, 'Mudar Role Utilizador', NULL, NULL, 1700759672, 1700759672),
-('removerFavorito_FO', 2, 'Remover Favoritos', NULL, NULL, 1700759672, 1700759672),
-('verFaturas', 2, 'Ver Faturas', NULL, NULL, 1700759672, 1700759672),
-('verFaturas_FO', 2, 'Ver Faturas', NULL, NULL, 1700759672, 1700759672),
-('verProdutos', 2, 'Ver Produtos', NULL, NULL, 1700759672, 1700759672),
-('verUtilizadores', 2, 'Ver Utilizadores', NULL, NULL, 1700759672, 1700759672);
+('adicionarCarrinho_FO', 2, 'Adicionar Carrinho', NULL, NULL, 1701337181, 1701337181),
+('adicionarFavorito_FO', 2, 'Adicionar Favoritos', NULL, NULL, 1701337181, 1701337181),
+('admin', 1, NULL, NULL, NULL, 1701337181, 1701337181),
+('apagarAvaliacao_FO', 2, 'Apagar Avaliacao', NULL, NULL, 1701337181, 1701337181),
+('apagarCarrinho_FO', 2, 'Apagar Carrinho', NULL, NULL, 1701337181, 1701337181),
+('apagarCategorias', 2, 'Apagar Categorias', NULL, NULL, 1701337181, 1701337181),
+('apagarFaturas', 2, 'Apagar Faturas', NULL, NULL, 1701337181, 1701337181),
+('apagarProdutos', 2, 'Apagar Produtos', NULL, NULL, 1701337181, 1701337181),
+('apagarPromocoes', 2, 'Apagar Promocoes', NULL, NULL, 1701337181, 1701337181),
+('apagarUtilizadores', 2, 'Apagar Utilizadores', NULL, NULL, 1701337181, 1701337181),
+('atualizarCarrinho_FO', 2, 'Atualizar Carrinho', NULL, NULL, 1701337181, 1701337181),
+('atualizarCategorias', 2, 'Atualizar Categorias', NULL, NULL, 1701337181, 1701337181),
+('atualizarFaturas', 2, 'Atualizar Faturas', NULL, NULL, 1701337181, 1701337181),
+('atualizarProdutos', 2, 'Atualizar Produtos', NULL, NULL, 1701337181, 1701337181),
+('atualizarPromocoes', 2, 'Atualizar Promocoes', NULL, NULL, 1701337181, 1701337181),
+('atualizarUtilizador_FO', 2, 'Atualizar Perfil', NULL, NULL, 1701337181, 1701337181),
+('atualizarUtilizadores', 2, 'Atualizar Utilizadores', NULL, NULL, 1701337181, 1701337181),
+('cliente', 1, NULL, NULL, NULL, 1701337181, 1701337181),
+('criarCategorias', 2, 'Criar Categorias', NULL, NULL, 1701337181, 1701337181),
+('criarProdutos', 2, 'Criar Produtos', NULL, NULL, 1701337181, 1701337181),
+('criarPromocoes', 2, 'Criar Promocoes', NULL, NULL, 1701337181, 1701337181),
+('criarUtilizadores', 2, 'Criar Utilizadores', NULL, NULL, 1701337181, 1701337181),
+('editarAvaliacao_FO', 2, 'Editar Avaliacao', NULL, NULL, 1701337181, 1701337181),
+('funcionario', 1, NULL, NULL, NULL, 1701337181, 1701337181),
+('gerirCarrinho_FO', 2, 'Gerir Carrinho', NULL, NULL, 1701337181, 1701337181),
+('gerirCategorias', 2, 'Gerir Categorias', NULL, NULL, 1701337181, 1701337181),
+('gerirFaturas', 2, 'Gerir Faturas', NULL, NULL, 1701337181, 1701337181),
+('gerirFaturas_FO', 2, 'Gerir Faturas', NULL, NULL, 1701337181, 1701337181),
+('gerirProdutos', 2, 'Gerir Produtos', NULL, NULL, 1701337181, 1701337181),
+('gerirPromocoes', 2, 'Gerir Promocoes', NULL, NULL, 1701337181, 1701337181),
+('gerirUtilizadores', 2, 'Gerir Utilizadores', NULL, NULL, 1701337181, 1701337181),
+('listaAvaliacao_FO', 2, 'Listar Avaliacoes', NULL, NULL, 1701337181, 1701337181),
+('mudarRoleUtilizador', 2, 'Mudar Role Utilizador', NULL, NULL, 1701337181, 1701337181),
+('removerFavorito_FO', 2, 'Remover Favoritos', NULL, NULL, 1701337181, 1701337181),
+('verFaturas', 2, 'Ver Faturas', NULL, NULL, 1701337181, 1701337181),
+('verFaturas_FO', 2, 'Ver Faturas', NULL, NULL, 1701337181, 1701337181),
+('verProdutos', 2, 'Ver Produtos', NULL, NULL, 1701337181, 1701337181),
+('verUtilizadores', 2, 'Ver Utilizadores', NULL, NULL, 1701337181, 1701337181);
 
 -- --------------------------------------------------------
 
@@ -122,23 +125,28 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('cliente', 'apagarCarrinho_FO'),
 ('funcionario', 'apagarCategorias'),
 ('admin', 'apagarFaturas'),
+('funcionario', 'apagarProdutos'),
 ('funcionario', 'apagarPromocoes'),
 ('admin', 'apagarUtilizadores'),
 ('cliente', 'atualizarCarrinho_FO'),
 ('funcionario', 'atualizarCategorias'),
 ('admin', 'atualizarFaturas'),
+('funcionario', 'atualizarProdutos'),
 ('funcionario', 'atualizarPromocoes'),
 ('cliente', 'atualizarUtilizador_FO'),
 ('funcionario', 'atualizarUtilizadores'),
 ('funcionario', 'cliente'),
 ('funcionario', 'criarCategorias'),
+('funcionario', 'criarProdutos'),
 ('funcionario', 'criarPromocoes'),
+('admin', 'criarUtilizadores'),
 ('cliente', 'editarAvaliacao_FO'),
 ('admin', 'funcionario'),
 ('cliente', 'gerirCarrinho_FO'),
 ('funcionario', 'gerirCategorias'),
 ('funcionario', 'gerirFaturas'),
 ('cliente', 'gerirFaturas_FO'),
+('funcionario', 'gerirProdutos'),
 ('funcionario', 'gerirPromocoes'),
 ('funcionario', 'gerirUtilizadores'),
 ('cliente', 'listaAvaliacao_FO'),
@@ -146,6 +154,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('cliente', 'removerFavorito_FO'),
 ('funcionario', 'verFaturas'),
 ('cliente', 'verFaturas_FO'),
+('funcionario', 'verProdutos'),
 ('funcionario', 'verUtilizadores');
 
 -- --------------------------------------------------------
@@ -164,14 +173,27 @@ CREATE TABLE `auth_rule` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carrinho_compras`
+-- Table structure for table `carrinho`
 --
 
-CREATE TABLE `carrinho_compras` (
+CREATE TABLE `carrinho` (
   `id` int(11) NOT NULL,
   `id_userdata` int(11) NOT NULL,
+  `data` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carrinho_linhas`
+--
+
+CREATE TABLE `carrinho_linhas` (
+  `id` int(11) NOT NULL,
+  `id_carrinho` int(11) DEFAULT NULL,
   `id_produto` int(11) DEFAULT NULL,
-  `quantidade` int(11) DEFAULT NULL
+  `quantidade` int(11) DEFAULT NULL,
+  `preco` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -245,11 +267,11 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 
 CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,
+  `id_categoria` int(11) DEFAULT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `preco` float DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
-  `categoria` int(11) DEFAULT NULL,
   `imagem` longtext DEFAULT NULL,
   `marca` varchar(45) DEFAULT NULL,
   `tamanho` enum('41') DEFAULT NULL,
@@ -321,7 +343,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `verification_token`) VALUES
 (1, 'Rodrigo', 'FfnNM3Xmth_2fD5XiSLGrmHDKlAOT-GA', '$2y$13$KIcnr55NIwQlP0XwCJFs1e1gshNYwLmCkjGekNLs2xiX3xD2FwXm6', NULL, 'Rodrigo@gmail.com', 10, 1697379940, 1697379940, 't3Vg7JpiM1RzaDbJaZScC6MoBBO9ZFrE_1697379940'),
 (2, 'Filipe', 'Kw11-yzWfLi7hPsD1Dc8__sHdMkuEHds', '$2y$13$FhF8e1l1GFcBrhr8j2hBuOGWY7uXIjOAYgQ8L.JE7JxMyWvMrh0sG', NULL, '2211921@my.ipleiria.pt', 10, 1697796992, 1697796992, 'tXK_G1FXri8NNYnSL1qAGVcbyD4Nim7z_1697796992'),
-(8, 'teste', '_YLwp8e5656xPLpr9ZUwt14UgD7TgfoY', '$2y$13$fPfaArGK8BqmxFHO4A0e8Oyb90B.N6Fiu/npxCIDkiPBfTY76P3b6', NULL, 'teste@gmail.com', 0, 1700747579, 1700748261, NULL);
+(8, 'teste', '_YLwp8e5656xPLpr9ZUwt14UgD7TgfoY', '$2y$13$fPfaArGK8BqmxFHO4A0e8Oyb90B.N6Fiu/npxCIDkiPBfTY76P3b6', NULL, 'teste@gmail.com', 0, 1700747579, 1700748261, NULL),
+(9, 'cliente', 'QtfCkXMeYRSKrVmRq6jK7U8amdG1MFuV', '$2y$13$XPzRMAKbIMhZkX4RTjPgFeUeqr22Nlvc126v4UvB8z7Z2z4KCGN/u', NULL, 'cliente@gmai.com', 10, 1700826005, 1700826005, NULL),
+(10, 'testeadmin', '3BCgr-L1baEPpbMZLhgpnIof6O7jMPr5', '$2y$13$5JEjeVCEfXwg74SCzL7oEOhiP7MbqPriX14vUWTrkHgN9RetZRcb.', NULL, 'testeadmin@gmail.com', 10, 1701338497, 1701338497, NULL);
 
 -- --------------------------------------------------------
 
@@ -345,7 +369,9 @@ CREATE TABLE `userdata` (
 INSERT INTO `userdata` (`id`, `id_user`, `primeiroNome`, `ultimoNome`, `telemovel`, `morada`) VALUES
 (2, 8, 'Super', 'Teste', 914194656, 'Leiria'),
 (3, 2, 'Filipe', 'Marques', 913234266, 'Leiria'),
-(4, 1, 'Rodrigo', 'Luis', 913194666, 'Leiria');
+(4, 1, 'Rodrigo', 'Luis', 913194666, 'Leiria'),
+(5, 9, 'cliente', 'cliente2', 913111111, 'leiria'),
+(6, 10, 'Teste', 'Admin', 913193193, 'Leiria');
 
 --
 -- Indexes for dumped tables
@@ -380,12 +406,19 @@ ALTER TABLE `auth_rule`
   ADD PRIMARY KEY (`name`);
 
 --
--- Indexes for table `carrinho_compras`
+-- Indexes for table `carrinho`
 --
-ALTER TABLE `carrinho_compras`
+ALTER TABLE `carrinho`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_produto_carrinho_idx` (`id_produto`),
   ADD KEY `FK_userdata_carrinho` (`id_userdata`);
+
+--
+-- Indexes for table `carrinho_linhas`
+--
+ALTER TABLE `carrinho_linhas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_carrinho_carrinholinha_idx` (`id_carrinho`),
+  ADD KEY `FK_produto_carrinholinha_idx` (`id_produto`);
 
 --
 -- Indexes for table `faturas`
@@ -421,7 +454,7 @@ ALTER TABLE `migration`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_categoria_produto_idx` (`categoria`);
+  ADD KEY `FK_categoria_produto_idx` (`id_categoria`);
 
 --
 -- Indexes for table `produtos_avaliacoes`
@@ -465,9 +498,15 @@ ALTER TABLE `userdata`
 --
 
 --
--- AUTO_INCREMENT for table `carrinho_compras`
+-- AUTO_INCREMENT for table `carrinho`
 --
-ALTER TABLE `carrinho_compras`
+ALTER TABLE `carrinho`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `carrinho_linhas`
+--
+ALTER TABLE `carrinho_linhas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -516,13 +555,13 @@ ALTER TABLE `promocoes`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `userdata`
 --
 ALTER TABLE `userdata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -548,11 +587,17 @@ ALTER TABLE `auth_item_child`
   ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `carrinho_compras`
+-- Constraints for table `carrinho`
 --
-ALTER TABLE `carrinho_compras`
-  ADD CONSTRAINT `FK_produto_carrinho` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ALTER TABLE `carrinho`
   ADD CONSTRAINT `FK_userdata_carrinho` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `carrinho_linhas`
+--
+ALTER TABLE `carrinho_linhas`
+  ADD CONSTRAINT `FK_carrinho_carrinholinha` FOREIGN KEY (`id_carrinho`) REFERENCES `carrinho` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_produto_carrinholinha` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `faturas`
@@ -578,7 +623,7 @@ ALTER TABLE `favoritos`
 -- Constraints for table `produtos`
 --
 ALTER TABLE `produtos`
-  ADD CONSTRAINT `FK_categoria_produto` FOREIGN KEY (`categoria`) REFERENCES `produtos_categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_categoria_produto` FOREIGN KEY (`id_categoria`) REFERENCES `produtos_categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `produtos_avaliacoes`

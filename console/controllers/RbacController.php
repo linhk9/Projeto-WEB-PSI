@@ -216,6 +216,12 @@
             $auth->addChild($funcionario, $verUtilizadores);
             $auth->addChild($funcionario, $atualizarUtilizadores);
 
+            $auth->addChild($funcionario, $gerirProdutos);
+            $auth->addChild($funcionario, $criarProdutos);
+            $auth->addChild($funcionario, $verProdutos);
+            $auth->addChild($funcionario, $atualizarProdutos);
+            $auth->addChild($funcionario, $apagarProdutos);
+
             $auth->addChild($funcionario, $gerirCategorias);
             $auth->addChild($funcionario, $criarCategorias);
             $auth->addChild($funcionario, $atualizarCategorias);
@@ -236,6 +242,7 @@
             $admin = $auth->createRole('admin');
             $auth->add($admin);
 
+            $auth->addChild($admin, $criarUtilizadores);
             $auth->addChild($admin, $apagarUtilizadores);
 
             $auth->addChild($admin, $mudarRoleUtilizador);
@@ -244,6 +251,11 @@
             $auth->addChild($admin, $apagarFaturas);
 
             $auth->addChild($admin, $funcionario);
+
+            // Adicionar roles aos utilizadores
+            $auth->assign($admin, 1);
+            $auth->assign($admin, 2);
+            $auth->assign($cliente, 3);
 
             // Para executar o ficheiro de migração de RBAC execute o seguinte comando:
             // yii rbac/init

@@ -18,6 +18,8 @@ use Yii;
  */
 class Userdata extends \yii\db\ActiveRecord
 {
+    public $role;
+
     /**
      * {@inheritdoc}
      */
@@ -32,6 +34,7 @@ class Userdata extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            ['role', 'string'],
             [['id_user', 'telemovel'], 'integer'],
             [['primeiroNome', 'ultimoNome'], 'string', 'max' => 45],
             [['morada'], 'string', 'max' => 255],
@@ -46,7 +49,7 @@ class Userdata extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_user' => 'Id User',
+            'id_user' => 'User ID',
             'primeiroNome' => 'Primeiro Nome',
             'ultimoNome' => 'Ultimo Nome',
             'telemovel' => 'Telemovel',

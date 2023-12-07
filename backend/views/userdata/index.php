@@ -16,6 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="userdata-index">
 
+    <p>
+        <?= Html::a('Criar Utilizador', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
@@ -24,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            'id_user',
             [
                 'label' => 'Username',
                 'value' => function($model) {

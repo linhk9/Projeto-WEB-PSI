@@ -1,8 +1,17 @@
+<?php
+
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+?>
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link text-center">
-        <span class="brand-text font-weight-light">Loja de Calçado</span>
-    </a>
+    <?php echo Html::a(
+        'Loja de Calçado',
+        Yii::$app->homeUrl,
+        ['class' => 'brand-link text-center']
+    ) ?>
 
     <!-- Sidebar -->
     <div class="sidebar">

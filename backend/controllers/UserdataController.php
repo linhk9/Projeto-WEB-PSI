@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\CreateUserForm;
 use common\models\User;
 use common\models\Userdata;
 use backend\models\UserdataSearch;
@@ -28,25 +29,11 @@ class UserdataController extends Controller
                     'class' => AccessControl::class,
                     'rules' => [
                         [
-                            'actions' => ['index'],
+                            'actions' => ['index', 'create', 'view', 'update', 'delete'],
                             'allow' => true,
-                            'roles' => ['gerirUtilizadores'],
+                            'roles' => ['funcionario', 'admin'],
                         ],
-                        [
-                            'actions' => ['view'],
-                            'allow' => true,
-                            'roles' => ['verUtilizadores'],
-                        ],
-                        [
-                            'actions' => ['update'],
-                            'allow' => true,
-                            'roles' => ['atualizarUtilizadores'],
-                        ],
-                        [
-                            'actions' => ['delete'],
-                            'allow' => true,
-                            'roles' => ['apagarUtilizadores'],
-                        ],
+                        // permissão gerirUtilizadores, verUtilizadores, atualizarUtilizadores, apagarUtilizadores
                     ],
                 ],
                 'verbs' => [
@@ -76,6 +63,26 @@ class UserdataController extends Controller
     }
 
     /**
+     * Creates a new Userdata model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return string|\yii\web\Response
+     */
+    public function actionCreate()
+    {
+        $modelCreateUser = new CreateUserForm();
+
+        if ($this->request->isPost) {
+            if ($modelCreateUser->load($this->request->post()) && $modelCreateUser->create()) {
+                return $this->redirect(['index']);
+            }
+        }
+
+        return $this->render('create', [
+            'model' => $modelCreateUser
+        ]);
+    }
+
+    /**
      * Displays a single Userdata model.
      * @param int $id ID
      * @return string
@@ -100,6 +107,11 @@ class UserdataController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            $auth = \Yii::$app->authManager;
+            $role = $auth->getRole($model->role);
+            $auth->revokeAll($model->id_user);
+            $auth->assign($role, $model->id_user);
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
