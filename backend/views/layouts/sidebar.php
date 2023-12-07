@@ -21,9 +21,9 @@ use yii\helpers\Url;
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
                     ['label' => 'Gerir Utilizadores', 'url' => ['userdata/index'], 'icon' => 'user'],
-                    ['label' => 'Gerir Produtos', 'url' => ['site/index'], 'icon' => 'box'],
-                    ['label' => 'Gerir Categorias', 'url' => ['site/index'], 'icon' => 'list'],
-                    ['label' => 'Gerir Promoções', 'url' => ['site/index'], 'icon' => 'percentage'],
+                    ['label' => 'Gerir Produtos', 'url' => ['produtos/index'], 'icon' => 'box'],
+                    ['label' => 'Gerir Categorias', 'url' => ['categorias/index'], 'icon' => 'list'],
+                    ['label' => 'Gerir Promoções', 'url' => ['promocoes/index'], 'icon' => 'percentage'],
                 ],
             ]);
             ?>

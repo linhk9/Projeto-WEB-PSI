@@ -18,11 +18,11 @@ use Yii;
  * @property string|null $tamanho
  * @property string|null $cores
  *
+ * @property Avaliacoes[] $avaliacoes
  * @property CarrinhoLinhas[] $carrinhoLinhas
- * @property ProdutosCategorias $categoria
+ * @property Categorias $categoria
  * @property FaturaLinhas[] $faturaLinhas
  * @property Favoritos[] $favoritos
- * @property ProdutosAvaliacoes[] $produtosAvaliacoes
  * @property Promocoes[] $promocoes
  */
 class Produtos extends \yii\db\ActiveRecord
@@ -46,7 +46,7 @@ class Produtos extends \yii\db\ActiveRecord
             [['imagem', 'tamanho', 'cores'], 'string'],
             [['nome', 'marca'], 'string', 'max' => 45],
             [['descricao'], 'string', 'max' => 255],
-            [['id_categoria'], 'exist', 'skipOnError' => true, 'targetClass' => ProdutosCategorias::class, 'targetAttribute' => ['id_categoria' => 'id']],
+            [['id_categoria'], 'exist', 'skipOnError' => true, 'targetClass' => Categorias::class, 'targetAttribute' => ['id_categoria' => 'id']],
         ];
     }
 
@@ -70,6 +70,16 @@ class Produtos extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[Avaliacoes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAvaliacoes()
+    {
+        return $this->hasMany(Avaliacoes::class, ['id_produto' => 'id']);
+    }
+
+    /**
      * Gets query for [[CarrinhoLinhas]].
      *
      * @return \yii\db\ActiveQuery
@@ -86,7 +96,7 @@ class Produtos extends \yii\db\ActiveRecord
      */
     public function getCategoria()
     {
-        return $this->hasOne(ProdutosCategorias::class, ['id' => 'id_categoria']);
+        return $this->hasOne(Categorias::class, ['id' => 'id_categoria']);
     }
 
     /**
@@ -107,16 +117,6 @@ class Produtos extends \yii\db\ActiveRecord
     public function getFavoritos()
     {
         return $this->hasMany(Favoritos::class, ['id_produto' => 'id']);
-    }
-
-    /**
-     * Gets query for [[ProdutosAvaliacoes]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProdutosAvaliacoes()
-    {
-        return $this->hasMany(ProdutosAvaliacoes::class, ['id_produto' => 'id']);
     }
 
     /**

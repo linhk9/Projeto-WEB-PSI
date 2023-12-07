@@ -5,21 +5,21 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "produtos_categorias".
+ * This is the model class for table "categorias".
  *
  * @property int $id
  * @property string|null $nome
  *
  * @property Produtos[] $produtos
  */
-class ProdutosCategorias extends \yii\db\ActiveRecord
+class Categorias extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'produtos_categorias';
+        return 'categorias';
     }
 
     /**

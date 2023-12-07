@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "produtos_avaliacoes".
+ * This is the model class for table "avaliacoes".
  *
  * @property int $id
  * @property int|null $id_userdata
@@ -16,14 +16,14 @@ use Yii;
  * @property Produtos $produto
  * @property User $userdata
  */
-class ProdutosAvaliacoes extends \yii\db\ActiveRecord
+class Avaliacoes extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'produtos_avaliacoes';
+        return 'avaliacoes';
     }
 
     /**
