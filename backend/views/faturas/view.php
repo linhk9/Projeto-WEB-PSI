@@ -4,21 +4,21 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var common\models\Userdata $model */
+/** @var common\models\Faturas $model */
 
-$this->title = $model->primeiroNome . " " . $model->ultimoNome . " | " . $model->id_user;
-$this->params['breadcrumbs'][] = ['label' => 'Gestão de Utilizadores', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Gestão de Faturas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="userdata-view">
+<div class="faturas-view">
 
     <p>
         <?= Html::a('Atualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Apagar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Tem a certeza de que queres apagar este utilizador?',
+                'confirm' => 'Tem a certeza de que queres apagar esta fatura?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -27,12 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-//            'id_user',
-            'primeiroNome',
-            'ultimoNome',
-            'telemovel',
-            'morada',
+//            'id',
+            'id_userdata',
+            'data',
+            'status',
         ],
     ]) ?>
 

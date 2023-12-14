@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 07, 2023 at 09:53 AM
+-- Generation Time: Dec 07, 2023 at 10:56 AM
 -- Server version: 11.1.2-MariaDB-log
 -- PHP Version: 8.1.10
 
@@ -173,6 +173,20 @@ CREATE TABLE `auth_rule` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `avaliacoes`
+--
+
+CREATE TABLE `avaliacoes` (
+  `id` int(11) NOT NULL,
+  `id_userdata` int(11) DEFAULT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `nota` int(11) DEFAULT NULL,
+  `comentario` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `carrinho`
 --
 
@@ -194,6 +208,17 @@ CREATE TABLE `carrinho_linhas` (
   `id_produto` int(11) DEFAULT NULL,
   `quantidade` int(11) DEFAULT NULL,
   `preco` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -276,31 +301,6 @@ CREATE TABLE `produtos` (
   `marca` varchar(45) DEFAULT NULL,
   `tamanho` enum('41') DEFAULT NULL,
   `cores` enum('Branco','Preto') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `produtos_avaliacoes`
---
-
-CREATE TABLE `produtos_avaliacoes` (
-  `id` int(11) NOT NULL,
-  `id_userdata` int(11) DEFAULT NULL,
-  `id_produto` int(11) DEFAULT NULL,
-  `nota` int(11) DEFAULT NULL,
-  `comentario` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `produtos_categorias`
---
-
-CREATE TABLE `produtos_categorias` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -406,6 +406,14 @@ ALTER TABLE `auth_rule`
   ADD PRIMARY KEY (`name`);
 
 --
+-- Indexes for table `avaliacoes`
+--
+ALTER TABLE `avaliacoes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_produto_avaliacao_idx` (`id_produto`),
+  ADD KEY `FK_userdata_avaliacao_idx` (`id_userdata`) USING BTREE;
+
+--
 -- Indexes for table `carrinho`
 --
 ALTER TABLE `carrinho`
@@ -419,6 +427,12 @@ ALTER TABLE `carrinho_linhas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_carrinho_carrinholinha_idx` (`id_carrinho`),
   ADD KEY `FK_produto_carrinholinha_idx` (`id_produto`);
+
+--
+-- Indexes for table `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `faturas`
@@ -457,20 +471,6 @@ ALTER TABLE `produtos`
   ADD KEY `FK_categoria_produto_idx` (`id_categoria`);
 
 --
--- Indexes for table `produtos_avaliacoes`
---
-ALTER TABLE `produtos_avaliacoes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_produto_avaliacao_idx` (`id_produto`),
-  ADD KEY `FK_userdata_avaliacao_idx` (`id_userdata`) USING BTREE;
-
---
--- Indexes for table `produtos_categorias`
---
-ALTER TABLE `produtos_categorias`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `promocoes`
 --
 ALTER TABLE `promocoes`
@@ -498,6 +498,12 @@ ALTER TABLE `userdata`
 --
 
 --
+-- AUTO_INCREMENT for table `avaliacoes`
+--
+ALTER TABLE `avaliacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `carrinho`
 --
 ALTER TABLE `carrinho`
@@ -507,6 +513,12 @@ ALTER TABLE `carrinho`
 -- AUTO_INCREMENT for table `carrinho_linhas`
 --
 ALTER TABLE `carrinho_linhas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `categorias`
+--
+ALTER TABLE `categorias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -531,18 +543,6 @@ ALTER TABLE `favoritos`
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `produtos_avaliacoes`
---
-ALTER TABLE `produtos_avaliacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `produtos_categorias`
---
-ALTER TABLE `produtos_categorias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -587,6 +587,13 @@ ALTER TABLE `auth_item_child`
   ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `avaliacoes`
+--
+ALTER TABLE `avaliacoes`
+  ADD CONSTRAINT `FK_produto_avaliacao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_user_avaliacao` FOREIGN KEY (`id_userdata`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `carrinho`
 --
 ALTER TABLE `carrinho`
@@ -623,14 +630,7 @@ ALTER TABLE `favoritos`
 -- Constraints for table `produtos`
 --
 ALTER TABLE `produtos`
-  ADD CONSTRAINT `FK_categoria_produto` FOREIGN KEY (`id_categoria`) REFERENCES `produtos_categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `produtos_avaliacoes`
---
-ALTER TABLE `produtos_avaliacoes`
-  ADD CONSTRAINT `FK_produto_avaliacao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_user_avaliacao` FOREIGN KEY (`id_userdata`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_categoria_produto` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `promocoes`

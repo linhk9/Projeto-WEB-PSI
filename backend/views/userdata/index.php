@@ -11,7 +11,7 @@ use yii\grid\GridView;
 /** @var backend\models\UserdataSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Utilizador';
+$this->title = 'Gestão de Utilizadores';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="userdata-index">
