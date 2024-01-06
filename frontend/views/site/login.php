@@ -11,8 +11,6 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>Por favor preencha os seguintes campos para fazer login:</p>
 
     <div class="row">

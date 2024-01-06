@@ -25,45 +25,6 @@ AppAsset::register($this);
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
-<!-- <header>
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar navbar-expand-lg navbar-light fixed-top py-3 d-block',
-            'data' => [
-                'data-navbar-on-scroll' => 'data-navbar-on-scroll',
-            ],
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Produtos', 'url' => ['/site/produtos']],
-        ['label' => 'Histórico de Compras', 'url' => ['/site/historico']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Registar', 'url' => ['/site/signup']];
-    }
-
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
-        'items' => $menuItems,
-    ]);
-    if (Yii::$app->user->isGuest) {
-        echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none'], 'style' => 'color: white;']),['class' => ['d-flex']]);
-    } else {
-        echo Html::a('Carrinho',['/site/carrinho'],['class' => ['btn btn-link login text-decoration-none'], 'style' => 'color: white;']);
-        echo Html::a('Perfil',['/site/perfil'],['class' => ['btn btn-link login text-decoration-none'], 'style' => 'color: white;']);
-        echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout text-decoration-none']
-            )
-            . Html::endForm();
-    }
-    NavBar::end();
-    ?>
-</header> -->
 <header class="mb-7">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
         <div class="container"><a class="navbar-brand d-inline-flex"><span class="text-1000 fs-0 fw-bold ms-2"><?= Yii::$app->name ?></span></a>
@@ -79,21 +40,6 @@ AppAsset::register($this);
                         }
                     ?>
                 </ul>
-                <!-- <form class="d-flex">
-                    <a class="text-1000" href="#!">
-                        <svg class="feather feather-shopping-cart me-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                    </a>
-                    <a class="text-1000" href="#!">
-                        <svg class="feather feather-user me-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </a>
-                </form> -->
                 <?php
                     if (Yii::$app->user->isGuest) {
                         echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);

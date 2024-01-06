@@ -2,6 +2,9 @@
 
 namespace frontend\controllers;
 
+use common\models\User;
+use common\models\Userdata;
+use frontend\models\PerfilForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
@@ -32,7 +35,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'perfil', 'carrinho', 'historico', 'produtos'],
                         'allow' => true,
                         'roles' => ['cliente'],
                     ],
@@ -123,6 +126,23 @@ class SiteController extends Controller
 
         return $this->render('signup', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionPerfil()
+    {
+        $model = new PerfilForm();
+        $user = User::find()->where(['id' => Yii::$app->user->identity->id])->one();
+        $userData = Userdata::find()->where(['id_user' => Yii::$app->user->identity->id])->one();
+        if ($model->load(Yii::$app->request->post()) && $model->guardar()) {
+            Yii::$app->session->setFlash('success', 'Dados alterados com sucesso!');
+            return $this->goHome();
+        }
+
+        return $this->render('perfil', [
+            'model' => $model,
+            'user' => $user,
+            'userData' => $userData,
         ]);
     }
 }
