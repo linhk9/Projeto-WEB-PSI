@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-perfil']); ?>
 
-            <?= $form->field($model, 'username')->textInput(['value' => $user->username ]) ?>
+            <?= $form->field($model, 'username')->textInput(['readonly' => true, 'value' => $user->username ]) ?>
             <?= $form->field($model, 'password')->passwordInput() ?>
 
             <?= $form->field($model, 'email')->textInput(['value' => $user->email ]) ?>
