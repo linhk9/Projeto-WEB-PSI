@@ -12,8 +12,6 @@ $this->params['breadcrumbs'][] = 'Atualizar';
 ?>
 <div class="promocoes-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

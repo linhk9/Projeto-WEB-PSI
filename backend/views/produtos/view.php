@@ -6,14 +6,12 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\Produtos $model */
 
-$this->title = $model->id;
+$this->title = 'Produto: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Produtos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="produtos-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Atualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

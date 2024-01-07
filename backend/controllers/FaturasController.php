@@ -122,7 +122,14 @@ class FaturasController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $fatura = $this->findModel($id);
+        if ($fatura !== null) {
+            $faturaLinhas = $fatura->getFaturaLinhas()->all();
+            foreach ($faturaLinhas as $linha) {
+                $linha->delete();
+            }
+            $fatura->delete();
+        }
 
         return $this->redirect(['index']);
     }

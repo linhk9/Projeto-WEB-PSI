@@ -2,7 +2,12 @@
 
 namespace backend\controllers;
 
+use common\models\Categorias;
+use common\models\Faturas;
 use common\models\LoginForm;
+use common\models\Produtos;
+use common\models\Promocoes;
+use common\models\User;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -62,7 +67,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $utilizadores = User::find()->count();
+        $faturas = Faturas::find()->count();
+        $produtos = Produtos::find()->count();
+        $categorias = Categorias::find()->count();
+        $promocoes = Promocoes::find()->count();
+
+        return $this->render('index', [
+            'utilizadores' => $utilizadores,
+            'faturas' => $faturas,
+            'produtos' => $produtos,
+            'categorias' => $categorias,
+            'promocoes' => $promocoes,
+        ]);
     }
 
     /**

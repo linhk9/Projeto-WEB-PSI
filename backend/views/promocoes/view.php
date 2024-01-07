@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\Promocoes $model */
 
-$this->title = $model->id;
+$this->title = 'Promoção: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Gestão de Promocoes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);

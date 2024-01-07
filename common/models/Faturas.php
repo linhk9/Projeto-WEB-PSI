@@ -43,7 +43,7 @@ class Faturas extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_userdata' => 'Id Userdata',
+            'id_userdata' => 'Utilizador',
             'data' => 'Data',
         ];
     }

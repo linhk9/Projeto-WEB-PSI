@@ -21,10 +21,10 @@ use yii\helpers\Url;
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
                     ['label' => 'Gerir Utilizadores', 'url' => ['userdata/index'], 'icon' => 'user'],
-                    ['label' => 'Gerir Faturas', 'url' => ['faturas/index'], 'icon' => 'user'],
+                    ['label' => 'Gerir Faturas', 'url' => ['faturas/index'], 'icon' => 'file-invoice'],
                     ['label' => 'Gerir Produtos', 'url' => ['produtos/index'], 'icon' => 'box'],
                     ['label' => 'Gerir Categorias', 'url' => ['categorias/index'], 'icon' => 'list'],
-                    ['label' => 'Gerir Promoções', 'url' => ['promocoes/index'], 'icon' => 'percentage'],
+                    ['label' => 'Gerir Promoções', 'url' => ['promocoes/index'], 'icon' => 'tag'],
                 ],
             ]);
             ?>
