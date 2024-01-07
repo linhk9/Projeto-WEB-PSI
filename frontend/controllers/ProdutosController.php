@@ -2,8 +2,11 @@
 
 namespace frontend\controllers;
 
+use common\models\Favoritos;
 use common\models\Produtos;
 use frontend\models\ProdutosSearch;
+use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,10 +24,15 @@ class ProdutosController extends Controller
         return array_merge(
             parent::behaviors(),
             [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
+                'access' => [
+                    'class' => AccessControl::class,
+                    'only' => ['index', 'view', 'addfavoritos', 'removerfavoritos'],
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'actions' => ['index', 'view', 'addfavoritos', 'removerfavoritos'],
+                            'roles' => ['cliente'],
+                        ],
                     ],
                 ],
             ]
@@ -58,6 +66,26 @@ class ProdutosController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    public function actionAddfavoritos($id)
+    {
+        $favoritos = new Favoritos();
+        $favoritos->id_userdata = \Yii::$app->user->identity->id;
+        $favoritos->id_produto = $id;
+        $favoritos->save();
+
+        return $this->goBack();
+    }
+
+    public function actionRemoverfavoritos($id)
+    {
+        $favoritos = Favoritos::findOne(['id_produto' => $id]);
+        if ($favoritos) {
+            $favoritos->delete();
+        }
+
+        return $this->goBack();
     }
 
     /**

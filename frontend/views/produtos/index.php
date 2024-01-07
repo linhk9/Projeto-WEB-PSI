@@ -1,6 +1,5 @@
 <?php
 
-use common\models\Produtos;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -32,20 +31,27 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?= $model->nome ?>
                                     <br>
                                     <?php
-                                    if (!empty($model->promocoes) && isset($model->promocoes[0])) {
-                                        $promocao = $model->promocoes[0];
-                                        $preco_promocao = $model->preco - ($model->preco * $promocao->desconto / 100);
-                                        echo '<span class="text-danger"><del>' . $model->preco . '€</del></span>';
-                                        echo '<span class="text-success"> ' . $preco_promocao . '€</span>';
-                                    } else {
-                                        echo $model->preco . '€';
-                                    }
-//                                    ?>
+                                        if (!empty($model->promocoes) && isset($model->promocoes[0])) {
+                                            $promocao = $model->promocoes[0];
+                                            $preco_promocao = $model->preco - ($model->preco * $promocao->desconto / 100);
+                                            echo '<span class="text-danger"><del>' . $model->preco . '€</del></span>';
+                                            echo '<span class="text-success"> ' . $preco_promocao . '€</span>';
+                                        } else {
+                                            echo $model->preco . '€';
+                                        }
+                                    ?>
                                 </p>
 
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="<?= Url::to(['produtos/view', 'id' => $model->id]) ?>" class="btn btn-sm btn-outline-secondary">Mais Detalhes</a>
+                                        <?php
+                                        if (!empty($model->favoritos) && isset($model->favoritos[0])) {
+                                            echo Html::a('<i class="bi bi-heart-fill"></i>', ['/produtos/removerfavoritos', 'id' => $model->id], ['class' => 'btn btn-sm btn-outline-secondary']);
+                                        } else {
+                                            echo Html::a('<i class="bi bi-heart"></i>', ['/produtos/addfavoritos', 'id' => $model->id], ['class' => 'btn btn-sm btn-outline-secondary']);
+                                        }
+                                        ?>
                                     </div>
                                     <small class="text-body-secondary">
                                         <?php

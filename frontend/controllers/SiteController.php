@@ -35,7 +35,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'perfil', 'carrinho', 'historico', 'produtos'],
+                        'actions' => ['logout', 'perfil', 'carrinho', 'historico'],
                         'allow' => true,
                         'roles' => ['cliente'],
                     ],
