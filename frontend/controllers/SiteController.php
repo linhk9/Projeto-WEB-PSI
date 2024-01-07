@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Favoritos;
 use common\models\User;
 use common\models\Userdata;
 use frontend\models\PerfilForm;
@@ -73,7 +74,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $favoritos = [];
+        if (!Yii::$app->user->isGuest) {
+            $favoritos = Favoritos::find()->where(['id_userdata' => Yii::$app->user->identity->id])->all();
+        }
+
+        return $this->render('index', [
+            'favoritos' => $favoritos,
+        ]);
     }
 
     /**
