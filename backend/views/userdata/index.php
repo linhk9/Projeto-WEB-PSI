@@ -47,16 +47,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'morada',
             [
                 'label' => 'Status',
+                'format' => 'raw', // This is needed to render HTML
                 'value' => function($model) {
                     if ($model->user->status === User::STATUS_ACTIVE) {
-                        return 'Ativo';
+                        return '<span class="badge badge-success">Ativo</span>';
                     }
 
                     if ($model->user->status === User::STATUS_DELETED) {
-                        return 'Apagado';
+                        return '<span class="badge badge-danger">Apagado</span>';
                     }
 
-                    return 'Inativo';
+                    return '<span class="badge badge-secondary">Inativo</span>';
                 }
             ],
             [

@@ -26,9 +26,28 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'marca')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tamanho')->dropDownList([ 41 => '41', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'tamanho')->dropDownList([
+            35 => '35',
+            36 => '36',
+            37 => '37',
+            38 => '38',
+            39 => '39',
+            40 => '40',
+            41 => '41',
+            42 => '42',
+            43 => '43',
+        ], ['prompt' => 'Seleciona um tamanho']) ?>
 
-    <?= $form->field($model, 'cores')->dropDownList([ 'Branco' => 'Branco', 'Preto' => 'Preto', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'cores')->dropDownList([
+            'Branco' => 'Branco',
+            'Preto' => 'Preto',
+            'Azul' => 'Azul',
+            'Vermelho' => 'Vermelho',
+            'Verde' => 'Verde',
+            'Amarelo' => 'Amarelo',
+            'Rosa' => 'Rosa',
+            'Laranja' => 'Laranja',
+        ], ['prompt' => 'Seleciona uma cor']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

@@ -133,7 +133,11 @@ class UserdataController extends Controller
         $model = User::findOne($userData->id_user);
 
         if ($model && ($model->id !== Yii::$app->user->identity->id)) {
-            $model->status = User::STATUS_DELETED;
+            if ($model->status != User::STATUS_DELETED) {
+                $model->status = User::STATUS_DELETED;
+            } else {
+                $model->status = User::STATUS_ACTIVE;
+            }
             $model->save();
         }
 
