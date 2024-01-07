@@ -10,7 +10,6 @@ use Yii;
  * @property int $id
  * @property int|null $id_userdata
  * @property string|null $data
- * @property int|null $status
  *
  * @property FaturaLinhas[] $faturaLinhas
  * @property User $userdata
@@ -31,7 +30,7 @@ class Faturas extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_userdata', 'status'], 'integer'],
+            [['id_userdata'], 'integer'],
             [['data'], 'safe'],
             [['id_userdata'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_userdata' => 'id']],
         ];
@@ -46,7 +45,6 @@ class Faturas extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_userdata' => 'Id Userdata',
             'data' => 'Data',
-            'status' => 'Status',
         ];
     }
 

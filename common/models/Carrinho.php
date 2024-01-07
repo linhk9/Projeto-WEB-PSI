@@ -32,6 +32,7 @@ class Carrinho extends \yii\db\ActiveRecord
         return [
             [['id_userdata'], 'required'],
             [['id_userdata'], 'integer'],
+            [['id_userdata'], 'unique'],
             [['data'], 'safe'],
             [['id_userdata'], 'exist', 'skipOnError' => true, 'targetClass' => Userdata::class, 'targetAttribute' => ['id_userdata' => 'id']],
         ];

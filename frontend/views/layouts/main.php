@@ -44,7 +44,7 @@ AppAsset::register($this);
                     if (Yii::$app->user->isGuest) {
                         echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
                     } else {
-                        echo Html::a('Carrinho',['/site/carrinho'],['class' => ['btn btn-link login text-decoration-none']]);
+                        echo Html::a('Carrinho',['/carrinho/index'],['class' => ['btn btn-link login text-decoration-none']]);
                         echo Html::a('Perfil (' . Yii::$app->user->identity->username . ')',['/site/perfil'],['class' => ['btn btn-link login text-decoration-none']]);
                         echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
                             . Html::submitButton(

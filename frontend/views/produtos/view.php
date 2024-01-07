@@ -40,19 +40,22 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-body">
                 <h5>
                     <?php
+                        $precoFinal = 0;
                         if (!empty($model->promocoes) && isset($model->promocoes[0])) {
                             $promocao = $model->promocoes[0];
                             $preco_promocao = $model->preco - ($model->preco * $promocao->desconto / 100);
+                            $precoProduto = round($preco_promocao, 2);
                             echo '<span class="text-danger"><del>' . $model->preco . '€</del></span>';
-                            echo '<span class="text-success"> ' . $preco_promocao . '€</span>';
+                            echo '<span class="text-success"> ' . $precoProduto . '€</span>';
                         } else {
+                            $precoProduto = $model->preco;
                             echo $model->preco . '€';
-                    }
+                        }
                     ?>
                 </h5>
                 <?php
                     if ($model->stock > 0) {
-                        echo Html::a('Adicionar ao Carrinho', ['carrinho/adicionar', 'id' => $model->id], ['class' => 'btn btn-primary']);
+                        echo Html::a('Adicionar ao Carrinho', ['carrinho/adicionar', 'id' => $model->id, 'precoProduto' => $precoProduto], ['class' => 'btn btn-primary']);
                     } else {
                         echo Html::tag('button', 'Adicionar ao Carrinho', ['class' => 'btn btn-primary', 'disabled' => true]);
                     }

@@ -12,11 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_userdata')->textInput() ?>
+    <?= $form->field($model, 'id_userdata')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Userdata::find()->asArray()->all(), 'id', 'primeiroNome')) ?>
 
-    <?= $form->field($model, 'data')->textInput() ?>
+    <?= $form->field($model, 'data')->widget(\yii\jui\DatePicker::classname(), [
 
-    <?= $form->field($model, 'status')->textInput() ?>
+        'language' => 'pt',
+        'dateFormat' => 'yyyy-MM-dd',
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php
                                         if (!empty($model->promocoes) && isset($model->promocoes[0])) {
                                             $promocao = $model->promocoes[0];
-                                            $preco_promocao = $model->preco - ($model->preco * $promocao->desconto / 100);
+                                            $preco_promocao = round($model->preco - ($model->preco * $promocao->desconto / 100), 2);
                                             echo '<span class="text-danger"><del>' . $model->preco . '€</del></span>';
                                             echo '<span class="text-success"> ' . $preco_promocao . '€</span>';
                                         } else {

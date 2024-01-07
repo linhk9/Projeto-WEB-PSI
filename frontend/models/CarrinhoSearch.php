@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Faturas;
+use common\models\Carrinho;
 
 /**
- * FaturasSearch represents the model behind the search form of `common\models\Faturas`.
+ * CarrinhoSearch represents the model behind the search form of `common\models\Carrinho`.
  */
-class FaturasSearch extends Faturas
+class CarrinhoSearch extends Carrinho
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class FaturasSearch extends Faturas
      */
     public function search($params)
     {
-        $query = Faturas::find();
+        $query = Carrinho::find();
 
         // add conditions that should always apply here
 
