@@ -24,13 +24,30 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-//            'id',
-            'id_userdata',
-            'data',
-        ],
-    ]) ?>
+    <p class="mb-1">Cliente: <?= $model->userdata->primeiroNome . ' ' . $model->userdata->ultimoNome ?></p>
+    <p class="mb-1">Fatura efetuada a <?= Html::encode($model->data) ?></p>
+    <?php
+    $precoTotal = 0;
+    foreach ($model->getFaturaLinhas()->all() as $linha) {
+        $precoTemp = $linha->preco * $linha->quantidade;
+        $precoTotal += $precoTemp;
+        $precoTemp = 0;
+    }
+    ?>
+    <p class="mb-1">Preço Total: <?= Html::encode($precoTotal) ?> €</p>
+
+    <div class="dropdown-divider"></div>
+    <div class="list-group">
+        <?php foreach ($model->getFaturaLinhas()->all() as $linha): ?>
+            <div class="list-group-item d-flex align-items-center">
+                <img src="<?= Html::encode($linha->produto->imagem) ?>" alt="<?= Html::encode($linha->produto->nome) ?>" style="width: 100px; height: 100px; margin-right: 10px;">
+                <div>
+                    <h5 class="mb-1">Produto: <?= Html::encode($linha->produto->nome) ?></h5>
+                    <p class="mb-1">Quantidade: <?= Html::encode($linha->quantidade) ?></p>
+                    <p class="mb-1">Preço: <?= Html::encode($linha->preco) ?></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 
 </div>

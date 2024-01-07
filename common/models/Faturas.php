@@ -65,6 +65,6 @@ class Faturas extends \yii\db\ActiveRecord
      */
     public function getUserdata()
     {
-        return $this->hasOne(User::class, ['id' => 'id_userdata']);
+        return $this->hasOne(Userdata::class, ['id_user' => 'id_userdata']);
     }
 }

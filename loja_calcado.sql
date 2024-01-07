@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 07, 2024 at 04:05 PM
+-- Generation Time: Jan 07, 2024 at 08:08 PM
 -- Server version: 11.1.2-MariaDB-log
 -- PHP Version: 8.1.10
 
@@ -196,13 +196,6 @@ CREATE TABLE `carrinho` (
                             `data` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `carrinho`
---
-
-INSERT INTO `carrinho` (`id`, `id_userdata`, `data`) VALUES
-    (5, 2, '2024-01-07');
-
 -- --------------------------------------------------------
 
 --
@@ -216,13 +209,6 @@ CREATE TABLE `carrinho_linhas` (
                                    `quantidade` int(11) DEFAULT NULL,
                                    `preco` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `carrinho_linhas`
---
-
-INSERT INTO `carrinho_linhas` (`id`, `id_carrinho`, `id_produto`, `quantidade`, `preco`) VALUES
-    (1, 5, 1, 3, 55.88);
 
 -- --------------------------------------------------------
 
@@ -252,9 +238,16 @@ INSERT INTO `categorias` (`id`, `nome`) VALUES
 CREATE TABLE `faturas` (
                            `id` int(11) NOT NULL,
                            `id_userdata` int(11) DEFAULT NULL,
-                           `data` datetime DEFAULT NULL,
-                           `status` int(11) DEFAULT NULL
+                           `data` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `faturas`
+--
+
+INSERT INTO `faturas` (`id`, `id_userdata`, `data`) VALUES
+                                                        (3, 2, '2024-01-07'),
+                                                        (4, 2, '2024-01-07');
 
 -- --------------------------------------------------------
 
@@ -269,6 +262,16 @@ CREATE TABLE `fatura_linhas` (
                                  `quantidade` int(11) DEFAULT NULL,
                                  `preco` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `fatura_linhas`
+--
+
+INSERT INTO `fatura_linhas` (`id`, `id_fatura`, `id_produto`, `quantidade`, `preco`) VALUES
+                                                                                         (5, 3, 1, 3, 55.88),
+                                                                                         (6, 3, 2, 1, 24.5),
+                                                                                         (7, 4, 1, 3, 55.88),
+                                                                                         (8, 4, 2, 2, 24.5);
 
 -- --------------------------------------------------------
 
@@ -321,8 +324,8 @@ CREATE TABLE `produtos` (
                             `stock` int(11) DEFAULT NULL,
                             `imagem` longtext DEFAULT NULL,
                             `marca` varchar(45) DEFAULT NULL,
-                            `tamanho` enum('41') DEFAULT NULL,
-                            `cores` enum('Branco','Preto') DEFAULT NULL
+                            `tamanho` varchar(255) DEFAULT NULL,
+                            `cores` enum('Branco','Preto','Vermelho','Verde','Azul','Amarelo','Rosa','Laranja') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -330,8 +333,8 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `id_categoria`, `nome`, `descricao`, `preco`, `stock`, `imagem`, `marca`, `tamanho`, `cores`) VALUES
-                                                                                                                                (1, 1, 'Air Force 1 Low Retro', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 74.5, 10, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Branco'),
-                                                                                                                                (2, 2, 'teste', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 5, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
+                                                                                                                                (1, 1, 'Air Force 1 Low Retro', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 74.5, 7, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Branco'),
+                                                                                                                                (2, 2, 'teste', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 3, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
                                                                                                                                 (3, 2, 'teste 6', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 0, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
                                                                                                                                 (4, 2, 'teste 5', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 1, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
                                                                                                                                 (5, 2, 'teste 4', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 0, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
@@ -385,9 +388,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `verification_token`) VALUES
                                                                                                                                                                     (1, 'Rodrigo', 'FfnNM3Xmth_2fD5XiSLGrmHDKlAOT-GA', '$2y$13$KIcnr55NIwQlP0XwCJFs1e1gshNYwLmCkjGekNLs2xiX3xD2FwXm6', NULL, 'Rodrigo@gmail.com', 10, 1697379940, 1697379940, 't3Vg7JpiM1RzaDbJaZScC6MoBBO9ZFrE_1697379940'),
                                                                                                                                                                     (2, 'Filipe', 'Kw11-yzWfLi7hPsD1Dc8__sHdMkuEHds', '$2y$13$qoa4tD1R7htI718M36HnnuYsP7RsFhI9vF1RFAacyduXSb02Lru9.', NULL, '2211921@my.ipleiria.pt', 10, 1697796992, 1704506534, 'tXK_G1FXri8NNYnSL1qAGVcbyD4Nim7z_1697796992'),
-                                                                                                                                                                    (8, 'teste', '_YLwp8e5656xPLpr9ZUwt14UgD7TgfoY', '$2y$13$fPfaArGK8BqmxFHO4A0e8Oyb90B.N6Fiu/npxCIDkiPBfTY76P3b6', NULL, 'teste@gmail.com', 0, 1700747579, 1700748261, NULL),
+                                                                                                                                                                    (8, 'teste', '_YLwp8e5656xPLpr9ZUwt14UgD7TgfoY', '$2y$13$fPfaArGK8BqmxFHO4A0e8Oyb90B.N6Fiu/npxCIDkiPBfTY76P3b6', NULL, 'teste@gmail.com', 10, 1700747579, 1704651001, NULL),
                                                                                                                                                                     (9, 'cliente', 'QtfCkXMeYRSKrVmRq6jK7U8amdG1MFuV', '$2y$13$XPzRMAKbIMhZkX4RTjPgFeUeqr22Nlvc126v4UvB8z7Z2z4KCGN/u', NULL, 'cliente@gmai.com', 10, 1700826005, 1700826005, NULL),
-                                                                                                                                                                    (10, 'testeadmin', '3BCgr-L1baEPpbMZLhgpnIof6O7jMPr5', '$2y$13$5JEjeVCEfXwg74SCzL7oEOhiP7MbqPriX14vUWTrkHgN9RetZRcb.', NULL, 'testeadmin@gmail.com', 10, 1701338497, 1701338497, NULL);
+                                                                                                                                                                    (10, 'testeadmin', '3BCgr-L1baEPpbMZLhgpnIof6O7jMPr5', '$2y$13$5JEjeVCEfXwg74SCzL7oEOhiP7MbqPriX14vUWTrkHgN9RetZRcb.', NULL, 'testeadmin@gmail.com', 0, 1701338497, 1704651041, NULL);
 
 -- --------------------------------------------------------
 
@@ -424,22 +427,22 @@ INSERT INTO `userdata` (`id`, `id_user`, `primeiroNome`, `ultimoNome`, `telemove
 --
 ALTER TABLE `auth_assignment`
     ADD PRIMARY KEY (`item_name`,`user_id`),
-  ADD KEY `idx-auth_assignment-user_id` (`user_id`);
+    ADD KEY `idx-auth_assignment-user_id` (`user_id`);
 
 --
 -- Indexes for table `auth_item`
 --
 ALTER TABLE `auth_item`
     ADD PRIMARY KEY (`name`),
-  ADD KEY `rule_name` (`rule_name`),
-  ADD KEY `idx-auth_item-type` (`type`);
+    ADD KEY `rule_name` (`rule_name`),
+    ADD KEY `idx-auth_item-type` (`type`);
 
 --
 -- Indexes for table `auth_item_child`
 --
 ALTER TABLE `auth_item_child`
     ADD PRIMARY KEY (`parent`,`child`),
-  ADD KEY `child` (`child`);
+    ADD KEY `child` (`child`);
 
 --
 -- Indexes for table `auth_rule`
@@ -452,23 +455,23 @@ ALTER TABLE `auth_rule`
 --
 ALTER TABLE `avaliacoes`
     ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_produto_avaliacao_idx` (`id_produto`),
-  ADD KEY `FK_userdata_avaliacao_idx` (`id_userdata`) USING BTREE;
+    ADD KEY `FK_produto_avaliacao_idx` (`id_produto`),
+    ADD KEY `FK_userdata_avaliacao_idx` (`id_userdata`) USING BTREE;
 
 --
 -- Indexes for table `carrinho`
 --
 ALTER TABLE `carrinho`
     ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_userdata` (`id_userdata`);
+    ADD UNIQUE KEY `id_userdata` (`id_userdata`);
 
 --
 -- Indexes for table `carrinho_linhas`
 --
 ALTER TABLE `carrinho_linhas`
     ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_carrinho_carrinholinha_idx` (`id_carrinho`),
-  ADD KEY `FK_produto_carrinholinha_idx` (`id_produto`);
+    ADD KEY `FK_carrinho_carrinholinha_idx` (`id_carrinho`),
+    ADD KEY `FK_produto_carrinholinha_idx` (`id_produto`);
 
 --
 -- Indexes for table `categorias`
@@ -481,23 +484,23 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `faturas`
     ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_userdata_faturas_idx` (`id_userdata`) USING BTREE;
+    ADD KEY `FK_userdata_faturas_idx` (`id_userdata`) USING BTREE;
 
 --
 -- Indexes for table `fatura_linhas`
 --
 ALTER TABLE `fatura_linhas`
     ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_fatura_faturalinhas_idx` (`id_fatura`),
-  ADD KEY `FK_produto_faturalinhas_idx` (`id_produto`);
+    ADD KEY `FK_fatura_faturalinhas_idx` (`id_fatura`),
+    ADD KEY `FK_produto_faturalinhas_idx` (`id_produto`);
 
 --
 -- Indexes for table `favoritos`
 --
 ALTER TABLE `favoritos`
     ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_produto_favorito_idx` (`id_produto`),
-  ADD KEY `FK_userdata_favorito_idx` (`id_userdata`) USING BTREE;
+    ADD KEY `FK_produto_favorito_idx` (`id_produto`),
+    ADD KEY `FK_userdata_favorito_idx` (`id_userdata`) USING BTREE;
 
 --
 -- Indexes for table `migration`
@@ -510,31 +513,31 @@ ALTER TABLE `migration`
 --
 ALTER TABLE `produtos`
     ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_categoria_produto_idx` (`id_categoria`);
+    ADD KEY `FK_categoria_produto_idx` (`id_categoria`);
 
 --
 -- Indexes for table `promocoes`
 --
 ALTER TABLE `promocoes`
     ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_produto` (`id_produto`),
-  ADD KEY `FK_produto_promocao_idx` (`id_produto`);
+    ADD UNIQUE KEY `id_produto` (`id_produto`),
+    ADD KEY `FK_produto_promocao_idx` (`id_produto`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
     ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
+    ADD UNIQUE KEY `username` (`username`),
+    ADD UNIQUE KEY `email` (`email`),
+    ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
 
 --
 -- Indexes for table `userdata`
 --
 ALTER TABLE `userdata`
     ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_user_userdata_idx` (`id_user`);
+    ADD KEY `FK_user_userdata_idx` (`id_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -550,13 +553,13 @@ ALTER TABLE `avaliacoes`
 -- AUTO_INCREMENT for table `carrinho`
 --
 ALTER TABLE `carrinho`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `carrinho_linhas`
 --
 ALTER TABLE `carrinho_linhas`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `categorias`
@@ -568,19 +571,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT for table `faturas`
 --
 ALTER TABLE `faturas`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `fatura_linhas`
 --
 ALTER TABLE `fatura_linhas`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `favoritos`
 --
 ALTER TABLE `favoritos`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `produtos`
@@ -627,14 +630,14 @@ ALTER TABLE `auth_item`
 --
 ALTER TABLE `auth_item_child`
     ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+    ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
     ADD CONSTRAINT `FK_produto_avaliacao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_user_avaliacao` FOREIGN KEY (`id_userdata`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ADD CONSTRAINT `FK_user_avaliacao` FOREIGN KEY (`id_userdata`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `carrinho`
@@ -647,7 +650,7 @@ ALTER TABLE `carrinho`
 --
 ALTER TABLE `carrinho_linhas`
     ADD CONSTRAINT `FK_carrinho_carrinholinha` FOREIGN KEY (`id_carrinho`) REFERENCES `carrinho` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_produto_carrinholinha` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ADD CONSTRAINT `FK_produto_carrinholinha` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `faturas`
@@ -660,14 +663,14 @@ ALTER TABLE `faturas`
 --
 ALTER TABLE `fatura_linhas`
     ADD CONSTRAINT `FK_fatura_faturalinha` FOREIGN KEY (`id_fatura`) REFERENCES `faturas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_produto_faturalinha` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ADD CONSTRAINT `FK_produto_faturalinha` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `favoritos`
 --
 ALTER TABLE `favoritos`
     ADD CONSTRAINT `FK_produto_favorito` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_user_favorito` FOREIGN KEY (`id_userdata`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ADD CONSTRAINT `FK_user_favorito` FOREIGN KEY (`id_userdata`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `produtos`

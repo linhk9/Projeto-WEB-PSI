@@ -27,8 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'id_userdata',
+//            'id',
+            [
+                'label' => 'Nome do Cliente',
+                'value' => function($model) {
+                    return $model->userdata->primeiroNome . ' ' . $model->userdata->ultimoNome;
+                }
+            ],
             'data',
             [
                 'class' => ActionColumn::className(),
