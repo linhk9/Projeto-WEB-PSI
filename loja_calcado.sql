@@ -313,8 +313,8 @@ CREATE TABLE `promocoes` (
   `id` int(11) NOT NULL,
   `id_produto` int(11) DEFAULT NULL,
   `desconto` int(11) DEFAULT NULL,
-  `data_inicio` datetime DEFAULT NULL,
-  `data_termino` datetime DEFAULT NULL
+  `data_inicio` date DEFAULT NULL,
+  `data_termino` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -549,6 +549,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT for table `promocoes`
 --
 ALTER TABLE `promocoes`
+  ADD UNIQUE KEY `id_produto` (`id_produto`),
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

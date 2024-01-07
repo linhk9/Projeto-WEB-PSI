@@ -14,55 +14,56 @@ $this->title = 'Produtos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="produtos-index">
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="album py-5">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <?php
+                    foreach ($dataProvider->models as $model) {
+                ?>
+                    <div class="col">
+                        <div class="card">
+                            <img class="card-img-top" src="<?= $model->imagem ?>" alt="..." />
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <b><?= $model->categoria->nome ?> | <?= $model->marca ?></b>
+                                    <br>
+                                    <?= $model->nome ?>
+                                    <br>
+                                    <?php
+                                    if (!empty($model->promocoes) && isset($model->promocoes[0])) {
+                                        $promocao = $model->promocoes[0];
+                                        $preco_promocao = $model->preco - ($model->preco * $promocao->desconto / 100);
+                                        echo '<span class="text-danger"><del>' . $model->preco . '€</del></span>';
+                                        echo '<span class="text-success"> ' . $preco_promocao . '€</span>';
+                                    } else {
+                                        echo $model->preco . '€';
+                                    }
+//                                    ?>
+                                </p>
 
-
-
-<?=ListView::widget([
-	'dataProvider' => $dataProvider,
-	'itemView' => '_form',
-	//'emptyText' =>'',
-	'summary' => '',
-	'itemOptions' => [
-		'tag' => false
-	],
-	'options' => [
-		'tag' => 'div',
-		'class' => 'row',
-		'id' => false
-	],
-	'layout' => '{items}<nav>{pager}</nav>',
-	'pager' => [
-		'options' => [
-			'tag' => 'ul',
-			'class' => 'pagination justify-content-center',
-			'id' => 'pager-container',
-		],
-		//First option value
-		'firstPageLabel' => 'first',
-		//Last option value
-		'lastPageLabel' => 'last',
-		//Previous option value
-		'prevPageLabel' => 'previous',
-		//Next option value
-		'nextPageLabel' => 'next',
-		//Current Active option value
-		'activePageCssClass' => 'page-active',
-		//Max count of allowed options
-		'maxButtonCount' => 3,
-
-		// Css for each options. Links
-		'linkOptions' => ['class' => 'page-link'],
-		'disabledPageCssClass' => 'disabled',
-
-		// Customzing CSS class for navigating link
-		'pageCssClass' => ['class' => 'page-item'],
-		'prevPageCssClass' => 'page-back',
-		'nextPageCssClass' => 'page-next',
-		'firstPageCssClass' => 'page-first',
-		'lastPageCssClass' => 'page-last',
-		],
-]); ?>
-
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="<?= Url::to(['produtos/view', 'id' => $model->id]) ?>" class="btn btn-sm btn-outline-secondary">Mais Detalhes</a>
+                                    </div>
+                                    <small class="text-body-secondary">
+                                        <?php
+                                            if ($model->stock > 0) {
+                                                echo '<span class="text-success"> Em Stock</span>';
+                                            } else {
+                                                echo '<span class="text-danger">Sem Stock</span>';
+                                            }
+                                        ?>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
 </div>

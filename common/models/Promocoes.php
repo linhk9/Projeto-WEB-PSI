@@ -33,6 +33,7 @@ class Promocoes extends \yii\db\ActiveRecord
         return [
             [['id_produto', 'desconto'], 'integer'],
             [['data_inicio', 'data_termino'], 'safe'],
+            [['id_produto'], 'unique'],
             [['id_produto'], 'exist', 'skipOnError' => true, 'targetClass' => Produtos::class, 'targetAttribute' => ['id_produto' => 'id']],
         ];
     }
@@ -44,7 +45,7 @@ class Promocoes extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_produto' => 'Id Produto',
+            'id_produto' => 'Produto',
             'desconto' => 'Desconto',
             'data_inicio' => 'Data Inicio',
             'data_termino' => 'Data Termino',
