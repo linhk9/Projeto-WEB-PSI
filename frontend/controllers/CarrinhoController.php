@@ -139,6 +139,13 @@ class CarrinhoController extends Controller
         if ($carrinho !== null) {
             $carrinhoLinhas = $carrinho->getCarrinhoLinhas()->all();
             foreach ($carrinhoLinhas as $linha) {
+                $produto = $linha->produto;
+                if ($linha->quantidade > $produto->stock) {
+                    throw new \yii\web\HttpException(400, 'Não existe stock suficiente de ' . $produto->nome);
+                }
+                $produto->stock -= $linha->quantidade;
+                $produto->save();
+
                 $faturaLinha = new FaturaLinhas();
                 $faturaLinha->id_fatura = $fatura->id;
                 $faturaLinha->id_produto = $linha->id_produto;
@@ -150,7 +157,7 @@ class CarrinhoController extends Controller
             $carrinho->delete();
         }
 
-        return $this->redirect(['faturas/view', 'id' => $fatura->id]);
+        return $this->redirect(['fatura/view', 'id' => $fatura->id]);
     }
 
     /**

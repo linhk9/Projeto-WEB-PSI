@@ -33,7 +33,7 @@ AppAsset::register($this);
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item px-2"><?= Html::a('Home', ['/site/index'], ['class' => ['nav-link fw-medium']]); ?></li>
                     <li class="nav-item px-2"><?= Html::a('Produtos', ['/produtos/index '], ['class' => ['nav-link fw-medium']]); ?></li>
-                    <li class="nav-item px-2"><?= Html::a('Histórico de Compras', ['/site/historico'], ['class' => ['nav-link fw-medium']]); ?></li>                    
+                    <li class="nav-item px-2"><?= Html::a('Histórico de Compras', ['/fatura/index'], ['class' => ['nav-link fw-medium']]); ?></li>
                     <?php 
                         if (Yii::$app->user->isGuest) {
                             echo '<li class="nav-item px-2">' . Html::a('Registar', ['/site/signup'], ['class' => ['nav-link fw-medium']]) . '</li>';
