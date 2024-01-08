@@ -6,6 +6,7 @@ use common\models\Carrinho;
 use common\models\CarrinhoLinhas;
 use common\models\FaturaLinhas;
 use common\models\Faturas;
+use common\models\Userdata;
 use frontend\models\CarrinhoSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -64,11 +65,12 @@ class CarrinhoController extends Controller
 
     public function actionAdicionar($id, $precoProduto)
     {
-        $carrinho = Carrinho::find()->where(['id_userdata' => \Yii::$app->user->identity->id])->one();
+        $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+        $carrinho = Carrinho::find()->where(['id_userdata' => $userData->id])->one();
 
         if ($carrinho === null) {
             $carrinho = new Carrinho();
-            $carrinho->id_userdata = \Yii::$app->user->identity->id;
+            $carrinho->id_userdata = $userData->id;
             $carrinho->data = date('Y-m-d');
             $carrinho->save();
         }
@@ -130,12 +132,14 @@ class CarrinhoController extends Controller
 
     public function actionCheckout()
     {
+        $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+
         $fatura = new Faturas();
-        $fatura->id_userdata = \Yii::$app->user->identity->id;
+        $fatura->id_userdata = $userData->id;
         $fatura->data = date('Y-m-d');
         $fatura->save();
 
-        $carrinho = Carrinho::find()->where(['id_userdata' => \Yii::$app->user->identity->id])->one();
+        $carrinho = Carrinho::find()->where(['id_userdata' => $userData->id])->one();
         if ($carrinho !== null) {
             $carrinhoLinhas = $carrinho->getCarrinhoLinhas()->all();
             foreach ($carrinhoLinhas as $linha) {

@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\CategoriasSearch;
 use common\models\Categorias;
+use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -49,13 +50,17 @@ class CategoriasController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CategoriasSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (Yii::$app->user->can('gerirCategorias')) {
+            $searchModel = new CategoriasSearch();
+            $dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+
+        return $this->redirect(['index']);
     }
 
     /**
@@ -66,9 +71,13 @@ class CategoriasController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if (Yii::$app->user->can('verCategorias')) {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        }
+
+        return $this->redirect(['index']);
     }
 
     /**
@@ -78,19 +87,23 @@ class CategoriasController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Categorias();
+        if (Yii::$app->user->can('criarCategorias')) {
+            $model = new Categorias();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($this->request->isPost) {
+                if ($model->load($this->request->post()) && $model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            } else {
+                $model->loadDefaultValues();
             }
-        } else {
-            $model->loadDefaultValues();
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['index']);
     }
 
     /**
@@ -102,15 +115,19 @@ class CategoriasController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if (Yii::$app->user->can('atualizarCategorias')) {
+            $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['index']);
     }
 
     /**
@@ -122,7 +139,11 @@ class CategoriasController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if (Yii::$app->user->can('apagarCategorias')) {
+            $this->findModel($id)->delete();
+
+            return $this->redirect(['index']);
+        }
 
         return $this->redirect(['index']);
     }

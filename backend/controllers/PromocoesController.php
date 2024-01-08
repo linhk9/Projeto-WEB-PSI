@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Promocoes;
 use backend\models\PromocoesSearch;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -49,13 +50,17 @@ class PromocoesController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PromocoesSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (Yii::$app->user->can('gerirPromocoes')) {
+            $searchModel = new PromocoesSearch();
+            $dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+
+        return $this->redirect(['index']);
     }
 
     /**
@@ -66,9 +71,13 @@ class PromocoesController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if (Yii::$app->user->can('verPromocoes')) {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        }
+
+        return $this->redirect(['index']);
     }
 
     /**
@@ -78,19 +87,23 @@ class PromocoesController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Promocoes();
+        if (Yii::$app->user->can('criarPromocoes')) {
+            $model = new Promocoes();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($this->request->isPost) {
+                if ($model->load($this->request->post()) && $model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            } else {
+                $model->loadDefaultValues();
             }
-        } else {
-            $model->loadDefaultValues();
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['index']);
     }
 
     /**
@@ -102,15 +115,19 @@ class PromocoesController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if (Yii::$app->user->can('atualizarPromocoes')) {
+            $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['index']);
     }
 
     /**
@@ -122,7 +139,11 @@ class PromocoesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if (Yii::$app->user->can('apagarPromocoes')) {
+            $this->findModel($id)->delete();
+
+            return $this->redirect(['index']);
+        }
 
         return $this->redirect(['index']);
     }

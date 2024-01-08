@@ -79,7 +79,7 @@ class CreateUserForm extends Model
 
             $auth = \Yii::$app->authManager;
             $role = $auth->getRole($this->role);
-            $auth->assign($role, $user->getId());
+            $auth->assign($role, $user->id);
 
             return $userDataCreated;
         }

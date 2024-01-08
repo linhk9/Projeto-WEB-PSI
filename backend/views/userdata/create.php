@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'morada') ?>
 
     <?= $form->field($model, 'role')->dropDownList([
-        'client' => 'Cliente',
+        'cliente' => 'Cliente',
         'funcionario' => 'Funcionário',
         'admin' => 'Administrador',
     ]) ?>

@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use common\models\Userdata;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Faturas;
@@ -40,7 +41,8 @@ class FaturaSearch extends Faturas
      */
     public function search($params)
     {
-        $query = Faturas::find()->where(['id_userdata' => \Yii::$app->user->identity->id]);
+        $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+        $query = Faturas::find()->where(['id_userdata' => $userData->id]);
 
         // add conditions that should always apply here
 

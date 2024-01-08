@@ -71,6 +71,11 @@
             $criarCategorias->description = 'Criar Categorias';
             $auth->add($criarCategorias);
 
+            // adiciona a permissão "verCategorias"
+            $verCategorias = $auth->createPermission('verCategorias');
+            $verCategorias->description = 'Ver Categorias';
+            $auth->add($verCategorias);
+
             // adiciona a permissão "atualizarCategorias"
             $atualizarCategorias = $auth->createPermission('atualizarCategorias');
             $atualizarCategorias->description = 'Atualizar Categorias';
@@ -91,6 +96,11 @@
             $criarPromocoes->description = 'Criar Promocoes';
             $auth->add($criarPromocoes);
 
+            // adiciona a permissão "verPromocoes"
+            $verPromocoes = $auth->createPermission('verPromocoes');
+            $verPromocoes->description = 'Ver Promocoes';
+            $auth->add($verPromocoes);
+
             // adiciona a permissão "atualizarPromocoes"
             $atualizarPromocoes = $auth->createPermission('atualizarPromocoes');
             $atualizarPromocoes->description = 'Atualizar Promocoes';
@@ -110,6 +120,11 @@
             $verFaturas = $auth->createPermission('verFaturas');
             $verFaturas->description = 'Ver Faturas';
             $auth->add($verFaturas);
+
+            // adiciona a permissão "criarFaturas"
+            $criarFaturas = $auth->createPermission('criarFaturas');
+            $criarFaturas->description = 'Criar Faturas';
+            $auth->add($criarFaturas);
 
             // adiciona a permissão "atualizarFaturas"
             $atualizarFaturas = $auth->createPermission('atualizarFaturas');
@@ -224,11 +239,13 @@
 
             $auth->addChild($funcionario, $gerirCategorias);
             $auth->addChild($funcionario, $criarCategorias);
+            $auth->addChild($funcionario, $verCategorias);
             $auth->addChild($funcionario, $atualizarCategorias);
             $auth->addChild($funcionario, $apagarCategorias);
 
             $auth->addChild($funcionario, $gerirPromocoes);
             $auth->addChild($funcionario, $criarPromocoes);
+            $auth->addChild($funcionario, $verPromocoes);
             $auth->addChild($funcionario, $atualizarPromocoes);
             $auth->addChild($funcionario, $apagarPromocoes);
 
@@ -247,6 +264,7 @@
 
             $auth->addChild($admin, $mudarRoleUtilizador);
             
+            $auth->addChild($admin, $criarFaturas);
             $auth->addChild($admin, $atualizarFaturas);
             $auth->addChild($admin, $apagarFaturas);
 

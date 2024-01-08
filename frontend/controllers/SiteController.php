@@ -76,7 +76,8 @@ class SiteController extends Controller
     {
         $favoritos = [];
         if (!Yii::$app->user->isGuest) {
-            $favoritos = Favoritos::find()->where(['id_userdata' => Yii::$app->user->identity->id])->all();
+            $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+            $favoritos = Favoritos::find()->where(['id_userdata' => $userData->id])->all();
         }
 
         return $this->render('index', [

@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'morada')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'role')->dropDownList([
-        'client' => 'Cliente',
+        'cliente' => 'Cliente',
         'funcionario' => 'Funcionário',
         'admin' => 'Administrador',
     ]) ?>

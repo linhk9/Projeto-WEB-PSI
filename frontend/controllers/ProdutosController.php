@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\Favoritos;
 use common\models\Produtos;
+use common\models\Userdata;
 use frontend\models\ProdutosSearch;
 use Yii;
 use yii\filters\AccessControl;
@@ -70,8 +71,10 @@ class ProdutosController extends Controller
 
     public function actionAddfavoritos($id)
     {
+        $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+
         $favoritos = new Favoritos();
-        $favoritos->id_userdata = \Yii::$app->user->identity->id;
+        $favoritos->id_userdata = $userData->id;
         $favoritos->id_produto = $id;
         $favoritos->save();
 

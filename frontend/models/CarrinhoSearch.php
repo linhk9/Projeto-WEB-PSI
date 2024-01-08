@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use common\models\Userdata;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Carrinho;
@@ -40,7 +41,8 @@ class CarrinhoSearch extends Carrinho
      */
     public function search($params)
     {
-        $query = Carrinho::find();
+        $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+        $query = Carrinho::find()->where(['id_userdata' => $userData->id]);
 
         // add conditions that should always apply here
 

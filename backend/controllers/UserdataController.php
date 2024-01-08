@@ -33,7 +33,6 @@ class UserdataController extends Controller
                             'allow' => true,
                             'roles' => ['funcionario', 'admin'],
                         ],
-                        // permissão gerirUtilizadores, verUtilizadores, atualizarUtilizadores, apagarUtilizadores
                     ],
                 ],
                 'verbs' => [
@@ -53,13 +52,17 @@ class UserdataController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new UserdataSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (Yii::$app->user->can('gerirUtilizadores')) {
+            $searchModel = new UserdataSearch();
+            $dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+
+        return $this->redirect(['index']);
     }
 
     /**
@@ -69,17 +72,21 @@ class UserdataController extends Controller
      */
     public function actionCreate()
     {
-        $modelCreateUser = new CreateUserForm();
+        if (Yii::$app->user->can('criarUtilizadores')) {
+            $modelCreateUser = new CreateUserForm();
 
-        if ($this->request->isPost) {
-            if ($modelCreateUser->load($this->request->post()) && $modelCreateUser->create()) {
-                return $this->redirect(['index']);
+            if ($this->request->isPost) {
+                if ($modelCreateUser->load($this->request->post()) && $modelCreateUser->create()) {
+                    return $this->redirect(['index']);
+                }
             }
+
+            return $this->render('create', [
+                'model' => $modelCreateUser
+            ]);
         }
 
-        return $this->render('create', [
-            'model' => $modelCreateUser
-        ]);
+        return $this->redirect(['index']);
     }
 
     /**
@@ -90,9 +97,13 @@ class UserdataController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if (Yii::$app->user->can('verUtilizadores')) {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        }
+
+        return $this->redirect(['index']);
     }
 
     /**
@@ -104,20 +115,25 @@ class UserdataController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if (Yii::$app->user->can('atualizarUtilizadores')) {
+            $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            $auth = \Yii::$app->authManager;
-            $role = $auth->getRole($model->role);
-            $auth->revokeAll($model->id_user);
-            $auth->assign($role, $model->id_user);
+            if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+                if (Yii::$app->user->can('mudarRoleUtilizador')) {
+                    $auth = \Yii::$app->authManager;
+                    $role = $auth->getRole($model->role);
+                    $auth->revokeAll($model->id_user);
+                    $auth->assign($role, $model->id_user);
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['index']);
     }
 
     /**
@@ -129,16 +145,20 @@ class UserdataController extends Controller
      */
     public function actionDelete($id)
     {
-        $userData = $this->findModel($id);
-        $model = User::findOne($userData->id_user);
+        if (Yii::$app->user->can('apagarUtilizadores')) {
+            $userData = $this->findModel($id);
+            $model = User::findOne($userData->id_user);
 
-        if ($model && ($model->id !== Yii::$app->user->identity->id)) {
-            if ($model->status != User::STATUS_DELETED) {
-                $model->status = User::STATUS_DELETED;
-            } else {
-                $model->status = User::STATUS_ACTIVE;
+            if ($model && ($model->id !== Yii::$app->user->identity->id)) {
+                if ($model->status != User::STATUS_DELETED) {
+                    $model->status = User::STATUS_DELETED;
+                } else {
+                    $model->status = User::STATUS_ACTIVE;
+                }
+                $model->save();
             }
-            $model->save();
+
+            return $this->redirect(['index']);
         }
 
         return $this->redirect(['index']);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 07, 2024 at 08:08 PM
+-- Generation Time: Jan 08, 2024 at 02:54 PM
 -- Server version: 11.1.2-MariaDB-log
 -- PHP Version: 8.1.10
 
@@ -38,10 +38,13 @@ CREATE TABLE `auth_assignment` (
 --
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
-                                                                         ('admin', '1', 1701341602),
-                                                                         ('admin', '10', 1701340330),
-                                                                         ('admin', '2', 1701337181),
-                                                                         ('cliente', '3', 1701337181);
+                                                                         ('admin', '1', 1704724092),
+                                                                         ('admin', '11', 1704725137),
+                                                                         ('admin', '2', 1704724233),
+                                                                         ('cliente', '15', 1704725457),
+                                                                         ('cliente', '16', 1704725556),
+                                                                         ('cliente', '17', 1704725564),
+                                                                         ('funcionario', '12', 1704725161);
 
 -- --------------------------------------------------------
 
@@ -64,44 +67,47 @@ CREATE TABLE `auth_item` (
 --
 
 INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
-                                                                                                             ('adicionarCarrinho_FO', 2, 'Adicionar Carrinho', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('adicionarFavorito_FO', 2, 'Adicionar Favoritos', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('admin', 1, NULL, NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('apagarAvaliacao_FO', 2, 'Apagar Avaliacao', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('apagarCarrinho_FO', 2, 'Apagar Carrinho', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('apagarCategorias', 2, 'Apagar Categorias', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('apagarFaturas', 2, 'Apagar Faturas', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('apagarProdutos', 2, 'Apagar Produtos', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('apagarPromocoes', 2, 'Apagar Promocoes', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('apagarUtilizadores', 2, 'Apagar Utilizadores', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('atualizarCarrinho_FO', 2, 'Atualizar Carrinho', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('atualizarCategorias', 2, 'Atualizar Categorias', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('atualizarFaturas', 2, 'Atualizar Faturas', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('atualizarProdutos', 2, 'Atualizar Produtos', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('atualizarPromocoes', 2, 'Atualizar Promocoes', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('atualizarUtilizador_FO', 2, 'Atualizar Perfil', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('atualizarUtilizadores', 2, 'Atualizar Utilizadores', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('cliente', 1, NULL, NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('criarCategorias', 2, 'Criar Categorias', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('criarProdutos', 2, 'Criar Produtos', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('criarPromocoes', 2, 'Criar Promocoes', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('criarUtilizadores', 2, 'Criar Utilizadores', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('editarAvaliacao_FO', 2, 'Editar Avaliacao', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('funcionario', 1, NULL, NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('gerirCarrinho_FO', 2, 'Gerir Carrinho', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('gerirCategorias', 2, 'Gerir Categorias', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('gerirFaturas', 2, 'Gerir Faturas', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('gerirFaturas_FO', 2, 'Gerir Faturas', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('gerirProdutos', 2, 'Gerir Produtos', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('gerirPromocoes', 2, 'Gerir Promocoes', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('gerirUtilizadores', 2, 'Gerir Utilizadores', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('listaAvaliacao_FO', 2, 'Listar Avaliacoes', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('mudarRoleUtilizador', 2, 'Mudar Role Utilizador', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('removerFavorito_FO', 2, 'Remover Favoritos', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('verFaturas', 2, 'Ver Faturas', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('verFaturas_FO', 2, 'Ver Faturas', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('verProdutos', 2, 'Ver Produtos', NULL, NULL, 1701337181, 1701337181),
-                                                                                                             ('verUtilizadores', 2, 'Ver Utilizadores', NULL, NULL, 1701337181, 1701337181);
+                                                                                                             ('adicionarCarrinho_FO', 2, 'Adicionar Carrinho', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('adicionarFavorito_FO', 2, 'Adicionar Favoritos', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('admin', 1, NULL, NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('apagarAvaliacao_FO', 2, 'Apagar Avaliacao', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('apagarCarrinho_FO', 2, 'Apagar Carrinho', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('apagarCategorias', 2, 'Apagar Categorias', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('apagarFaturas', 2, 'Apagar Faturas', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('apagarProdutos', 2, 'Apagar Produtos', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('apagarPromocoes', 2, 'Apagar Promocoes', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('apagarUtilizadores', 2, 'Apagar Utilizadores', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('atualizarCarrinho_FO', 2, 'Atualizar Carrinho', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('atualizarCategorias', 2, 'Atualizar Categorias', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('atualizarFaturas', 2, 'Atualizar Faturas', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('atualizarProdutos', 2, 'Atualizar Produtos', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('atualizarPromocoes', 2, 'Atualizar Promocoes', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('atualizarUtilizador_FO', 2, 'Atualizar Perfil', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('atualizarUtilizadores', 2, 'Atualizar Utilizadores', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('cliente', 1, NULL, NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('criarCategorias', 2, 'Criar Categorias', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('criarFaturas', 2, 'Criar Faturas', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('criarProdutos', 2, 'Criar Produtos', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('criarPromocoes', 2, 'Criar Promocoes', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('criarUtilizadores', 2, 'Criar Utilizadores', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('editarAvaliacao_FO', 2, 'Editar Avaliacao', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('funcionario', 1, NULL, NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('gerirCarrinho_FO', 2, 'Gerir Carrinho', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('gerirCategorias', 2, 'Gerir Categorias', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('gerirFaturas', 2, 'Gerir Faturas', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('gerirFaturas_FO', 2, 'Gerir Faturas', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('gerirProdutos', 2, 'Gerir Produtos', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('gerirPromocoes', 2, 'Gerir Promocoes', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('gerirUtilizadores', 2, 'Gerir Utilizadores', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('listaAvaliacao_FO', 2, 'Listar Avaliacoes', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('mudarRoleUtilizador', 2, 'Mudar Role Utilizador', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('removerFavorito_FO', 2, 'Remover Favoritos', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('verCategorias', 2, 'Ver Categorias', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('verFaturas', 2, 'Ver Faturas', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('verFaturas_FO', 2, 'Ver Faturas', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('verProdutos', 2, 'Ver Produtos', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('verPromocoes', 2, 'Ver Promocoes', NULL, NULL, 1704724092, 1704724092),
+                                                                                                             ('verUtilizadores', 2, 'Ver Utilizadores', NULL, NULL, 1704724092, 1704724092);
 
 -- --------------------------------------------------------
 
@@ -137,6 +143,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
                                                       ('funcionario', 'atualizarUtilizadores'),
                                                       ('funcionario', 'cliente'),
                                                       ('funcionario', 'criarCategorias'),
+                                                      ('admin', 'criarFaturas'),
                                                       ('funcionario', 'criarProdutos'),
                                                       ('funcionario', 'criarPromocoes'),
                                                       ('admin', 'criarUtilizadores'),
@@ -152,9 +159,11 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
                                                       ('cliente', 'listaAvaliacao_FO'),
                                                       ('admin', 'mudarRoleUtilizador'),
                                                       ('cliente', 'removerFavorito_FO'),
+                                                      ('funcionario', 'verCategorias'),
                                                       ('funcionario', 'verFaturas'),
                                                       ('cliente', 'verFaturas_FO'),
                                                       ('funcionario', 'verProdutos'),
+                                                      ('funcionario', 'verPromocoes'),
                                                       ('funcionario', 'verUtilizadores');
 
 -- --------------------------------------------------------
@@ -246,8 +255,7 @@ CREATE TABLE `faturas` (
 --
 
 INSERT INTO `faturas` (`id`, `id_userdata`, `data`) VALUES
-                                                        (3, 2, '2024-01-07'),
-                                                        (4, 2, '2024-01-07');
+    (3, 2, '2024-01-07');
 
 -- --------------------------------------------------------
 
@@ -269,9 +277,7 @@ CREATE TABLE `fatura_linhas` (
 
 INSERT INTO `fatura_linhas` (`id`, `id_fatura`, `id_produto`, `quantidade`, `preco`) VALUES
                                                                                          (5, 3, 1, 3, 55.88),
-                                                                                         (6, 3, 2, 1, 24.5),
-                                                                                         (7, 4, 1, 3, 55.88),
-                                                                                         (8, 4, 2, 2, 24.5);
+                                                                                         (6, 3, 2, 1, 24.5);
 
 -- --------------------------------------------------------
 
@@ -388,9 +394,11 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `verification_token`) VALUES
                                                                                                                                                                     (1, 'Rodrigo', 'FfnNM3Xmth_2fD5XiSLGrmHDKlAOT-GA', '$2y$13$KIcnr55NIwQlP0XwCJFs1e1gshNYwLmCkjGekNLs2xiX3xD2FwXm6', NULL, 'Rodrigo@gmail.com', 10, 1697379940, 1697379940, 't3Vg7JpiM1RzaDbJaZScC6MoBBO9ZFrE_1697379940'),
                                                                                                                                                                     (2, 'Filipe', 'Kw11-yzWfLi7hPsD1Dc8__sHdMkuEHds', '$2y$13$qoa4tD1R7htI718M36HnnuYsP7RsFhI9vF1RFAacyduXSb02Lru9.', NULL, '2211921@my.ipleiria.pt', 10, 1697796992, 1704506534, 'tXK_G1FXri8NNYnSL1qAGVcbyD4Nim7z_1697796992'),
-                                                                                                                                                                    (8, 'teste', '_YLwp8e5656xPLpr9ZUwt14UgD7TgfoY', '$2y$13$fPfaArGK8BqmxFHO4A0e8Oyb90B.N6Fiu/npxCIDkiPBfTY76P3b6', NULL, 'teste@gmail.com', 10, 1700747579, 1704651001, NULL),
-                                                                                                                                                                    (9, 'cliente', 'QtfCkXMeYRSKrVmRq6jK7U8amdG1MFuV', '$2y$13$XPzRMAKbIMhZkX4RTjPgFeUeqr22Nlvc126v4UvB8z7Z2z4KCGN/u', NULL, 'cliente@gmai.com', 10, 1700826005, 1700826005, NULL),
-                                                                                                                                                                    (10, 'testeadmin', '3BCgr-L1baEPpbMZLhgpnIof6O7jMPr5', '$2y$13$5JEjeVCEfXwg74SCzL7oEOhiP7MbqPriX14vUWTrkHgN9RetZRcb.', NULL, 'testeadmin@gmail.com', 0, 1701338497, 1704651041, NULL);
+                                                                                                                                                                    (11, 'admin', 'u4mVpCuu4NbB-A0LfcmeWSfhyPgGEL-2', '$2y$13$B9sl6JtHcHJfQHYWa75GGOcgTS.djU3okqoF0mruF/jWFAm8d0IUa', NULL, 'admin@gmail.com', 10, 1704725137, 1704725137, NULL),
+                                                                                                                                                                    (12, 'funcionario', '1KGrm3tDJpVRZ5JyavijfrFhxHUrs3ip', '$2y$13$L8etLfluUWM6hgK3YXIyh.sZuKWta0jXMBTE02C5YyOCzWUz.7/52', NULL, 'funcionario@gmail.com', 10, 1704725161, 1704725161, NULL),
+                                                                                                                                                                    (15, 'cliente1', 'KdqMqFr1nQ61tdUEuc3YX9E71hHvkNLP', '$2y$13$iuUQSVcoe8EGYGOk7QbKWOY8OxgFdqFC7RRicWhODbfZMFeF8j.Wa', NULL, 'cliente1@gmail.com', 10, 1704725457, 1704725457, NULL),
+                                                                                                                                                                    (16, 'cliente2', 'wCt-vuMiCmgYeJrecDJAQomHKy2npL7w', '$2y$13$RaG8UXgJlE8Awjmh1UBC3eut5amyhD.xANFwIQ4eEI5e7eJhV1vDW', NULL, 'cliente2@gmail.com', 10, 1704725488, 1704725488, NULL),
+                                                                                                                                                                    (17, 'cliente3', 'aUX08qwBcHtKVbDvyBVODIGZHCcUX0mq', '$2y$13$DmrdbBeNEXO.ZzyDXMbO9uQKdK.k/IyxIxXP6nOjlGL893hbpYlV.', NULL, 'cliente3@gmail.com', 10, 1704725506, 1704725506, NULL);
 
 -- --------------------------------------------------------
 
@@ -412,11 +420,13 @@ CREATE TABLE `userdata` (
 --
 
 INSERT INTO `userdata` (`id`, `id_user`, `primeiroNome`, `ultimoNome`, `telemovel`, `morada`) VALUES
-                                                                                                  (2, 8, 'teste', 'teste', 913234265, 'Leiria'),
                                                                                                   (3, 2, 'Filipe', 'Marques', 913234265, 'Leiria'),
                                                                                                   (4, 1, 'Rodrigo', 'Luis', 913194666, 'Leiria'),
-                                                                                                  (5, 9, 'cliente', 'cliente2', 913111111, 'leiria'),
-                                                                                                  (6, 10, 'Teste', 'Admin', 913193193, 'Leiria');
+                                                                                                  (7, 11, 'Admin', 'Loja', 911111111, 'Leiria'),
+                                                                                                  (8, 12, 'Funcionario', 'Loja', 911111112, 'Leiria'),
+                                                                                                  (11, 15, 'Cliente1', 'Loja', 911111113, 'Leiria'),
+                                                                                                  (12, 16, 'Cliente2', 'Loja', 911111114, 'Leiria'),
+                                                                                                  (13, 17, 'Cliente3', 'Loja', 911111115, 'Leiria');
 
 --
 -- Indexes for dumped tables
@@ -553,13 +563,13 @@ ALTER TABLE `avaliacoes`
 -- AUTO_INCREMENT for table `carrinho`
 --
 ALTER TABLE `carrinho`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `carrinho_linhas`
 --
 ALTER TABLE `carrinho_linhas`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `categorias`
@@ -601,13 +611,13 @@ ALTER TABLE `promocoes`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `userdata`
 --
 ALTER TABLE `userdata`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

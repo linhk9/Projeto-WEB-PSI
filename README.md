@@ -8,13 +8,13 @@ Trabalho desenvolvido por:
 
 # Contas predefinidas
 
-| nivel de permissões | username | password     |
-| -------------------- | -------- | ------------ |
-| Admin                | filipe   | OLA123ola123 |
-| Funcionario          | rodrigo  | admin123     |
-| Cliente              | Cliente1 | 12345        |
-| Cliente              | Cliente2 | 12345        |
-| Cliente              | Cliente3 | 12345        |
+| nivel de permissões | username    | password       |
+|---------------------|-------------|----------------|
+| Admin               | admin       | admin123       |
+| Funcionario         | funcionario | funcionario123 |
+| Cliente             | cliente1    | 12345678       |
+| Cliente             | cliente2    | 12345678       |
+| Cliente             | cliente3    | 12345678       |
 
 ## Repositório github
 
