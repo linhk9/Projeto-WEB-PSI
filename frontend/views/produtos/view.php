@@ -56,9 +56,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 </h5>
                 <?php
                     if ($model->stock > 0) {
-                        echo Html::a('Adicionar ao Carrinho', ['carrinho/adicionar', 'id' => $model->id, 'precoProduto' => $precoProduto], ['class' => 'btn btn-primary']);
+                        echo Html::a('Adicionar ao Carrinho', ['carrinho/adicionar', 'id' => $model->id, 'precoProduto' => $precoProduto], ['name' => 'add-carrinho', 'class' => 'btn btn-primary']);
                     } else {
-                        echo Html::tag('button', 'Adicionar ao Carrinho', ['class' => 'btn btn-primary', 'disabled' => true]);
+                        echo Html::tag('button', 'Adicionar ao Carrinho', ['name' => 'add-carrinho', 'class' => 'btn btn-primary', 'disabled' => true]);
                     }
                 ?>
             </div>

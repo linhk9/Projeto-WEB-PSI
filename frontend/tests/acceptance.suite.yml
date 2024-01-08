@@ -1,0 +1,7 @@
+suite_namespace: frontend\tests\acceptance
+actor: AcceptanceTester
+modules:
+    enabled:
+        - Yii2:
+            part: [orm, fixtures] # allow to use AR methods
+            cleanup: false # don't wrap test in transaction

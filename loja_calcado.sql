@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 08, 2024 at 04:34 PM
+-- Generation Time: Jan 08, 2024 at 08:10 PM
 -- Server version: 11.1.2-MariaDB-log
 -- PHP Version: 8.1.10
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `auth_assignment` (
-                                   `item_name` varchar(64) NOT NULL,
-                                   `user_id` varchar(64) NOT NULL,
-                                   `created_at` int(11) DEFAULT NULL
+  `item_name` varchar(64) NOT NULL,
+  `user_id` varchar(64) NOT NULL,
+  `created_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
@@ -38,13 +38,13 @@ CREATE TABLE `auth_assignment` (
 --
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
-                                                                         ('admin', '1', 1704731320),
-                                                                         ('admin', '11', 1704731320),
-                                                                         ('admin', '2', 1704731320),
-                                                                         ('cliente', '15', 1704731320),
-                                                                         ('cliente', '16', 1704731320),
-                                                                         ('cliente', '17', 1704731320),
-                                                                         ('funcionario', '12', 1704731320);
+('admin', '1', 1704732700),
+('admin', '11', 1704732700),
+('admin', '2', 1704732700),
+('cliente', '15', 1704732700),
+('cliente', '16', 1704732700),
+('cliente', '17', 1704732700),
+('funcionario', '12', 1704732700);
 
 -- --------------------------------------------------------
 
@@ -53,13 +53,13 @@ INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 --
 
 CREATE TABLE `auth_item` (
-                             `name` varchar(64) NOT NULL,
-                             `type` smallint(6) NOT NULL,
-                             `description` text DEFAULT NULL,
-                             `rule_name` varchar(64) DEFAULT NULL,
-                             `data` blob DEFAULT NULL,
-                             `created_at` int(11) DEFAULT NULL,
-                             `updated_at` int(11) DEFAULT NULL
+  `name` varchar(64) NOT NULL,
+  `type` smallint(6) NOT NULL,
+  `description` text DEFAULT NULL,
+  `rule_name` varchar(64) DEFAULT NULL,
+  `data` blob DEFAULT NULL,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
@@ -67,50 +67,53 @@ CREATE TABLE `auth_item` (
 --
 
 INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
-                                                                                                             ('adicionarCarrinho_FO', 2, 'Adicionar Carrinho', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('adicionarFavorito_FO', 2, 'Adicionar Favoritos', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('admin', 1, NULL, NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('apagarAvaliacoes', 2, 'Apagar Avaliacoes', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('apagarCarrinho_FO', 2, 'Apagar Carrinho', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('apagarCategorias', 2, 'Apagar Categorias', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('apagarFaturas', 2, 'Apagar Faturas', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('apagarProdutos', 2, 'Apagar Produtos', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('apagarPromocoes', 2, 'Apagar Promocoes', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('apagarUtilizadores', 2, 'Apagar Utilizadores', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('atualizarAvaliacoes', 2, 'Atualizar Avaliacoes', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('atualizarCarrinho_FO', 2, 'Atualizar Carrinho', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('atualizarCategorias', 2, 'Atualizar Categorias', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('atualizarFaturas', 2, 'Atualizar Faturas', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('atualizarProdutos', 2, 'Atualizar Produtos', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('atualizarPromocoes', 2, 'Atualizar Promocoes', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('atualizarUtilizador_FO', 2, 'Atualizar Perfil', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('atualizarUtilizadores', 2, 'Atualizar Utilizadores', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('cliente', 1, NULL, NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('criarAvaliacoes', 2, 'Criar Avaliacoes', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('criarCategorias', 2, 'Criar Categorias', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('criarFaturas', 2, 'Criar Faturas', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('criarProdutos', 2, 'Criar Produtos', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('criarPromocoes', 2, 'Criar Promocoes', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('criarUtilizadores', 2, 'Criar Utilizadores', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('enviarAvaliacao_FO', 2, 'Enviar Avaliação', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('funcionario', 1, NULL, NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('gerirAvaliacoes', 2, 'Gerir Avaliacoes', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('gerirCarrinho_FO', 2, 'Gerir Carrinho', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('gerirCategorias', 2, 'Gerir Categorias', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('gerirFaturas', 2, 'Gerir Faturas', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('gerirFaturas_FO', 2, 'Gerir Faturas', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('gerirProdutos', 2, 'Gerir Produtos', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('gerirPromocoes', 2, 'Gerir Promocoes', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('gerirUtilizadores', 2, 'Gerir Utilizadores', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('mudarRoleUtilizador', 2, 'Mudar Role Utilizador', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('removerFavorito_FO', 2, 'Remover Favoritos', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('verAvaliacoes', 2, 'Ver Avaliacoes', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('verCategorias', 2, 'Ver Categorias', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('verFaturas', 2, 'Ver Faturas', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('verFaturas_FO', 2, 'Ver Faturas', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('verProdutos', 2, 'Ver Produtos', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('verPromocoes', 2, 'Ver Promocoes', NULL, NULL, 1704731320, 1704731320),
-                                                                                                             ('verUtilizadores', 2, 'Ver Utilizadores', NULL, NULL, 1704731320, 1704731320);
+('adicionarCarrinho_FO', 2, 'Adicionar Carrinho', NULL, NULL, 1704732700, 1704732700),
+('adicionarFavorito_FO', 2, 'Adicionar Favoritos', NULL, NULL, 1704732700, 1704732700),
+('admin', 1, NULL, NULL, NULL, 1704732700, 1704732700),
+('apagarAvaliacoes', 2, 'Apagar Avaliacoes', NULL, NULL, 1704732700, 1704732700),
+('apagarCarrinho_FO', 2, 'Apagar Carrinho', NULL, NULL, 1704732700, 1704732700),
+('apagarCategorias', 2, 'Apagar Categorias', NULL, NULL, 1704732700, 1704732700),
+('apagarFaturas', 2, 'Apagar Faturas', NULL, NULL, 1704732700, 1704732700),
+('apagarProdutos', 2, 'Apagar Produtos', NULL, NULL, 1704732700, 1704732700),
+('apagarPromocoes', 2, 'Apagar Promocoes', NULL, NULL, 1704732700, 1704732700),
+('apagarUtilizadores', 2, 'Apagar Utilizadores', NULL, NULL, 1704732700, 1704732700),
+('atualizarAvaliacoes', 2, 'Atualizar Avaliacoes', NULL, NULL, 1704732700, 1704732700),
+('atualizarCarrinho_FO', 2, 'Atualizar Carrinho', NULL, NULL, 1704732700, 1704732700),
+('atualizarCategorias', 2, 'Atualizar Categorias', NULL, NULL, 1704732700, 1704732700),
+('atualizarFaturas', 2, 'Atualizar Faturas', NULL, NULL, 1704732700, 1704732700),
+('atualizarProdutos', 2, 'Atualizar Produtos', NULL, NULL, 1704732700, 1704732700),
+('atualizarPromocoes', 2, 'Atualizar Promocoes', NULL, NULL, 1704732700, 1704732700),
+('atualizarUtilizador_FO', 2, 'Atualizar Perfil', NULL, NULL, 1704732700, 1704732700),
+('atualizarUtilizadores', 2, 'Atualizar Utilizadores', NULL, NULL, 1704732700, 1704732700),
+('checkoutCarrinho_FO', 2, 'Checkout Carrinho', NULL, NULL, 1704732700, 1704732700),
+('cliente', 1, NULL, NULL, NULL, 1704732700, 1704732700),
+('criarAvaliacoes', 2, 'Criar Avaliacoes', NULL, NULL, 1704732700, 1704732700),
+('criarCategorias', 2, 'Criar Categorias', NULL, NULL, 1704732700, 1704732700),
+('criarFaturas', 2, 'Criar Faturas', NULL, NULL, 1704732700, 1704732700),
+('criarProdutos', 2, 'Criar Produtos', NULL, NULL, 1704732700, 1704732700),
+('criarPromocoes', 2, 'Criar Promocoes', NULL, NULL, 1704732700, 1704732700),
+('criarUtilizadores', 2, 'Criar Utilizadores', NULL, NULL, 1704732700, 1704732700),
+('enviarAvaliacao_FO', 2, 'Enviar Avaliação', NULL, NULL, 1704732700, 1704732700),
+('funcionario', 1, NULL, NULL, NULL, 1704732700, 1704732700),
+('gerirAvaliacoes', 2, 'Gerir Avaliacoes', NULL, NULL, 1704732700, 1704732700),
+('gerirCarrinho_FO', 2, 'Gerir Carrinho', NULL, NULL, 1704732700, 1704732700),
+('gerirCategorias', 2, 'Gerir Categorias', NULL, NULL, 1704732700, 1704732700),
+('gerirFaturas', 2, 'Gerir Faturas', NULL, NULL, 1704732700, 1704732700),
+('gerirFaturas_FO', 2, 'Gerir Faturas', NULL, NULL, 1704732700, 1704732700),
+('gerirProdutos', 2, 'Gerir Produtos', NULL, NULL, 1704732700, 1704732700),
+('gerirPromocoes', 2, 'Gerir Promocoes', NULL, NULL, 1704732700, 1704732700),
+('gerirUtilizadores', 2, 'Gerir Utilizadores', NULL, NULL, 1704732700, 1704732700),
+('listaProdutos_FO', 2, 'Lista Produtos', NULL, NULL, 1704732700, 1704732700),
+('mudarRoleUtilizador', 2, 'Mudar Role Utilizador', NULL, NULL, 1704732700, 1704732700),
+('removerFavorito_FO', 2, 'Remover Favoritos', NULL, NULL, 1704732700, 1704732700),
+('verAvaliacoes', 2, 'Ver Avaliacoes', NULL, NULL, 1704732700, 1704732700),
+('verCategorias', 2, 'Ver Categorias', NULL, NULL, 1704732700, 1704732700),
+('verFaturas', 2, 'Ver Faturas', NULL, NULL, 1704732700, 1704732700),
+('verFaturas_FO', 2, 'Ver Faturas', NULL, NULL, 1704732700, 1704732700),
+('verProdutos', 2, 'Ver Produtos', NULL, NULL, 1704732700, 1704732700),
+('verProdutos_FO', 2, 'Ver Produtos', NULL, NULL, 1704732700, 1704732700),
+('verPromocoes', 2, 'Ver Promocoes', NULL, NULL, 1704732700, 1704732700),
+('verUtilizadores', 2, 'Ver Utilizadores', NULL, NULL, 1704732700, 1704732700);
 
 -- --------------------------------------------------------
 
@@ -119,8 +122,8 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 --
 
 CREATE TABLE `auth_item_child` (
-                                   `parent` varchar(64) NOT NULL,
-                                   `child` varchar(64) NOT NULL
+  `parent` varchar(64) NOT NULL,
+  `child` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
@@ -128,49 +131,52 @@ CREATE TABLE `auth_item_child` (
 --
 
 INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
-                                                      ('cliente', 'adicionarCarrinho_FO'),
-                                                      ('cliente', 'adicionarFavorito_FO'),
-                                                      ('funcionario', 'apagarAvaliacoes'),
-                                                      ('cliente', 'apagarCarrinho_FO'),
-                                                      ('funcionario', 'apagarCategorias'),
-                                                      ('admin', 'apagarFaturas'),
-                                                      ('funcionario', 'apagarProdutos'),
-                                                      ('funcionario', 'apagarPromocoes'),
-                                                      ('admin', 'apagarUtilizadores'),
-                                                      ('funcionario', 'atualizarAvaliacoes'),
-                                                      ('cliente', 'atualizarCarrinho_FO'),
-                                                      ('funcionario', 'atualizarCategorias'),
-                                                      ('admin', 'atualizarFaturas'),
-                                                      ('funcionario', 'atualizarProdutos'),
-                                                      ('funcionario', 'atualizarPromocoes'),
-                                                      ('cliente', 'atualizarUtilizador_FO'),
-                                                      ('funcionario', 'atualizarUtilizadores'),
-                                                      ('funcionario', 'cliente'),
-                                                      ('funcionario', 'criarAvaliacoes'),
-                                                      ('funcionario', 'criarCategorias'),
-                                                      ('admin', 'criarFaturas'),
-                                                      ('funcionario', 'criarProdutos'),
-                                                      ('funcionario', 'criarPromocoes'),
-                                                      ('admin', 'criarUtilizadores'),
-                                                      ('cliente', 'enviarAvaliacao_FO'),
-                                                      ('admin', 'funcionario'),
-                                                      ('funcionario', 'gerirAvaliacoes'),
-                                                      ('cliente', 'gerirCarrinho_FO'),
-                                                      ('funcionario', 'gerirCategorias'),
-                                                      ('funcionario', 'gerirFaturas'),
-                                                      ('cliente', 'gerirFaturas_FO'),
-                                                      ('funcionario', 'gerirProdutos'),
-                                                      ('funcionario', 'gerirPromocoes'),
-                                                      ('funcionario', 'gerirUtilizadores'),
-                                                      ('admin', 'mudarRoleUtilizador'),
-                                                      ('cliente', 'removerFavorito_FO'),
-                                                      ('funcionario', 'verAvaliacoes'),
-                                                      ('funcionario', 'verCategorias'),
-                                                      ('funcionario', 'verFaturas'),
-                                                      ('cliente', 'verFaturas_FO'),
-                                                      ('funcionario', 'verProdutos'),
-                                                      ('funcionario', 'verPromocoes'),
-                                                      ('funcionario', 'verUtilizadores');
+('cliente', 'adicionarCarrinho_FO'),
+('cliente', 'adicionarFavorito_FO'),
+('funcionario', 'apagarAvaliacoes'),
+('cliente', 'apagarCarrinho_FO'),
+('funcionario', 'apagarCategorias'),
+('admin', 'apagarFaturas'),
+('funcionario', 'apagarProdutos'),
+('funcionario', 'apagarPromocoes'),
+('admin', 'apagarUtilizadores'),
+('funcionario', 'atualizarAvaliacoes'),
+('cliente', 'atualizarCarrinho_FO'),
+('funcionario', 'atualizarCategorias'),
+('admin', 'atualizarFaturas'),
+('funcionario', 'atualizarProdutos'),
+('funcionario', 'atualizarPromocoes'),
+('cliente', 'atualizarUtilizador_FO'),
+('funcionario', 'atualizarUtilizadores'),
+('cliente', 'checkoutCarrinho_FO'),
+('funcionario', 'cliente'),
+('funcionario', 'criarAvaliacoes'),
+('funcionario', 'criarCategorias'),
+('admin', 'criarFaturas'),
+('funcionario', 'criarProdutos'),
+('funcionario', 'criarPromocoes'),
+('admin', 'criarUtilizadores'),
+('cliente', 'enviarAvaliacao_FO'),
+('admin', 'funcionario'),
+('funcionario', 'gerirAvaliacoes'),
+('cliente', 'gerirCarrinho_FO'),
+('funcionario', 'gerirCategorias'),
+('funcionario', 'gerirFaturas'),
+('cliente', 'gerirFaturas_FO'),
+('funcionario', 'gerirProdutos'),
+('funcionario', 'gerirPromocoes'),
+('funcionario', 'gerirUtilizadores'),
+('cliente', 'listaProdutos_FO'),
+('admin', 'mudarRoleUtilizador'),
+('cliente', 'removerFavorito_FO'),
+('funcionario', 'verAvaliacoes'),
+('funcionario', 'verCategorias'),
+('funcionario', 'verFaturas'),
+('cliente', 'verFaturas_FO'),
+('funcionario', 'verProdutos'),
+('cliente', 'verProdutos_FO'),
+('funcionario', 'verPromocoes'),
+('funcionario', 'verUtilizadores');
 
 -- --------------------------------------------------------
 
@@ -179,10 +185,10 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 --
 
 CREATE TABLE `auth_rule` (
-                             `name` varchar(64) NOT NULL,
-                             `data` blob DEFAULT NULL,
-                             `created_at` int(11) DEFAULT NULL,
-                             `updated_at` int(11) DEFAULT NULL
+  `name` varchar(64) NOT NULL,
+  `data` blob DEFAULT NULL,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
@@ -192,12 +198,19 @@ CREATE TABLE `auth_rule` (
 --
 
 CREATE TABLE `avaliacoes` (
-                              `id` int(11) NOT NULL,
-                              `id_userdata` int(11) DEFAULT NULL,
-                              `id_produto` int(11) DEFAULT NULL,
-                              `nota` int(11) DEFAULT NULL,
-                              `comentario` longtext DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_userdata` int(11) DEFAULT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `nota` int(11) DEFAULT NULL,
+  `comentario` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `avaliacoes`
+--
+
+INSERT INTO `avaliacoes` (`id`, `id_userdata`, `id_produto`, `nota`, `comentario`) VALUES
+(10, 3, 1, 5, 'XPTO');
 
 -- --------------------------------------------------------
 
@@ -206,10 +219,18 @@ CREATE TABLE `avaliacoes` (
 --
 
 CREATE TABLE `carrinho` (
-                            `id` int(11) NOT NULL,
-                            `id_userdata` int(11) NOT NULL,
-                            `data` date DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_userdata` int(11) NOT NULL,
+  `data` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `carrinho`
+--
+
+INSERT INTO `carrinho` (`id`, `id_userdata`, `data`) VALUES
+(22, 3, '2024-01-08'),
+(24, 11, '2024-01-08');
 
 -- --------------------------------------------------------
 
@@ -218,12 +239,20 @@ CREATE TABLE `carrinho` (
 --
 
 CREATE TABLE `carrinho_linhas` (
-                                   `id` int(11) NOT NULL,
-                                   `id_carrinho` int(11) DEFAULT NULL,
-                                   `id_produto` int(11) DEFAULT NULL,
-                                   `quantidade` int(11) DEFAULT NULL,
-                                   `preco` float DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_carrinho` int(11) DEFAULT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
+  `preco` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `carrinho_linhas`
+--
+
+INSERT INTO `carrinho_linhas` (`id`, `id_carrinho`, `id_produto`, `quantidade`, `preco`) VALUES
+(24, 22, 1, 1, 55.88),
+(26, 24, 1, 1, 55.88);
 
 -- --------------------------------------------------------
 
@@ -232,8 +261,8 @@ CREATE TABLE `carrinho_linhas` (
 --
 
 CREATE TABLE `categorias` (
-                              `id` int(11) NOT NULL,
-                              `nome` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `nome` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -241,8 +270,8 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nome`) VALUES
-                                            (1, 'Desporto'),
-                                            (2, 'Ténis');
+(1, 'Desporto'),
+(2, 'Ténis');
 
 -- --------------------------------------------------------
 
@@ -251,9 +280,9 @@ INSERT INTO `categorias` (`id`, `nome`) VALUES
 --
 
 CREATE TABLE `faturas` (
-                           `id` int(11) NOT NULL,
-                           `id_userdata` int(11) DEFAULT NULL,
-                           `data` date DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_userdata` int(11) DEFAULT NULL,
+  `data` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -261,7 +290,9 @@ CREATE TABLE `faturas` (
 --
 
 INSERT INTO `faturas` (`id`, `id_userdata`, `data`) VALUES
-    (6, 3, '2024-01-08');
+(6, 3, '2024-01-08'),
+(7, 3, '2024-01-08'),
+(8, 11, '2024-01-08');
 
 -- --------------------------------------------------------
 
@@ -270,11 +301,11 @@ INSERT INTO `faturas` (`id`, `id_userdata`, `data`) VALUES
 --
 
 CREATE TABLE `fatura_linhas` (
-                                 `id` int(11) NOT NULL,
-                                 `id_fatura` int(11) DEFAULT NULL,
-                                 `id_produto` int(11) DEFAULT NULL,
-                                 `quantidade` int(11) DEFAULT NULL,
-                                 `preco` float DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_fatura` int(11) DEFAULT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
+  `preco` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -282,7 +313,9 @@ CREATE TABLE `fatura_linhas` (
 --
 
 INSERT INTO `fatura_linhas` (`id`, `id_fatura`, `id_produto`, `quantidade`, `preco`) VALUES
-    (14, 6, 1, 1, 55.88);
+(14, 6, 1, 1, 55.88),
+(15, 7, 1, 2, 55.88),
+(16, 8, 1, 1, 55.88);
 
 -- --------------------------------------------------------
 
@@ -291,9 +324,9 @@ INSERT INTO `fatura_linhas` (`id`, `id_fatura`, `id_produto`, `quantidade`, `pre
 --
 
 CREATE TABLE `favoritos` (
-                             `id` int(11) NOT NULL,
-                             `id_userdata` int(11) DEFAULT NULL,
-                             `id_produto` int(11) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_userdata` int(11) DEFAULT NULL,
+  `id_produto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -303,8 +336,8 @@ CREATE TABLE `favoritos` (
 --
 
 CREATE TABLE `migration` (
-                             `version` varchar(180) NOT NULL,
-                             `apply_time` int(11) DEFAULT NULL
+  `version` varchar(180) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -312,13 +345,13 @@ CREATE TABLE `migration` (
 --
 
 INSERT INTO `migration` (`version`, `apply_time`) VALUES
-                                                      ('m000000_000000_base', 1697379675),
-                                                      ('m130524_201442_init', 1697379678),
-                                                      ('m140506_102106_rbac_init', 1697800401),
-                                                      ('m170907_052038_rbac_add_index_on_auth_assignment_user_id', 1697800401),
-                                                      ('m180523_151638_rbac_updates_indexes_without_prefix', 1697800401),
-                                                      ('m190124_110200_add_verification_token_column_to_user_table', 1697379678),
-                                                      ('m200409_110543_rbac_update_mssql_trigger', 1697800401);
+('m000000_000000_base', 1697379675),
+('m130524_201442_init', 1697379678),
+('m140506_102106_rbac_init', 1697800401),
+('m170907_052038_rbac_add_index_on_auth_assignment_user_id', 1697800401),
+('m180523_151638_rbac_updates_indexes_without_prefix', 1697800401),
+('m190124_110200_add_verification_token_column_to_user_table', 1697379678),
+('m200409_110543_rbac_update_mssql_trigger', 1697800401);
 
 -- --------------------------------------------------------
 
@@ -327,16 +360,16 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 --
 
 CREATE TABLE `produtos` (
-                            `id` int(11) NOT NULL,
-                            `id_categoria` int(11) DEFAULT NULL,
-                            `nome` varchar(45) DEFAULT NULL,
-                            `descricao` varchar(255) DEFAULT NULL,
-                            `preco` float DEFAULT NULL,
-                            `stock` int(11) DEFAULT NULL,
-                            `imagem` longtext DEFAULT NULL,
-                            `marca` varchar(45) DEFAULT NULL,
-                            `tamanho` varchar(255) DEFAULT NULL,
-                            `cores` enum('Branco','Preto','Vermelho','Verde','Azul','Amarelo','Rosa','Laranja') DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_categoria` int(11) DEFAULT NULL,
+  `nome` varchar(45) DEFAULT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
+  `preco` float DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `imagem` longtext DEFAULT NULL,
+  `marca` varchar(45) DEFAULT NULL,
+  `tamanho` varchar(255) DEFAULT NULL,
+  `cores` enum('Branco','Preto','Vermelho','Verde','Azul','Amarelo','Rosa','Laranja') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -344,13 +377,12 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `id_categoria`, `nome`, `descricao`, `preco`, `stock`, `imagem`, `marca`, `tamanho`, `cores`) VALUES
-                                                                                                                                (1, 1, 'Air Force 1 Low Retro', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 74.5, 11, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Branco'),
-                                                                                                                                (2, 2, 'teste', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 11, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
-                                                                                                                                (3, 2, 'teste 6', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 0, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
-                                                                                                                                (4, 2, 'teste 5', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 3, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
-                                                                                                                                (5, 2, 'teste 4', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 0, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
-                                                                                                                                (6, 2, 'teste 3', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 2, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
-                                                                                                                                (7, 2, 'teste 2', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 0, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto');
+(1, 1, 'Air Force 1 Low Retro', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 74.5, 8, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Branco'),
+(2, 2, 'teste', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 11, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
+(3, 2, 'teste 6', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 0, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
+(4, 2, 'teste 5', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 3, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
+(5, 2, 'teste 4', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 0, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
+(6, 2, 'teste 3', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 2, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto');
 
 -- --------------------------------------------------------
 
@@ -359,11 +391,11 @@ INSERT INTO `produtos` (`id`, `id_categoria`, `nome`, `descricao`, `preco`, `sto
 --
 
 CREATE TABLE `promocoes` (
-                             `id` int(11) NOT NULL,
-                             `id_produto` int(11) DEFAULT NULL,
-                             `desconto` int(11) DEFAULT NULL,
-                             `data_inicio` date DEFAULT NULL,
-                             `data_termino` date DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `desconto` int(11) DEFAULT NULL,
+  `data_inicio` date DEFAULT NULL,
+  `data_termino` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -371,7 +403,7 @@ CREATE TABLE `promocoes` (
 --
 
 INSERT INTO `promocoes` (`id`, `id_produto`, `desconto`, `data_inicio`, `data_termino`) VALUES
-    (4, 1, 25, '2024-01-07', '2024-01-08');
+(4, 1, 25, '2024-01-07', '2024-01-08');
 
 -- --------------------------------------------------------
 
@@ -380,16 +412,16 @@ INSERT INTO `promocoes` (`id`, `id_produto`, `desconto`, `data_inicio`, `data_te
 --
 
 CREATE TABLE `user` (
-                        `id` int(11) NOT NULL,
-                        `username` varchar(255) NOT NULL,
-                        `auth_key` varchar(32) NOT NULL,
-                        `password_hash` varchar(255) NOT NULL,
-                        `password_reset_token` varchar(255) DEFAULT NULL,
-                        `email` varchar(255) NOT NULL,
-                        `status` smallint(6) NOT NULL DEFAULT 10,
-                        `created_at` int(11) NOT NULL,
-                        `updated_at` int(11) NOT NULL,
-                        `verification_token` varchar(255) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `auth_key` varchar(32) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  `password_reset_token` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `status` smallint(6) NOT NULL DEFAULT 10,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  `verification_token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
@@ -397,13 +429,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `verification_token`) VALUES
-                                                                                                                                                                    (1, 'Rodrigo', 'FfnNM3Xmth_2fD5XiSLGrmHDKlAOT-GA', '$2y$13$KIcnr55NIwQlP0XwCJFs1e1gshNYwLmCkjGekNLs2xiX3xD2FwXm6', NULL, 'Rodrigo@gmail.com', 10, 1697379940, 1697379940, 't3Vg7JpiM1RzaDbJaZScC6MoBBO9ZFrE_1697379940'),
-                                                                                                                                                                    (2, 'Filipe', 'Kw11-yzWfLi7hPsD1Dc8__sHdMkuEHds', '$2y$13$qoa4tD1R7htI718M36HnnuYsP7RsFhI9vF1RFAacyduXSb02Lru9.', NULL, '2211921@my.ipleiria.pt', 10, 1697796992, 1704506534, 'tXK_G1FXri8NNYnSL1qAGVcbyD4Nim7z_1697796992'),
-                                                                                                                                                                    (11, 'admin', 'u4mVpCuu4NbB-A0LfcmeWSfhyPgGEL-2', '$2y$13$B9sl6JtHcHJfQHYWa75GGOcgTS.djU3okqoF0mruF/jWFAm8d0IUa', NULL, 'admin@gmail.com', 10, 1704725137, 1704725137, NULL),
-                                                                                                                                                                    (12, 'funcionario', '1KGrm3tDJpVRZ5JyavijfrFhxHUrs3ip', '$2y$13$L8etLfluUWM6hgK3YXIyh.sZuKWta0jXMBTE02C5YyOCzWUz.7/52', NULL, 'funcionario@gmail.com', 10, 1704725161, 1704725161, NULL),
-                                                                                                                                                                    (15, 'cliente1', 'KdqMqFr1nQ61tdUEuc3YX9E71hHvkNLP', '$2y$13$iuUQSVcoe8EGYGOk7QbKWOY8OxgFdqFC7RRicWhODbfZMFeF8j.Wa', NULL, 'cliente1@gmail.com', 10, 1704725457, 1704725457, NULL),
-                                                                                                                                                                    (16, 'cliente2', 'wCt-vuMiCmgYeJrecDJAQomHKy2npL7w', '$2y$13$RaG8UXgJlE8Awjmh1UBC3eut5amyhD.xANFwIQ4eEI5e7eJhV1vDW', NULL, 'cliente2@gmail.com', 10, 1704725488, 1704725488, NULL),
-                                                                                                                                                                    (17, 'cliente3', 'aUX08qwBcHtKVbDvyBVODIGZHCcUX0mq', '$2y$13$DmrdbBeNEXO.ZzyDXMbO9uQKdK.k/IyxIxXP6nOjlGL893hbpYlV.', NULL, 'cliente3@gmail.com', 10, 1704725506, 1704725506, NULL);
+(1, 'Rodrigo', 'FfnNM3Xmth_2fD5XiSLGrmHDKlAOT-GA', '$2y$13$KIcnr55NIwQlP0XwCJFs1e1gshNYwLmCkjGekNLs2xiX3xD2FwXm6', NULL, 'Rodrigo@gmail.com', 10, 1697379940, 1697379940, 't3Vg7JpiM1RzaDbJaZScC6MoBBO9ZFrE_1697379940'),
+(2, 'Filipe', 'Kw11-yzWfLi7hPsD1Dc8__sHdMkuEHds', '$2y$13$hf4YJVesqCjBK68SCYamiuUOxpdSMnAndheCfpEisgVxkmDt6Kj4u', NULL, '2211921@my.ipleiria.pt', 10, 1697796992, 1704732741, 'tXK_G1FXri8NNYnSL1qAGVcbyD4Nim7z_1697796992'),
+(11, 'admin', 'u4mVpCuu4NbB-A0LfcmeWSfhyPgGEL-2', '$2y$13$B9sl6JtHcHJfQHYWa75GGOcgTS.djU3okqoF0mruF/jWFAm8d0IUa', NULL, 'admin@gmail.com', 10, 1704725137, 1704725137, NULL),
+(12, 'funcionario', '1KGrm3tDJpVRZ5JyavijfrFhxHUrs3ip', '$2y$13$L8etLfluUWM6hgK3YXIyh.sZuKWta0jXMBTE02C5YyOCzWUz.7/52', NULL, 'funcionario@gmail.com', 10, 1704725161, 1704725161, NULL),
+(15, 'cliente1', 'KdqMqFr1nQ61tdUEuc3YX9E71hHvkNLP', '$2y$13$iuUQSVcoe8EGYGOk7QbKWOY8OxgFdqFC7RRicWhODbfZMFeF8j.Wa', NULL, 'cliente1@gmail.com', 10, 1704725457, 1704725457, NULL),
+(16, 'cliente2', 'wCt-vuMiCmgYeJrecDJAQomHKy2npL7w', '$2y$13$RaG8UXgJlE8Awjmh1UBC3eut5amyhD.xANFwIQ4eEI5e7eJhV1vDW', NULL, 'cliente2@gmail.com', 10, 1704725488, 1704725488, NULL),
+(17, 'cliente3', 'aUX08qwBcHtKVbDvyBVODIGZHCcUX0mq', '$2y$13$DmrdbBeNEXO.ZzyDXMbO9uQKdK.k/IyxIxXP6nOjlGL893hbpYlV.', NULL, 'cliente3@gmail.com', 10, 1704725506, 1704725506, NULL);
 
 -- --------------------------------------------------------
 
@@ -412,12 +444,12 @@ INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_res
 --
 
 CREATE TABLE `userdata` (
-                            `id` int(11) NOT NULL,
-                            `id_user` int(11) DEFAULT NULL,
-                            `primeiroNome` varchar(45) DEFAULT NULL,
-                            `ultimoNome` varchar(45) DEFAULT NULL,
-                            `telemovel` int(11) DEFAULT NULL,
-                            `morada` varchar(255) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `primeiroNome` varchar(45) DEFAULT NULL,
+  `ultimoNome` varchar(45) DEFAULT NULL,
+  `telemovel` int(11) DEFAULT NULL,
+  `morada` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -425,13 +457,13 @@ CREATE TABLE `userdata` (
 --
 
 INSERT INTO `userdata` (`id`, `id_user`, `primeiroNome`, `ultimoNome`, `telemovel`, `morada`) VALUES
-                                                                                                  (3, 2, 'Filipe', 'Marques', 913234265, 'Leiria'),
-                                                                                                  (4, 1, 'Rodrigo', 'Luis', 913194666, 'Leiria'),
-                                                                                                  (7, 11, 'Admin', 'Loja', 911111111, 'Leiria'),
-                                                                                                  (8, 12, 'Funcionario', 'Loja', 911111112, 'Leiria'),
-                                                                                                  (11, 15, 'Cliente1', 'Loja', 911111113, 'Leiria'),
-                                                                                                  (12, 16, 'Cliente2', 'Loja', 911111114, 'Leiria'),
-                                                                                                  (13, 17, 'Cliente3', 'Loja', 911111115, 'Leiria');
+(3, 2, 'Filipe', 'Marques', 913234262, 'Leiria'),
+(4, 1, 'Rodrigo', 'Luis', 913194666, 'Leiria'),
+(7, 11, 'Admin', 'Loja', 911111111, 'Leiria'),
+(8, 12, 'Funcionario', 'Loja', 911111112, 'Leiria'),
+(11, 15, 'Cliente1', 'Loja', 911111113, 'Leiria'),
+(12, 16, 'Cliente2', 'Loja', 911111114, 'Leiria'),
+(13, 17, 'Cliente3', 'Loja', 911111115, 'Leiria');
 
 --
 -- Indexes for dumped tables
@@ -441,118 +473,118 @@ INSERT INTO `userdata` (`id`, `id_user`, `primeiroNome`, `ultimoNome`, `telemove
 -- Indexes for table `auth_assignment`
 --
 ALTER TABLE `auth_assignment`
-    ADD PRIMARY KEY (`item_name`,`user_id`),
-    ADD KEY `idx-auth_assignment-user_id` (`user_id`);
+  ADD PRIMARY KEY (`item_name`,`user_id`),
+  ADD KEY `idx-auth_assignment-user_id` (`user_id`);
 
 --
 -- Indexes for table `auth_item`
 --
 ALTER TABLE `auth_item`
-    ADD PRIMARY KEY (`name`),
-    ADD KEY `rule_name` (`rule_name`),
-    ADD KEY `idx-auth_item-type` (`type`);
+  ADD PRIMARY KEY (`name`),
+  ADD KEY `rule_name` (`rule_name`),
+  ADD KEY `idx-auth_item-type` (`type`);
 
 --
 -- Indexes for table `auth_item_child`
 --
 ALTER TABLE `auth_item_child`
-    ADD PRIMARY KEY (`parent`,`child`),
-    ADD KEY `child` (`child`);
+  ADD PRIMARY KEY (`parent`,`child`),
+  ADD KEY `child` (`child`);
 
 --
 -- Indexes for table `auth_rule`
 --
 ALTER TABLE `auth_rule`
-    ADD PRIMARY KEY (`name`);
+  ADD PRIMARY KEY (`name`);
 
 --
 -- Indexes for table `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `FK_produto_avaliacao_idx` (`id_produto`),
-    ADD KEY `FK_userdata_avaliacao_idx` (`id_userdata`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_produto_avaliacao_idx` (`id_produto`),
+  ADD KEY `FK_userdata_avaliacao_idx` (`id_userdata`) USING BTREE;
 
 --
 -- Indexes for table `carrinho`
 --
 ALTER TABLE `carrinho`
-    ADD PRIMARY KEY (`id`),
-    ADD UNIQUE KEY `id_userdata` (`id_userdata`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_userdata` (`id_userdata`);
 
 --
 -- Indexes for table `carrinho_linhas`
 --
 ALTER TABLE `carrinho_linhas`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `FK_carrinho_carrinholinha_idx` (`id_carrinho`),
-    ADD KEY `FK_produto_carrinholinha_idx` (`id_produto`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_carrinho_carrinholinha_idx` (`id_carrinho`),
+  ADD KEY `FK_produto_carrinholinha_idx` (`id_produto`);
 
 --
 -- Indexes for table `categorias`
 --
 ALTER TABLE `categorias`
-    ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `faturas`
 --
 ALTER TABLE `faturas`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `FK_userdata_faturas_idx` (`id_userdata`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_userdata_faturas_idx` (`id_userdata`) USING BTREE;
 
 --
 -- Indexes for table `fatura_linhas`
 --
 ALTER TABLE `fatura_linhas`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `FK_fatura_faturalinhas_idx` (`id_fatura`),
-    ADD KEY `FK_produto_faturalinhas_idx` (`id_produto`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_fatura_faturalinhas_idx` (`id_fatura`),
+  ADD KEY `FK_produto_faturalinhas_idx` (`id_produto`);
 
 --
 -- Indexes for table `favoritos`
 --
 ALTER TABLE `favoritos`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `FK_produto_favorito_idx` (`id_produto`),
-    ADD KEY `FK_userdata_favorito_idx` (`id_userdata`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_produto_favorito_idx` (`id_produto`),
+  ADD KEY `FK_userdata_favorito_idx` (`id_userdata`) USING BTREE;
 
 --
 -- Indexes for table `migration`
 --
 ALTER TABLE `migration`
-    ADD PRIMARY KEY (`version`);
+  ADD PRIMARY KEY (`version`);
 
 --
 -- Indexes for table `produtos`
 --
 ALTER TABLE `produtos`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `FK_categoria_produto_idx` (`id_categoria`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_categoria_produto_idx` (`id_categoria`);
 
 --
 -- Indexes for table `promocoes`
 --
 ALTER TABLE `promocoes`
-    ADD PRIMARY KEY (`id`),
-    ADD UNIQUE KEY `id_produto` (`id_produto`),
-    ADD KEY `FK_produto_promocao_idx` (`id_produto`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_produto` (`id_produto`),
+  ADD KEY `FK_produto_promocao_idx` (`id_produto`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-    ADD PRIMARY KEY (`id`),
-    ADD UNIQUE KEY `username` (`username`),
-    ADD UNIQUE KEY `email` (`email`),
-    ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
 
 --
 -- Indexes for table `userdata`
 --
 ALTER TABLE `userdata`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `FK_user_userdata_idx` (`id_user`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_user_userdata_idx` (`id_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -562,67 +594,67 @@ ALTER TABLE `userdata`
 -- AUTO_INCREMENT for table `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `carrinho`
 --
 ALTER TABLE `carrinho`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `carrinho_linhas`
 --
 ALTER TABLE `carrinho_linhas`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `faturas`
 --
 ALTER TABLE `faturas`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `fatura_linhas`
 --
 ALTER TABLE `fatura_linhas`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `favoritos`
 --
 ALTER TABLE `favoritos`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `promocoes`
 --
 ALTER TABLE `promocoes`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `userdata`
 --
 ALTER TABLE `userdata`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -632,78 +664,78 @@ ALTER TABLE `userdata`
 -- Constraints for table `auth_assignment`
 --
 ALTER TABLE `auth_assignment`
-    ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_item`
 --
 ALTER TABLE `auth_item`
-    ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_item_child`
 --
 ALTER TABLE `auth_item_child`
-    ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-    ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-    ADD CONSTRAINT `FK_avaliacoes_userdata` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    ADD CONSTRAINT `FK_produto_avaliacao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_avaliacoes_userdata` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_produto_avaliacao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `carrinho`
 --
 ALTER TABLE `carrinho`
-    ADD CONSTRAINT `FK_userdata_carrinho` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_userdata_carrinho` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `carrinho_linhas`
 --
 ALTER TABLE `carrinho_linhas`
-    ADD CONSTRAINT `FK_carrinho_carrinholinha` FOREIGN KEY (`id_carrinho`) REFERENCES `carrinho` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    ADD CONSTRAINT `FK_produto_carrinholinha` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_carrinho_carrinholinha` FOREIGN KEY (`id_carrinho`) REFERENCES `carrinho` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_produto_carrinholinha` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `faturas`
 --
 ALTER TABLE `faturas`
-    ADD CONSTRAINT `FK_faturas_userdata` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_faturas_userdata` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `fatura_linhas`
 --
 ALTER TABLE `fatura_linhas`
-    ADD CONSTRAINT `FK_fatura_faturalinha` FOREIGN KEY (`id_fatura`) REFERENCES `faturas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    ADD CONSTRAINT `FK_produto_faturalinha` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_fatura_faturalinha` FOREIGN KEY (`id_fatura`) REFERENCES `faturas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_produto_faturalinha` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `favoritos`
 --
 ALTER TABLE `favoritos`
-    ADD CONSTRAINT `FK_favoritos_userdata` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    ADD CONSTRAINT `FK_produto_favorito` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_favoritos_userdata` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_produto_favorito` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `produtos`
 --
 ALTER TABLE `produtos`
-    ADD CONSTRAINT `FK_categoria_produto` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_categoria_produto` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `promocoes`
 --
 ALTER TABLE `promocoes`
-    ADD CONSTRAINT `FK_produto_promocao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_produto_promocao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `userdata`
 --
 ALTER TABLE `userdata`
-    ADD CONSTRAINT `FK_user_userdata` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_user_userdata` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

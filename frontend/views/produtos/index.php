@@ -47,9 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <a href="<?= Url::to(['produtos/view', 'id' => $model->id]) ?>" class="btn btn-sm btn-outline-secondary">Mais Detalhes</a>
                                         <?php
                                         if (!empty($model->favoritos) && isset($model->favoritos[0])) {
-                                            echo Html::a('<i class="bi bi-heart-fill"></i>', ['/produtos/removerfavoritos', 'id' => $model->id], ['class' => 'btn btn-sm btn-outline-secondary']);
+                                            echo Html::a('<i class="bi bi-heart-fill"></i>', ['/produtos/removerfavoritos', 'id' => $model->id], ['name' => 'remove-favorites-button', 'class' => 'btn btn-sm btn-outline-secondary']);
                                         } else {
-                                            echo Html::a('<i class="bi bi-heart"></i>', ['/produtos/addfavoritos', 'id' => $model->id], ['class' => 'btn btn-sm btn-outline-secondary']);
+                                            echo Html::a('<i class="bi bi-heart"></i>', ['/produtos/addfavoritos', 'id' => $model->id], ['name' => 'add-favorites-button', 'class' => 'btn btn-sm btn-outline-secondary']);
                                         }
                                         ?>
                                     </div>

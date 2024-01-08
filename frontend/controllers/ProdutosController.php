@@ -95,6 +95,7 @@ class ProdutosController extends Controller
             $favoritos->id_produto = $id;
             $favoritos->save();
 
+            Yii::$app->session->setFlash('success', 'Produto adicionado aos favoritos!');
             return $this->goBack();
         }
 
@@ -109,6 +110,7 @@ class ProdutosController extends Controller
                 $favoritos->delete();
             }
 
+            Yii::$app->session->setFlash('error', 'Produto removido dos favoritos!');
             return $this->goBack();
         }
 
