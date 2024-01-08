@@ -32,7 +32,7 @@ class Faturas extends \yii\db\ActiveRecord
         return [
             [['id_userdata'], 'integer'],
             [['data'], 'safe'],
-            [['id_userdata'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_userdata' => 'id']],
+            [['id_userdata'], 'exist', 'skipOnError' => true, 'targetClass' => Userdata::class, 'targetAttribute' => ['id_userdata' => 'id']],
         ];
     }
 
@@ -65,6 +65,6 @@ class Faturas extends \yii\db\ActiveRecord
      */
     public function getUserdata()
     {
-        return $this->hasOne(Userdata::class, ['id_user' => 'id_userdata']);
+        return $this->hasOne(Userdata::class, ['id' => 'id_userdata']);
     }
 }

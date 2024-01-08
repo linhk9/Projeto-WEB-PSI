@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
@@ -63,5 +64,24 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+    <div class="dropdown-divider"></div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Deixe sua avaliação</h3>
+            <?php $form = ActiveForm::begin([
+                'action' => Url::to(['produtos/enviaravaliacao', 'idProduto' => $model->id]),
+                'method' => 'post',
+            ]); ?>
 
+            <?= $form->field($avaliacaoModel, 'nota')->dropDownList([1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5'], ['prompt' => 'Selecione a avaliação']) ?>
+
+            <?= $form->field($avaliacaoModel, 'comentario')->textarea(['rows' => 6]) ?>
+
+            <div class="form-group">
+                <?= Html::submitButton('Enviar Avaliação', ['class' => 'btn btn-success']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
 </div>

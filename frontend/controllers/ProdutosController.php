@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Avaliacoes;
 use common\models\Favoritos;
 use common\models\Produtos;
 use common\models\Userdata;
@@ -27,13 +28,19 @@ class ProdutosController extends Controller
             [
                 'access' => [
                     'class' => AccessControl::class,
-                    'only' => ['index', 'view', 'addfavoritos', 'removerfavoritos'],
+                    'only' => ['index', 'view', 'addfavoritos', 'removerfavoritos', 'enviaravaliacao'],
                     'rules' => [
                         [
                             'allow' => true,
-                            'actions' => ['index', 'view', 'addfavoritos', 'removerfavoritos'],
+                            'actions' => ['index', 'view', 'addfavoritos', 'removerfavoritos', 'enviaravaliacao'],
                             'roles' => ['cliente'],
                         ],
+                    ],
+                ],
+                'verbs' => [
+                    'class' => VerbFilter::class,
+                    'actions' => [
+                        'enviaravaliacao' => ['post'],
                     ],
                 ],
             ]
@@ -66,6 +73,7 @@ class ProdutosController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'avaliacaoModel' => new Avaliacoes(),
         ]);
     }
 
@@ -89,6 +97,22 @@ class ProdutosController extends Controller
         }
 
         return $this->goBack();
+    }
+
+    public function actionEnviaravaliacao($idProduto)
+    {
+        $model = new Avaliacoes();
+        $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_userdata = $userData->id;
+            $model->id_produto = $idProduto;
+            if ($model->save()) {
+                return $this->redirect(['produtos/view', 'id' => $model->id_produto]);
+            }
+        }
+
+        return $this->redirect(['produtos/index']);
     }
 
     /**

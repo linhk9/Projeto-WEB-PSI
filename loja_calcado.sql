@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 08, 2024 at 02:54 PM
+-- Generation Time: Jan 08, 2024 at 04:34 PM
 -- Server version: 11.1.2-MariaDB-log
 -- PHP Version: 8.1.10
 
@@ -38,13 +38,13 @@ CREATE TABLE `auth_assignment` (
 --
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
-                                                                         ('admin', '1', 1704724092),
-                                                                         ('admin', '11', 1704725137),
-                                                                         ('admin', '2', 1704724233),
-                                                                         ('cliente', '15', 1704725457),
-                                                                         ('cliente', '16', 1704725556),
-                                                                         ('cliente', '17', 1704725564),
-                                                                         ('funcionario', '12', 1704725161);
+                                                                         ('admin', '1', 1704731320),
+                                                                         ('admin', '11', 1704731320),
+                                                                         ('admin', '2', 1704731320),
+                                                                         ('cliente', '15', 1704731320),
+                                                                         ('cliente', '16', 1704731320),
+                                                                         ('cliente', '17', 1704731320),
+                                                                         ('funcionario', '12', 1704731320);
 
 -- --------------------------------------------------------
 
@@ -67,47 +67,50 @@ CREATE TABLE `auth_item` (
 --
 
 INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
-                                                                                                             ('adicionarCarrinho_FO', 2, 'Adicionar Carrinho', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('adicionarFavorito_FO', 2, 'Adicionar Favoritos', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('admin', 1, NULL, NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('apagarAvaliacao_FO', 2, 'Apagar Avaliacao', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('apagarCarrinho_FO', 2, 'Apagar Carrinho', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('apagarCategorias', 2, 'Apagar Categorias', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('apagarFaturas', 2, 'Apagar Faturas', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('apagarProdutos', 2, 'Apagar Produtos', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('apagarPromocoes', 2, 'Apagar Promocoes', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('apagarUtilizadores', 2, 'Apagar Utilizadores', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('atualizarCarrinho_FO', 2, 'Atualizar Carrinho', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('atualizarCategorias', 2, 'Atualizar Categorias', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('atualizarFaturas', 2, 'Atualizar Faturas', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('atualizarProdutos', 2, 'Atualizar Produtos', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('atualizarPromocoes', 2, 'Atualizar Promocoes', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('atualizarUtilizador_FO', 2, 'Atualizar Perfil', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('atualizarUtilizadores', 2, 'Atualizar Utilizadores', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('cliente', 1, NULL, NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('criarCategorias', 2, 'Criar Categorias', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('criarFaturas', 2, 'Criar Faturas', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('criarProdutos', 2, 'Criar Produtos', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('criarPromocoes', 2, 'Criar Promocoes', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('criarUtilizadores', 2, 'Criar Utilizadores', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('editarAvaliacao_FO', 2, 'Editar Avaliacao', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('funcionario', 1, NULL, NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('gerirCarrinho_FO', 2, 'Gerir Carrinho', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('gerirCategorias', 2, 'Gerir Categorias', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('gerirFaturas', 2, 'Gerir Faturas', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('gerirFaturas_FO', 2, 'Gerir Faturas', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('gerirProdutos', 2, 'Gerir Produtos', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('gerirPromocoes', 2, 'Gerir Promocoes', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('gerirUtilizadores', 2, 'Gerir Utilizadores', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('listaAvaliacao_FO', 2, 'Listar Avaliacoes', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('mudarRoleUtilizador', 2, 'Mudar Role Utilizador', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('removerFavorito_FO', 2, 'Remover Favoritos', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('verCategorias', 2, 'Ver Categorias', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('verFaturas', 2, 'Ver Faturas', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('verFaturas_FO', 2, 'Ver Faturas', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('verProdutos', 2, 'Ver Produtos', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('verPromocoes', 2, 'Ver Promocoes', NULL, NULL, 1704724092, 1704724092),
-                                                                                                             ('verUtilizadores', 2, 'Ver Utilizadores', NULL, NULL, 1704724092, 1704724092);
+                                                                                                             ('adicionarCarrinho_FO', 2, 'Adicionar Carrinho', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('adicionarFavorito_FO', 2, 'Adicionar Favoritos', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('admin', 1, NULL, NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('apagarAvaliacoes', 2, 'Apagar Avaliacoes', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('apagarCarrinho_FO', 2, 'Apagar Carrinho', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('apagarCategorias', 2, 'Apagar Categorias', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('apagarFaturas', 2, 'Apagar Faturas', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('apagarProdutos', 2, 'Apagar Produtos', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('apagarPromocoes', 2, 'Apagar Promocoes', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('apagarUtilizadores', 2, 'Apagar Utilizadores', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('atualizarAvaliacoes', 2, 'Atualizar Avaliacoes', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('atualizarCarrinho_FO', 2, 'Atualizar Carrinho', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('atualizarCategorias', 2, 'Atualizar Categorias', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('atualizarFaturas', 2, 'Atualizar Faturas', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('atualizarProdutos', 2, 'Atualizar Produtos', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('atualizarPromocoes', 2, 'Atualizar Promocoes', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('atualizarUtilizador_FO', 2, 'Atualizar Perfil', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('atualizarUtilizadores', 2, 'Atualizar Utilizadores', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('cliente', 1, NULL, NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('criarAvaliacoes', 2, 'Criar Avaliacoes', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('criarCategorias', 2, 'Criar Categorias', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('criarFaturas', 2, 'Criar Faturas', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('criarProdutos', 2, 'Criar Produtos', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('criarPromocoes', 2, 'Criar Promocoes', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('criarUtilizadores', 2, 'Criar Utilizadores', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('enviarAvaliacao_FO', 2, 'Enviar Avaliação', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('funcionario', 1, NULL, NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('gerirAvaliacoes', 2, 'Gerir Avaliacoes', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('gerirCarrinho_FO', 2, 'Gerir Carrinho', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('gerirCategorias', 2, 'Gerir Categorias', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('gerirFaturas', 2, 'Gerir Faturas', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('gerirFaturas_FO', 2, 'Gerir Faturas', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('gerirProdutos', 2, 'Gerir Produtos', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('gerirPromocoes', 2, 'Gerir Promocoes', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('gerirUtilizadores', 2, 'Gerir Utilizadores', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('mudarRoleUtilizador', 2, 'Mudar Role Utilizador', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('removerFavorito_FO', 2, 'Remover Favoritos', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('verAvaliacoes', 2, 'Ver Avaliacoes', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('verCategorias', 2, 'Ver Categorias', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('verFaturas', 2, 'Ver Faturas', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('verFaturas_FO', 2, 'Ver Faturas', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('verProdutos', 2, 'Ver Produtos', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('verPromocoes', 2, 'Ver Promocoes', NULL, NULL, 1704731320, 1704731320),
+                                                                                                             ('verUtilizadores', 2, 'Ver Utilizadores', NULL, NULL, 1704731320, 1704731320);
 
 -- --------------------------------------------------------
 
@@ -127,13 +130,14 @@ CREATE TABLE `auth_item_child` (
 INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
                                                       ('cliente', 'adicionarCarrinho_FO'),
                                                       ('cliente', 'adicionarFavorito_FO'),
-                                                      ('cliente', 'apagarAvaliacao_FO'),
+                                                      ('funcionario', 'apagarAvaliacoes'),
                                                       ('cliente', 'apagarCarrinho_FO'),
                                                       ('funcionario', 'apagarCategorias'),
                                                       ('admin', 'apagarFaturas'),
                                                       ('funcionario', 'apagarProdutos'),
                                                       ('funcionario', 'apagarPromocoes'),
                                                       ('admin', 'apagarUtilizadores'),
+                                                      ('funcionario', 'atualizarAvaliacoes'),
                                                       ('cliente', 'atualizarCarrinho_FO'),
                                                       ('funcionario', 'atualizarCategorias'),
                                                       ('admin', 'atualizarFaturas'),
@@ -142,13 +146,15 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
                                                       ('cliente', 'atualizarUtilizador_FO'),
                                                       ('funcionario', 'atualizarUtilizadores'),
                                                       ('funcionario', 'cliente'),
+                                                      ('funcionario', 'criarAvaliacoes'),
                                                       ('funcionario', 'criarCategorias'),
                                                       ('admin', 'criarFaturas'),
                                                       ('funcionario', 'criarProdutos'),
                                                       ('funcionario', 'criarPromocoes'),
                                                       ('admin', 'criarUtilizadores'),
-                                                      ('cliente', 'editarAvaliacao_FO'),
+                                                      ('cliente', 'enviarAvaliacao_FO'),
                                                       ('admin', 'funcionario'),
+                                                      ('funcionario', 'gerirAvaliacoes'),
                                                       ('cliente', 'gerirCarrinho_FO'),
                                                       ('funcionario', 'gerirCategorias'),
                                                       ('funcionario', 'gerirFaturas'),
@@ -156,9 +162,9 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
                                                       ('funcionario', 'gerirProdutos'),
                                                       ('funcionario', 'gerirPromocoes'),
                                                       ('funcionario', 'gerirUtilizadores'),
-                                                      ('cliente', 'listaAvaliacao_FO'),
                                                       ('admin', 'mudarRoleUtilizador'),
                                                       ('cliente', 'removerFavorito_FO'),
+                                                      ('funcionario', 'verAvaliacoes'),
                                                       ('funcionario', 'verCategorias'),
                                                       ('funcionario', 'verFaturas'),
                                                       ('cliente', 'verFaturas_FO'),
@@ -255,7 +261,7 @@ CREATE TABLE `faturas` (
 --
 
 INSERT INTO `faturas` (`id`, `id_userdata`, `data`) VALUES
-    (3, 2, '2024-01-07');
+    (6, 3, '2024-01-08');
 
 -- --------------------------------------------------------
 
@@ -276,8 +282,7 @@ CREATE TABLE `fatura_linhas` (
 --
 
 INSERT INTO `fatura_linhas` (`id`, `id_fatura`, `id_produto`, `quantidade`, `preco`) VALUES
-                                                                                         (5, 3, 1, 3, 55.88),
-                                                                                         (6, 3, 2, 1, 24.5);
+    (14, 6, 1, 1, 55.88);
 
 -- --------------------------------------------------------
 
@@ -339,12 +344,12 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `id_categoria`, `nome`, `descricao`, `preco`, `stock`, `imagem`, `marca`, `tamanho`, `cores`) VALUES
-                                                                                                                                (1, 1, 'Air Force 1 Low Retro', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 74.5, 7, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Branco'),
-                                                                                                                                (2, 2, 'teste', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 3, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
+                                                                                                                                (1, 1, 'Air Force 1 Low Retro', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 74.5, 11, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Branco'),
+                                                                                                                                (2, 2, 'teste', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 11, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
                                                                                                                                 (3, 2, 'teste 6', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 0, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
-                                                                                                                                (4, 2, 'teste 5', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 1, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
+                                                                                                                                (4, 2, 'teste 5', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 3, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
                                                                                                                                 (5, 2, 'teste 4', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 0, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
-                                                                                                                                (6, 2, 'teste 3', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 1, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
+                                                                                                                                (6, 2, 'teste 3', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 2, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto'),
                                                                                                                                 (7, 2, 'teste 2', 'Lançadas em 1982 como uma peça essencial de basquetebol, as Air Force 1 tiveram realmente sucesso nos anos 90. O look simples das AF1 clássicas em branco sobre branco foi aprovado desde os campos de basquetebol até aos bairros e muito mais. Encontrando o ', 24.5, 0, 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/867af929-32e0-416f-8db1-5c2cb326dc2a/sapatilhas-air-force-1-low-retro-bXfnfX.png', 'Nike', '41', 'Preto');
 
 -- --------------------------------------------------------
@@ -557,19 +562,19 @@ ALTER TABLE `userdata`
 -- AUTO_INCREMENT for table `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `carrinho`
 --
 ALTER TABLE `carrinho`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `carrinho_linhas`
 --
 ALTER TABLE `carrinho_linhas`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `categorias`
@@ -581,13 +586,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT for table `faturas`
 --
 ALTER TABLE `faturas`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `fatura_linhas`
 --
 ALTER TABLE `fatura_linhas`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `favoritos`
@@ -646,8 +651,8 @@ ALTER TABLE `auth_item_child`
 -- Constraints for table `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-    ADD CONSTRAINT `FK_produto_avaliacao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    ADD CONSTRAINT `FK_user_avaliacao` FOREIGN KEY (`id_userdata`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ADD CONSTRAINT `FK_avaliacoes_userdata` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    ADD CONSTRAINT `FK_produto_avaliacao` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `carrinho`
@@ -666,7 +671,7 @@ ALTER TABLE `carrinho_linhas`
 -- Constraints for table `faturas`
 --
 ALTER TABLE `faturas`
-    ADD CONSTRAINT `FK_user_faturas` FOREIGN KEY (`id_userdata`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ADD CONSTRAINT `FK_faturas_userdata` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `fatura_linhas`
@@ -679,8 +684,8 @@ ALTER TABLE `fatura_linhas`
 -- Constraints for table `favoritos`
 --
 ALTER TABLE `favoritos`
-    ADD CONSTRAINT `FK_produto_favorito` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    ADD CONSTRAINT `FK_user_favorito` FOREIGN KEY (`id_userdata`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ADD CONSTRAINT `FK_favoritos_userdata` FOREIGN KEY (`id_userdata`) REFERENCES `userdata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    ADD CONSTRAINT `FK_produto_favorito` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `produtos`

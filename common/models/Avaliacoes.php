@@ -14,7 +14,7 @@ use Yii;
  * @property string|null $comentario
  *
  * @property Produtos $produto
- * @property User $userdata
+ * @property Userdata $userdata
  */
 class Avaliacoes extends \yii\db\ActiveRecord
 {
@@ -34,8 +34,8 @@ class Avaliacoes extends \yii\db\ActiveRecord
         return [
             [['id_userdata', 'id_produto', 'nota'], 'integer'],
             [['comentario'], 'string'],
+            [['id_userdata'], 'exist', 'skipOnError' => true, 'targetClass' => Userdata::class, 'targetAttribute' => ['id_userdata' => 'id']],
             [['id_produto'], 'exist', 'skipOnError' => true, 'targetClass' => Produtos::class, 'targetAttribute' => ['id_produto' => 'id']],
-            [['id_userdata'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_userdata' => 'id']],
         ];
     }
 
@@ -46,8 +46,8 @@ class Avaliacoes extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_userdata' => 'Id Userdata',
-            'id_produto' => 'Id Produto',
+            'id_userdata' => 'Userdata',
+            'id_produto' => 'Produto',
             'nota' => 'Nota',
             'comentario' => 'Comentario',
         ];
@@ -70,6 +70,6 @@ class Avaliacoes extends \yii\db\ActiveRecord
      */
     public function getUserdata()
     {
-        return $this->hasOne(User::class, ['id' => 'id_userdata']);
+        return $this->hasOne(Userdata::class, ['id' => 'id_userdata']);
     }
 }

@@ -25,6 +25,7 @@ use yii\helpers\Url;
                     ['label' => 'Gerir Produtos', 'url' => ['produtos/index'], 'icon' => 'box'],
                     ['label' => 'Gerir Categorias', 'url' => ['categorias/index'], 'icon' => 'list'],
                     ['label' => 'Gerir Promoções', 'url' => ['promocoes/index'], 'icon' => 'tag'],
+                    ['label' => 'Gerir Avaliações', 'url' => ['avaliacoes/index'], 'icon' => 'archive'],
                 ],
             ]);
             ?>

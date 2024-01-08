@@ -136,6 +136,31 @@
             $apagarFaturas->description = 'Apagar Faturas';
             $auth->add($apagarFaturas);
 
+            // adiciona a permissão "gerirAvaliacoes"
+            $gerirAvaliacoes = $auth->createPermission('gerirAvaliacoes');
+            $gerirAvaliacoes->description = 'Gerir Avaliacoes';
+            $auth->add($gerirAvaliacoes);
+
+            // adiciona a permissão "verAvaliacoes"
+            $verAvaliacoes = $auth->createPermission('verAvaliacoes');
+            $verAvaliacoes->description = 'Ver Avaliacoes';
+            $auth->add($verAvaliacoes);
+
+            // adiciona a permissão "criarAvaliacoes"
+            $criarAvaliacoes = $auth->createPermission('criarAvaliacoes');
+            $criarAvaliacoes->description = 'Criar Avaliacoes';
+            $auth->add($criarAvaliacoes);
+
+            // adiciona a permissão "atualizarAvaliacoes"
+            $atualizarAvaliacoes = $auth->createPermission('atualizarAvaliacoes');
+            $atualizarAvaliacoes->description = 'Atualizar Avaliacoes';
+            $auth->add($atualizarAvaliacoes);
+
+            // adiciona a permissão "apagarAvaliacoes"
+            $apagarAvaliacoes = $auth->createPermission('apagarAvaliacoes');
+            $apagarAvaliacoes->description = 'Apagar Avaliacoes';
+            $auth->add($apagarAvaliacoes);
+
             // adiciona a permissão "mudarRoleUtilizador"
             $mudarRoleUtilizador = $auth->createPermission('mudarRoleUtilizador');
             $mudarRoleUtilizador->description = 'Mudar Role Utilizador';
@@ -157,20 +182,10 @@
             $verFaturas_FO->description = 'Ver Faturas';
             $auth->add($verFaturas_FO);
 
-            // adiciona a permissão "listaAvaliacao_FO"
-            $listaAvaliacao_FO = $auth->createPermission('listaAvaliacao_FO');
-            $listaAvaliacao_FO->description = 'Listar Avaliacoes';
-            $auth->add($listaAvaliacao_FO);
-
-            // adiciona a permissão "editarAvaliacao_FO"
-            $editarAvaliacao_FO = $auth->createPermission('editarAvaliacao_FO');
-            $editarAvaliacao_FO->description = 'Editar Avaliacao';
-            $auth->add($editarAvaliacao_FO);
-            
-            // adiciona a permissão "apagarAvaliacao_FO"
-            $apagarAvaliacao_FO = $auth->createPermission('apagarAvaliacao_FO');
-            $apagarAvaliacao_FO->description = 'Apagar Avaliacao';
-            $auth->add($apagarAvaliacao_FO);
+            // adiciona a permissão "enviarAvaliacao_FO"
+            $enviarAvaliacao_FO = $auth->createPermission('enviarAvaliacao_FO');
+            $enviarAvaliacao_FO->description = 'Enviar Avaliação';
+            $auth->add($enviarAvaliacao_FO);
 
             // adiciona a permissão "adicionarFavorito_FO"
             $adicionarFavorito_FO = $auth->createPermission('adicionarFavorito_FO');
@@ -210,9 +225,7 @@
             $auth->addChild($cliente, $gerirFaturas_FO);
             $auth->addChild($cliente, $verFaturas_FO);
 
-            $auth->addChild($cliente, $listaAvaliacao_FO);
-            $auth->addChild($cliente, $editarAvaliacao_FO);
-            $auth->addChild($cliente, $apagarAvaliacao_FO);
+            $auth->addChild($cliente, $enviarAvaliacao_FO);
 
             $auth->addChild($cliente, $adicionarFavorito_FO);
             $auth->addChild($cliente, $removerFavorito_FO);
@@ -248,6 +261,12 @@
             $auth->addChild($funcionario, $verPromocoes);
             $auth->addChild($funcionario, $atualizarPromocoes);
             $auth->addChild($funcionario, $apagarPromocoes);
+
+            $auth->addChild($funcionario, $gerirAvaliacoes);
+            $auth->addChild($funcionario, $criarAvaliacoes);
+            $auth->addChild($funcionario, $verAvaliacoes);
+            $auth->addChild($funcionario, $atualizarAvaliacoes);
+            $auth->addChild($funcionario, $apagarAvaliacoes);
 
             $auth->addChild($funcionario, $gerirFaturas);
             $auth->addChild($funcionario, $verFaturas);

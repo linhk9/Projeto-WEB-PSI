@@ -32,7 +32,7 @@ class Favoritos extends \yii\db\ActiveRecord
         return [
             [['id_userdata', 'id_produto'], 'integer'],
             [['id_produto'], 'exist', 'skipOnError' => true, 'targetClass' => Produtos::class, 'targetAttribute' => ['id_produto' => 'id']],
-            [['id_userdata'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_userdata' => 'id']],
+            [['id_userdata'], 'exist', 'skipOnError' => true, 'targetClass' => Userdata::class, 'targetAttribute' => ['id_userdata' => 'id']],
         ];
     }
 
@@ -65,6 +65,6 @@ class Favoritos extends \yii\db\ActiveRecord
      */
     public function getUserdata()
     {
-        return $this->hasOne(User::class, ['id' => 'id_userdata']);
+        return $this->hasOne(Userdata::class, ['id' => 'id_userdata']);
     }
 }
