@@ -8,7 +8,7 @@ use yii\helpers\Url;
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <?php echo Html::a(
-        'Loja de Calçado',
+        'Nova Sola',
         Yii::$app->homeUrl,
         ['class' => 'brand-link text-center']
     ) ?>

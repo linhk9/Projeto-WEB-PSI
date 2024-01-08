@@ -1,5 +1,5 @@
 <?php
-$this->title = 'Loja de Calçado';
+$this->title = 'Nova Sola';
 $this->params['breadcrumbs'] = [['label' => $this->title]];
 ?>
 <div class="container-fluid">

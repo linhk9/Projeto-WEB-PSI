@@ -5,12 +5,12 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = 'Loja Calçado';
+$this->title = 'Nova Sola';
 ?>
 <div class="site-index">
     <div class="p-5 mb-4 bg-transparent rounded-3">
         <div class="container-fluid py-5 text-center">
-            <h1 class="display-4">Bem vindo a loja de Calçado!</h1>
+            <h1 class="display-4">Bem vindo a loja Nova Sola!</h1>
             <p class="fs-5 fw-light">Nesta loja poderás comprar todo o tipo de calçado!</p>
         </div>
     </div>
