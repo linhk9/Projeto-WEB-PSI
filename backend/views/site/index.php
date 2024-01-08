@@ -39,5 +39,12 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                 'icon' => 'fas fa-tag',
             ]) ?>
         </div>
+        <div class="col-md-4 col-sm-6 col-12">
+            <?= \hail812\adminlte\widgets\InfoBox::widget([
+                'text' => 'Avaliações',
+                'number' => $avaliacoes,
+                'icon' => 'fas fa-archive',
+            ]) ?>
+        </div>
     </div>
 </div>

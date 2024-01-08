@@ -36,7 +36,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'perfil', 'carrinho', 'historico'],
+                        'actions' => ['logout', 'perfil'],
                         'allow' => true,
                         'roles' => ['cliente'],
                     ],
@@ -140,18 +140,22 @@ class SiteController extends Controller
 
     public function actionPerfil()
     {
-        $model = new PerfilForm();
-        $user = User::find()->where(['id' => Yii::$app->user->identity->id])->one();
-        $userData = Userdata::find()->where(['id_user' => Yii::$app->user->identity->id])->one();
-        if ($model->load(Yii::$app->request->post()) && $model->guardar()) {
-            Yii::$app->session->setFlash('success', 'Dados alterados com sucesso!');
-            return $this->goHome();
+        if (Yii::$app->user->can('atualizarUtilizador_FO')) {
+            $model = new PerfilForm();
+            $user = User::find()->where(['id' => Yii::$app->user->identity->id])->one();
+            $userData = Userdata::find()->where(['id_user' => Yii::$app->user->identity->id])->one();
+            if ($model->load(Yii::$app->request->post()) && $model->guardar()) {
+                Yii::$app->session->setFlash('success', 'Dados alterados com sucesso!');
+                return $this->goHome();
+            }
+
+            return $this->render('perfil', [
+                'model' => $model,
+                'user' => $user,
+                'userData' => $userData,
+            ]);
         }
 
-        return $this->render('perfil', [
-            'model' => $model,
-            'user' => $user,
-            'userData' => $userData,
-        ]);
+        return $this->goHome();
     }
 }

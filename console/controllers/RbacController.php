@@ -217,6 +217,22 @@
             $apagarCarrinho_FO->description = 'Apagar Carrinho';
             $auth->add($apagarCarrinho_FO);
 
+            // adiciona a permissão "checkoutCarrinho_FO"
+            $checkoutCarrinho_FO = $auth->createPermission('checkoutCarrinho_FO');
+            $checkoutCarrinho_FO->description = 'Checkout Carrinho';
+            $auth->add($checkoutCarrinho_FO);
+
+
+            // adiciona a permissão "listaProdutos_FO"
+            $listaProdutos_FO = $auth->createPermission('listaProdutos_FO');
+            $listaProdutos_FO->description = 'Lista Produtos';
+            $auth->add($listaProdutos_FO);
+
+            // adiciona a permissão "verProdutos_FO"
+            $verProdutos_FO = $auth->createPermission('verProdutos_FO');
+            $verProdutos_FO->description = 'Ver Produtos';
+            $auth->add($verProdutos_FO);
+
             // adiciona a role "cliente" e dá as seguintes permissões
             $cliente = $auth->createRole('cliente');
             $auth->add($cliente);
@@ -234,7 +250,11 @@
             $auth->addChild($cliente, $adicionarCarrinho_FO);
             $auth->addChild($cliente, $atualizarCarrinho_FO);
             $auth->addChild($cliente, $apagarCarrinho_FO);
-            
+            $auth->addChild($cliente, $checkoutCarrinho_FO);
+
+            $auth->addChild($cliente, $listaProdutos_FO);
+            $auth->addChild($cliente, $verProdutos_FO);
+
             
             // adiciona a role "funcionario" e dá as seguintes permissões
             $funcionario = $auth->createRole('funcionario');
@@ -292,7 +312,11 @@
             // Adicionar roles aos utilizadores
             $auth->assign($admin, 1);
             $auth->assign($admin, 2);
-            $auth->assign($cliente, 3);
+            $auth->assign($admin, 11);
+            $auth->assign($funcionario, 12);
+            $auth->assign($cliente, 15);
+            $auth->assign($cliente, 16);
+            $auth->assign($cliente, 17);
 
             // Para executar o ficheiro de migração de RBAC execute o seguinte comando:
             // yii rbac/init

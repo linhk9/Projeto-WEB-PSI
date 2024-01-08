@@ -8,6 +8,7 @@ use common\models\FaturaLinhas;
 use common\models\Faturas;
 use common\models\Userdata;
 use frontend\models\CarrinhoSearch;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -54,114 +55,134 @@ class CarrinhoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CarrinhoSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (Yii::$app->user->can('gerirCarrinho_FO')) {
+            $searchModel = new CarrinhoSearch();
+            $dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+
+        return $this->redirect(['site/index']);
     }
 
     public function actionAdicionar($id, $precoProduto)
     {
-        $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
-        $carrinho = Carrinho::find()->where(['id_userdata' => $userData->id])->one();
+        if (Yii::$app->user->can('adicionarCarrinho_FO')) {
+            $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+            $carrinho = Carrinho::find()->where(['id_userdata' => $userData->id])->one();
 
-        if ($carrinho === null) {
-            $carrinho = new Carrinho();
-            $carrinho->id_userdata = $userData->id;
-            $carrinho->data = date('Y-m-d');
-            $carrinho->save();
+            if ($carrinho === null) {
+                $carrinho = new Carrinho();
+                $carrinho->id_userdata = $userData->id;
+                $carrinho->data = date('Y-m-d');
+                $carrinho->save();
+            }
+
+            $carrinhoLinha = CarrinhoLinhas::find()->where(['id_carrinho' => $carrinho->id, 'id_produto' => $id])->one();
+
+            if ($carrinhoLinha === null) {
+                $carrinhoLinha = new CarrinhoLinhas();
+                $carrinhoLinha->id_carrinho = $carrinho->id;
+                $carrinhoLinha->id_produto = $id;
+                $carrinhoLinha->quantidade = 1;
+                $carrinhoLinha->preco = $precoProduto;
+            } else {
+                $carrinhoLinha->quantidade += 1;
+            }
+
+            $carrinhoLinha->save();
+
+            return $this->redirect(['carrinho/index']);
         }
 
-        $carrinhoLinha = CarrinhoLinhas::find()->where(['id_carrinho' => $carrinho->id, 'id_produto' => $id])->one();
-
-        if ($carrinhoLinha === null) {
-            $carrinhoLinha = new CarrinhoLinhas();
-            $carrinhoLinha->id_carrinho = $carrinho->id;
-            $carrinhoLinha->id_produto = $id;
-            $carrinhoLinha->quantidade = 1;
-            $carrinhoLinha->preco = $precoProduto;
-        } else {
-            $carrinhoLinha->quantidade += 1;
-        }
-
-        $carrinhoLinha->save();
-
-        return $this->redirect(['carrinho/index']);
+        return $this->redirect(['site/index']);
     }
 
     public function actionAtualizarqtd($id)
     {
-        $carrinhoLinha = CarrinhoLinhas::findOne($id);
-        if ($carrinhoLinha === null) {
-            throw new NotFoundHttpException('Esta linha não existe');
+        if (Yii::$app->user->can('atualizarCarrinho_FO')) {
+            $carrinhoLinha = CarrinhoLinhas::findOne($id);
+            if ($carrinhoLinha === null) {
+                throw new NotFoundHttpException('Esta linha não existe');
+            }
+
+            $quantidade = \Yii::$app->request->post('CarrinhoLinhas')['quantidade'];
+            if ($quantidade !== null && $quantidade > 0 && $quantidade <= $carrinhoLinha->produto->stock) {
+                $carrinhoLinha->quantidade = $quantidade;
+                $carrinhoLinha->save();
+            }
+
+            return $this->redirect(['carrinho/index']);
         }
 
-        $quantidade = \Yii::$app->request->post('CarrinhoLinhas')['quantidade'];
-        if ($quantidade !== null && $quantidade > 0 && $quantidade <= $carrinhoLinha->produto->stock) {
-            $carrinhoLinha->quantidade = $quantidade;
-            $carrinhoLinha->save();
-        }
-
-        return $this->redirect(['carrinho/index']);
+        return $this->redirect(['site/index']);
     }
 
     public function actionDelete($id)
     {
-        $carrinhoLinha = CarrinhoLinhas::findOne($id);
-        if ($carrinhoLinha === null) {
-            throw new NotFoundHttpException('Esta linha não existe.');
-        }
-
-        $carrinhoId = $carrinhoLinha->id_carrinho;
-        $carrinhoLinha->delete();
-
-        $itemsRestantes= CarrinhoLinhas::find()->where(['id_carrinho' => $carrinhoId])->one();
-        if ($itemsRestantes === null) {
-            // If there are no other items, delete the cart
-            $carrinho = Carrinho::findOne($carrinhoId);
-            if ($carrinho !== null) {
-                $carrinho->delete();
+        if (Yii::$app->user->can('apagarCarrinho_FO')) {
+            $carrinhoLinha = CarrinhoLinhas::findOne($id);
+            if ($carrinhoLinha === null) {
+                throw new NotFoundHttpException('Esta linha não existe.');
             }
+
+            $carrinhoId = $carrinhoLinha->id_carrinho;
+            $carrinhoLinha->delete();
+
+            $itemsRestantes= CarrinhoLinhas::find()->where(['id_carrinho' => $carrinhoId])->one();
+            if ($itemsRestantes === null) {
+                // If there are no other items, delete the cart
+                $carrinho = Carrinho::findOne($carrinhoId);
+                if ($carrinho !== null) {
+                    $carrinho->delete();
+                }
+            }
+
+            return $this->redirect(['carrinho/index']);
         }
 
-        return $this->redirect(['carrinho/index']);
+        return $this->redirect(['site/index']);
     }
 
     public function actionCheckout()
     {
-        $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+        if (Yii::$app->user->can('checkoutCarrinho_FO')) {
+            $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
 
-        $fatura = new Faturas();
-        $fatura->id_userdata = $userData->id;
-        $fatura->data = date('Y-m-d');
-        $fatura->save();
+            $fatura = new Faturas();
+            $fatura->id_userdata = $userData->id;
+            $fatura->data = date('Y-m-d');
+            $fatura->save();
 
-        $carrinho = Carrinho::find()->where(['id_userdata' => $userData->id])->one();
-        if ($carrinho !== null) {
-            $carrinhoLinhas = $carrinho->getCarrinhoLinhas()->all();
-            foreach ($carrinhoLinhas as $linha) {
-                $produto = $linha->produto;
-                if ($linha->quantidade > $produto->stock) {
-                    throw new \yii\web\HttpException(400, 'Não existe stock suficiente de ' . $produto->nome);
+            $carrinho = Carrinho::find()->where(['id_userdata' => $userData->id])->one();
+            if ($carrinho !== null) {
+                $carrinhoLinhas = $carrinho->getCarrinhoLinhas()->all();
+                foreach ($carrinhoLinhas as $linha) {
+                    $produto = $linha->produto;
+                    if ($linha->quantidade > $produto->stock) {
+                        throw new \yii\web\HttpException(400, 'Não existe stock suficiente de ' . $produto->nome);
+                    }
+                    $produto->stock -= $linha->quantidade;
+                    $produto->save();
+
+                    $faturaLinha = new FaturaLinhas();
+                    $faturaLinha->id_fatura = $fatura->id;
+                    $faturaLinha->id_produto = $linha->id_produto;
+                    $faturaLinha->quantidade = $linha->quantidade;
+                    $faturaLinha->preco = $linha->preco;
+                    $faturaLinha->save();
+                    $linha->delete();
                 }
-                $produto->stock -= $linha->quantidade;
-                $produto->save();
-
-                $faturaLinha = new FaturaLinhas();
-                $faturaLinha->id_fatura = $fatura->id;
-                $faturaLinha->id_produto = $linha->id_produto;
-                $faturaLinha->quantidade = $linha->quantidade;
-                $faturaLinha->preco = $linha->preco;
-                $faturaLinha->save();
-                $linha->delete();
+                $carrinho->delete();
             }
-            $carrinho->delete();
+
+            return $this->redirect(['fatura/view', 'id' => $fatura->id]);
         }
 
-        return $this->redirect(['fatura/view', 'id' => $fatura->id]);
+        return $this->redirect(['site/index']);
     }
 
     /**

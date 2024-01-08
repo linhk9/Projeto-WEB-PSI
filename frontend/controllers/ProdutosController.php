@@ -54,13 +54,17 @@ class ProdutosController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ProdutosSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (Yii::$app->user->can('listaProdutos_FO')) {
+            $searchModel = new ProdutosSearch();
+            $dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+
+        return $this->redirect(['site/index']);
     }
 
     /**
@@ -71,48 +75,64 @@ class ProdutosController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-            'avaliacaoModel' => new Avaliacoes(),
-        ]);
+        if (Yii::$app->user->can('verProdutos_FO')) {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+                'avaliacaoModel' => new Avaliacoes(),
+            ]);
+        }
+
+        return $this->redirect(['site/index']);
     }
 
     public function actionAddfavoritos($id)
     {
-        $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+        if (Yii::$app->user->can('adicionarFavorito_FO')) {
+            $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
 
-        $favoritos = new Favoritos();
-        $favoritos->id_userdata = $userData->id;
-        $favoritos->id_produto = $id;
-        $favoritos->save();
+            $favoritos = new Favoritos();
+            $favoritos->id_userdata = $userData->id;
+            $favoritos->id_produto = $id;
+            $favoritos->save();
 
-        return $this->goBack();
+            return $this->goBack();
+        }
+
+        return $this->redirect(['site/index']);
     }
 
     public function actionRemoverfavoritos($id)
     {
-        $favoritos = Favoritos::findOne(['id_produto' => $id]);
-        if ($favoritos) {
-            $favoritos->delete();
+        if (Yii::$app->user->can('removerFavorito_FO')) {
+            $favoritos = Favoritos::findOne(['id_produto' => $id]);
+            if ($favoritos) {
+                $favoritos->delete();
+            }
+
+            return $this->goBack();
         }
 
-        return $this->goBack();
+        return $this->redirect(['site/index']);
     }
 
     public function actionEnviaravaliacao($idProduto)
     {
-        $model = new Avaliacoes();
-        $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
+        if (Yii::$app->user->can('enviarAvaliacao_FO')) {
+            $model = new Avaliacoes();
+            $userData = Userdata::findOne(['id_user' => \Yii::$app->user->identity->id]);
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->id_userdata = $userData->id;
-            $model->id_produto = $idProduto;
-            if ($model->save()) {
-                return $this->redirect(['produtos/view', 'id' => $model->id_produto]);
+            if ($model->load(Yii::$app->request->post())) {
+                $model->id_userdata = $userData->id;
+                $model->id_produto = $idProduto;
+                if ($model->save()) {
+                    return $this->redirect(['produtos/view', 'id' => $model->id_produto]);
+                }
             }
+
+            return $this->redirect(['produtos/index']);
         }
 
-        return $this->redirect(['produtos/index']);
+        return $this->redirect(['site/index']);
     }
 
     /**

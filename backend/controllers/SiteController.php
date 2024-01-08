@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Avaliacoes;
 use common\models\Categorias;
 use common\models\Faturas;
 use common\models\LoginForm;
@@ -72,6 +73,7 @@ class SiteController extends Controller
         $produtos = Produtos::find()->count();
         $categorias = Categorias::find()->count();
         $promocoes = Promocoes::find()->count();
+        $avaliacoes = Avaliacoes::find()->count();
 
         return $this->render('index', [
             'utilizadores' => $utilizadores,
@@ -79,6 +81,7 @@ class SiteController extends Controller
             'produtos' => $produtos,
             'categorias' => $categorias,
             'promocoes' => $promocoes,
+            'avaliacoes' => $avaliacoes,
         ]);
     }
 

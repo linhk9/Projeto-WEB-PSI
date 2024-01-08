@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\Faturas;
 use frontend\models\FaturaSearch;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -44,13 +45,17 @@ class FaturaController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new FaturaSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (Yii::$app->user->can('gerirFaturas_FO')) {
+            $searchModel = new FaturaSearch();
+            $dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+
+        return $this->redirect(['site/index']);
     }
 
     /**
@@ -61,9 +66,13 @@ class FaturaController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if (Yii::$app->user->can('verFaturas_FO')) {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        }
+
+        return $this->redirect(['site/index']);
     }
 
     /**
