@@ -41,7 +41,7 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group">
         <?= Html::submitButton('Procurar', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Resetar', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::resetButton('Redefinir', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
