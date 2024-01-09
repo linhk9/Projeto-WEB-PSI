@@ -3,20 +3,9 @@
 namespace frontend\tests\functional;
 
 use frontend\tests\FunctionalTester;
-use common\fixtures\UserFixture;
 
 class FavoritosCest
 {
-    public function _fixtures()
-    {
-        return [
-            'user' => [
-                'class' => UserFixture::class,
-                'dataFile' => codecept_data_dir() . 'login_data.php'
-            ]
-        ];
-    }
-
     public function addProdutoDeFavoritos(FunctionalTester $I)
     {
         $I->amOnRoute('/site/login');

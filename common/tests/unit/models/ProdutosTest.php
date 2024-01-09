@@ -4,81 +4,81 @@ namespace common\tests\unit\models;
 
 use common\models\Produtos;
 use Yii;
-use common\models\LoginForm;
-use common\fixtures\UserFixture;
 
 /**
  * Login form test
  */
 class ProdutosTest extends \Codeception\Test\Unit
 {
-    public function testAtualizarCategoriaDoProduto()
+    public function testDespoletarRegrasDeValidacao()
     {
         $produto = new Produtos();
-        $produto->nome = 'Produto Teste';
-        $produto->preco = 100;
+
+        // Teste para despoletar todas as regras de validação
+        $produto->id_categoria = null;
+        $produto->nome = 124;
+        $produto->descricao = 124124;
+        $produto->preco = 'awgawg';
+        $produto->stock = 'awgawg';
+        $produto->imagem = null;
+        $produto->marca = 124124;
+        $produto->tamanho = 1421;
+        $produto->cores = 124124;
+
+        // Verificar se a validação falhou como esperado
+        $this->assertFalse($produto->validate(['nome', 'descricao', 'preco', 'stock', 'imagem', 'marca', 'tamanho', 'cores']));
+    }
+
+    public function testCriarRegistoValido()
+    {
+        $produto = new Produtos();
+
+        // Teste para criar um registo válido e guardar na BD
         $produto->id_categoria = 1;
-        $produto->save();
-
-        $produto->id_categoria = 2;
-        $updateResult = $produto->save();
-
-        $this->assertTrue($updateResult, 'Produto não foi atualizado corretamente');
-        $this->assertEquals(2, $produto->id_categoria, 'Categoria do produto não foi atualizada corretamente');
+        $produto->nome = 'Produto Teste';
+        $produto->descricao = 'Descricao Teste';
+        $produto->preco = 10.99;
+        $produto->stock = 100;
+        $produto->imagem = 'imagem.jpg';
+        $produto->marca = 'Marca Teste';
+        $produto->tamanho = 'M';
+        $produto->cores = 'Azul';
+        $this->assertTrue($produto->save());
     }
 
-    public function testAtualizarProduto()
+    public function testVerRegistoValido()
     {
-        $produto = new Produtos();
-        $produto->nome = 'Produto Teste';
-        $produto->preco = 100;
-        $produto->save();
-
-        $produto->nome = 'Produto Atualizado';
-        $updateResult = $produto->save();
-
-        $this->assertTrue($updateResult, 'Produto não foi atualizado corretamente');
-        $this->assertEquals('Produto Atualizado', $produto->nome, 'Nome do produto não foi atualizado corretamente');
+        // Teste para ver se o registo válido se encontra na BD
+        $produto = Produtos::findOne(['nome' => 'Produto Teste']);
+        $this->assertNotNull($produto);
     }
 
-    public function testAtualizarStockDoProduto()
+    public function testLerRegistoAnteriorEAtualizar()
     {
-        $produto = new Produtos();
-        $produto->nome = 'Produto Teste';
-        $produto->preco = 100;
-        $produto->stock = 50;
-        $produto->save();
-
-        $produto->stock = 75;
-        $updateResult = $produto->save();
-
-        $this->assertTrue($updateResult, 'Produto não foi atualizado corretamente');
-        $this->assertEquals(75, $produto->stock, 'Stock do produto não foi atualizado corretamente');
+        // Teste para ler o registo anterior e aplicar um update
+        $produto = Produtos::findOne(['nome' => 'Produto Teste']);
+        $produto->nome = 'Produto Teste Atualizado';
+        $this->assertTrue($produto->save());
     }
 
-    public function testProcurarProdutoPorNome()
+    public function testVerRegistoAtualizado()
     {
-        $produto = new Produtos();
-        $produto->nome = 'Produto Teste';
-        $produto->preco = 100;
-        $produto->save();
-
-        $foundProduct = Produtos::findOne(['nome' => 'Produto Teste']);
-
-        $this->assertNotNull($foundProduct, 'Produto não foi encontrado pelo nome');
-        $this->assertEquals($produto->id, $foundProduct->id, 'Produto encontrado não corresponde ao produto criado');
+        // Teste para ver se o registo atualizado se encontra na BD
+        $produto = Produtos::findOne(['nome' => 'Produto Teste Atualizado']);
+        $this->assertNotNull($produto);
     }
 
-    public function testProcurarProdutoPorPreco()
+    public function testApagarRegisto()
     {
-        $produto = new Produtos();
-        $produto->nome = 'Produto Teste';
-        $produto->preco = 100;
-        $produto->save();
+        // Teste para apagar o registo
+        $produto = Produtos::findOne(['nome' => 'Produto Teste Atualizado']);
+        $this->assertGreaterThan(0, $produto->delete());
+    }
 
-        $foundProduct = Produtos::findOne(['preco' => 100]);
-
-        $this->assertNotNull($foundProduct, 'Produto não foi encontrado pelo preço');
-        $this->assertEquals($produto->id, $foundProduct->id, 'Produto encontrado não corresponde ao produto criado');
+    public function testVerificarRegistoApagado()
+    {
+        // Teste para verificar que o registo não se encontra na BD
+        $produto = Produtos::findOne(['nome' => 'Produto Teste Atualizado']);
+        $this->assertNull($produto);
     }
 }
