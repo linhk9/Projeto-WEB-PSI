@@ -1,9 +1,8 @@
 <?php
 
-namespace common\tests\unit\models;
+namespace unit;
 
 use common\models\Produtos;
-use Yii;
 
 /**
  * Login form test

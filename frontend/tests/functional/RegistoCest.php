@@ -7,17 +7,11 @@ use frontend\tests\FunctionalTester;
 
 class RegistoCest
 {
-    protected $formId = '#form-signup';
-
-
-    public function _before(FunctionalTester $I)
-    {
-        $I->amOnRoute('site/signup');
-    }
-
     public function registoComSucesso(FunctionalTester $I)
     {
-        $I->submitForm($this->formId, [
+        $I->amOnRoute('site/signup');
+
+        $I->submitForm('#form-signup', [
             'SignupForm[username]' => 'tester',
             'SignupForm[email]' => 'tester@gmail.com',
             'SignupForm[password]' => 'passwordxpto',
@@ -34,5 +28,16 @@ class RegistoCest
         ]);
     }
 
+    public function loginUser(FunctionalTester $I)
+    {
+        $I->amOnPage('/site/login');
+        $I->fillField('LoginForm[username]', 'cliente1');
+        $I->fillField('LoginForm[password]', '12345678');
+        $I->click('login-button');
 
+        $I->amOnPage('/site/index');
+        $I->see('Não tens nenhum produto adicionado aos favoritos!', 'p');
+
+        $I->seeCurrentUrlEquals('/site/index');
+    }
 }
