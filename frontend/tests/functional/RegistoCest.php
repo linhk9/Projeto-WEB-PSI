@@ -40,4 +40,41 @@ class RegistoCest
 
         $I->seeCurrentUrlEquals('/site/index');
     }
+
+    public function logoutUser(FunctionalTester $I)
+    {
+        $I->amOnPage('/site/login');
+        $I->fillField('LoginForm[username]', 'cliente1');
+        $I->fillField('LoginForm[password]', '12345678');
+        $I->click('login-button');
+
+        $I->amOnPage('/site/index');
+        $I->see('Não tens nenhum produto adicionado aos favoritos!', 'p');
+
+        $I->click('logout-button');
+    }
+
+    public function adicionarFavoritos(FunctionalTester $I)
+    {
+        $I->amOnPage('/site/login');
+        $I->fillField('LoginForm[username]', 'cliente1');
+        $I->fillField('LoginForm[password]', '12345678');
+        $I->click('login-button');
+
+        $I->amOnPage('/site/index');
+        $I->see('Não tens nenhum produto adicionado aos favoritos!', 'p');
+
+        $I->click('Produtos');
+
+        $I->amOnPage('/produtos/index');
+        $I->see('Desporto | Nike');
+
+        $I->click('Adicionar Favorito');
+
+        $I->click('Produtos');
+
+        $I->amOnPage('/produtos/index');
+
+        $I->click('Remover Favorito');
+    }
 }

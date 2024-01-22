@@ -32,7 +32,7 @@ AppAsset::register($this);
             <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item px-2"><?= Html::a('Home', ['/site/index'], ['class' => ['nav-link fw-medium']]); ?></li>
-                    <li class="nav-item px-2"><?= Html::a('Produtos', ['/produtos/index '], ['class' => ['nav-link fw-medium']]); ?></li>
+                    <li class="nav-item px-2"><?= Html::a('Produtos', ['/produtos/index '], ['class' => ['nav-link fw-medium produtos-button']]); ?></li>
                     <li class="nav-item px-2"><?= Html::a('Histórico de Compras', ['/fatura/index'], ['class' => ['nav-link fw-medium']]); ?></li>
                     <?php 
                         if (Yii::$app->user->isGuest) {
@@ -49,7 +49,7 @@ AppAsset::register($this);
                         echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
                             . Html::submitButton(
                                 'Logout',
-                                ['class' => 'btn btn-link logout text-decoration-none']
+                                ['class' => 'btn btn-link logout text-decoration-none', 'id' => 'logout-button']
                             )
                             . Html::endForm();
                     }
