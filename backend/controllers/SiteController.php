@@ -8,6 +8,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
+use common\models\User;
 
 /**
  * Site controller
@@ -62,6 +63,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $utilizadores = User::find()->count();
+
+        return $this->render('index', [
+            'utilizadores' => $utilizadores,
+        ]);
         return $this->render('index');
     }
 

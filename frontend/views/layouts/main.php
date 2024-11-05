@@ -36,8 +36,9 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Comprar Cursos', 'url' => ['/site/about']],
+        ['label' => 'Meus Cursos', 'url' => ['/site/about']],
+        ['label' => 'Historico de Compras', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -50,6 +51,9 @@ AppAsset::register($this);
     if (Yii::$app->user->isGuest) {
         echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
     } else {
+        echo Html::tag('div',Html::a('Carrinho',['/site/carrinho'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
+        echo Html::tag('div',Html::a('Perfil',['/site/perfil'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
+
         echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
             . Html::submitButton(
                 'Logout (' . Yii::$app->user->identity->username . ')',
