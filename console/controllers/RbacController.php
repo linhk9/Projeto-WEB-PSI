@@ -33,23 +33,23 @@ class RbacController extends Controller
 
         $gerirCursos = $auth->createPermission('gerirCursos');
         $gerirCursos->description = 'Gerir Cursos';
-        $auth->add(gerirCursos);
+        $auth->add($gerirCursos);
 
         $criarCursos = $auth->createPermission('criarCursos');
         $criarCursos->description = 'Criar Cursos';
-        $auth->add(criarCursos);
+        $auth->add($criarCursos);
 
         $verCursos = $auth->createPermission('verCursos');
         $verCursos->description = 'Ver Cursos';
-        $auth->add(verCursos);
+        $auth->add($verCursos);
 
         $atualizarCursos = $auth->createPermission('atualizarCursos');
         $atualizarCursos->description = 'Atualizar Cursos';
-        $auth->add(atualizarCursos);
+        $auth->add($atualizarCursos);
 
         $apagarCursos = $auth->createPermission('apagarCursos');
         $apagarCursos->description = 'Apagar Cursos';
-        $auth->add(apagarCursos);
+        $auth->add($apagarCursos);
 
         $gerirProdutos = $auth->createPermission('gerirProdutos');
         $gerirProdutos->description = 'Gerir Produtos';
