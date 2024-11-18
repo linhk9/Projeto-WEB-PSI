@@ -35,6 +35,7 @@ class Userdata extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            ['role', 'string'],
             [['id_user', 'telemovel'], 'integer'],
             [['primeiroNome', 'ultimoNome'], 'string', 'max' => 45],
             [['morada'], 'string', 'max' => 255],
