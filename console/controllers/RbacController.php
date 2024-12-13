@@ -8,6 +8,9 @@ class RbacController extends Controller
 {
     public function actionInit()
     {
+        //Para migrar o RBAC na BD
+        // yii rbac/init
+
         $auth = Yii::$app->authManager;
         $auth->removeAll();
 

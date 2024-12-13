@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <img src="<?=$assetDir?>/img/hat_icon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="../../img/student-hat.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">BO Loja de Cursos</span>
     </a>
 
@@ -37,7 +37,7 @@
                 'items' => [
                     ['label' => 'Menu', 'header' => true],
                     ['label' => 'Dashboard', 'icon' => 'tachometer-alt', 'url' => ['site/index']],
-                    ['label' => 'Usuários', 'icon' => 'users', 'url' => ['user/index']],
+                    ['label' => 'Utilizadores', 'icon' => 'users', 'url' => ['userdata/index']],
                     ['label' => 'Produtos', 'icon' => 'book', 'url' => ['curso/index']],
                     ['label' => 'Categorias', 'icon' => 'list', 'url' => ['categoria/index']],
                     ['label' => 'Promoções', 'icon' => 'tags', 'url' => ['promocao/index']],

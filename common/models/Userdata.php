@@ -21,6 +21,8 @@ use Yii;
  */
 class Userdata extends \yii\db\ActiveRecord
 {
+    public $role;
+
     /**
      * {@inheritdoc}
      */
