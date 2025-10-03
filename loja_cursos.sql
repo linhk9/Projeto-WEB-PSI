@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 18, 2024 at 01:23 AM
+-- Generation Time: Dec 16, 2024 at 03:46 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -33,6 +33,19 @@ CREATE TABLE `auth_assignment` (
   `created_at` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `auth_assignment`
+--
+
+INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
+('admin', '1', 1732067944),
+('admin', '2', 1733158081),
+('admin', '7', 1733158662),
+('cliente', '4', 1732067944),
+('cliente', '5', 1732067944),
+('cliente', '6', 1732067944),
+('funcionario', '3', 1732067944);
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +62,64 @@ CREATE TABLE `auth_item` (
   `updated_at` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `auth_item`
+--
+
+INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
+('adicionarCarrinho_FO', 2, 'Adicionar Carrinho', NULL, NULL, 1732067944, 1732067944),
+('adicionarFavorito_FO', 2, 'Adicionar Favoritos', NULL, NULL, 1732067944, 1732067944),
+('admin', 1, NULL, NULL, NULL, 1732067944, 1732067944),
+('apagarAvaliacoes', 2, 'Apagar Avaliacoes', NULL, NULL, 1732067944, 1732067944),
+('apagarCarrinho_FO', 2, 'Apagar Carrinho', NULL, NULL, 1732067944, 1732067944),
+('apagarCategorias', 2, 'Apagar Categorias', NULL, NULL, 1732067944, 1732067944),
+('apagarCursos', 2, 'Apagar Cursos', NULL, NULL, 1732067944, 1732067944),
+('apagarFaturas', 2, 'Apagar Faturas', NULL, NULL, 1732067944, 1732067944),
+('apagarProdutos', 2, 'Apagar Produtos', NULL, NULL, 1732067944, 1732067944),
+('apagarPromocoes', 2, 'Apagar Promocoes', NULL, NULL, 1732067944, 1732067944),
+('apagarUtilizadores', 2, 'Apagar Utilizadores', NULL, NULL, 1732067944, 1732067944),
+('atualizarAvaliacoes', 2, 'Atualizar Avaliacoes', NULL, NULL, 1732067944, 1732067944),
+('atualizarCarrinho_FO', 2, 'Atualizar Carrinho', NULL, NULL, 1732067944, 1732067944),
+('atualizarCategorias', 2, 'Atualizar Categorias', NULL, NULL, 1732067944, 1732067944),
+('atualizarCursos', 2, 'Atualizar Cursos', NULL, NULL, 1732067944, 1732067944),
+('atualizarFaturas', 2, 'Atualizar Faturas', NULL, NULL, 1732067944, 1732067944),
+('atualizarProdutos', 2, 'Atualizar Produtos', NULL, NULL, 1732067944, 1732067944),
+('atualizarPromocoes', 2, 'Atualizar Promocoes', NULL, NULL, 1732067944, 1732067944),
+('atualizarUtilizador_FO', 2, 'Atualizar Perfil', NULL, NULL, 1732067944, 1732067944),
+('atualizarUtilizadores', 2, 'Atualizar Utilizadores', NULL, NULL, 1732067944, 1732067944),
+('checkoutCarrinho_FO', 2, 'Checkout Carrinho', NULL, NULL, 1732067944, 1732067944),
+('cliente', 1, NULL, NULL, NULL, 1732067944, 1732067944),
+('criarAvaliacoes', 2, 'Criar Avaliacoes', NULL, NULL, 1732067944, 1732067944),
+('criarCategorias', 2, 'Criar Categorias', NULL, NULL, 1732067944, 1732067944),
+('criarCursos', 2, 'Criar Cursos', NULL, NULL, 1732067944, 1732067944),
+('criarFaturas', 2, 'Criar Faturas', NULL, NULL, 1732067944, 1732067944),
+('criarProdutos', 2, 'Criar Produtos', NULL, NULL, 1732067944, 1732067944),
+('criarPromocoes', 2, 'Criar Promocoes', NULL, NULL, 1732067944, 1732067944),
+('criarUtilizadores', 2, 'Criar Utilizadores', NULL, NULL, 1732067944, 1732067944),
+('enviarAvaliacao_FO', 2, 'Enviar Avaliação', NULL, NULL, 1732067944, 1732067944),
+('funcionario', 1, NULL, NULL, NULL, 1732067944, 1732067944),
+('gerirAvaliacoes', 2, 'Gerir Avaliacoes', NULL, NULL, 1732067944, 1732067944),
+('gerirCarrinho_FO', 2, 'Gerir Carrinho', NULL, NULL, 1732067944, 1732067944),
+('gerirCategorias', 2, 'Gerir Categorias', NULL, NULL, 1732067944, 1732067944),
+('gerirCursos', 2, 'Gerir Cursos', NULL, NULL, 1732067944, 1732067944),
+('gerirFaturas', 2, 'Gerir Faturas', NULL, NULL, 1732067944, 1732067944),
+('gerirFaturas_FO', 2, 'Gerir Faturas', NULL, NULL, 1732067944, 1732067944),
+('gerirProdutos', 2, 'Gerir Produtos', NULL, NULL, 1732067944, 1732067944),
+('gerirPromocoes', 2, 'Gerir Promocoes', NULL, NULL, 1732067944, 1732067944),
+('gerirUtilizadores', 2, 'Gerir Utilizadores', NULL, NULL, 1732067944, 1732067944),
+('listaProdutos_FO', 2, 'Lista Produtos', NULL, NULL, 1732067944, 1732067944),
+('mudarRoleUtilizador', 2, 'Mudar Role Utilizador', NULL, NULL, 1732067944, 1732067944),
+('removerFavorito_FO', 2, 'Remover Favoritos', NULL, NULL, 1732067944, 1732067944),
+('verAvaliacoes', 2, 'Ver Avaliacoes', NULL, NULL, 1732067944, 1732067944),
+('verCategorias', 2, 'Ver Categorias', NULL, NULL, 1732067944, 1732067944),
+('verCursos', 2, 'Ver Cursos', NULL, NULL, 1732067944, 1732067944),
+('verFaturas', 2, 'Ver Faturas', NULL, NULL, 1732067944, 1732067944),
+('verFaturas_FO', 2, 'Ver Faturas', NULL, NULL, 1732067944, 1732067944),
+('verProdutos', 2, 'Ver Produtos', NULL, NULL, 1732067944, 1732067944),
+('verProdutos_FO', 2, 'Ver Produtos', NULL, NULL, 1732067944, 1732067944),
+('verPromocoes', 2, 'Ver Promocoes', NULL, NULL, 1732067944, 1732067944),
+('verUtilizadores', 2, 'Ver Utilizadores', NULL, NULL, 1732067944, 1732067944);
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +130,63 @@ CREATE TABLE `auth_item_child` (
   `parent` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `child` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `auth_item_child`
+--
+
+INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
+('cliente', 'adicionarCarrinho_FO'),
+('cliente', 'adicionarFavorito_FO'),
+('funcionario', 'apagarAvaliacoes'),
+('cliente', 'apagarCarrinho_FO'),
+('funcionario', 'apagarCategorias'),
+('funcionario', 'apagarCursos'),
+('admin', 'apagarFaturas'),
+('funcionario', 'apagarProdutos'),
+('funcionario', 'apagarPromocoes'),
+('admin', 'apagarUtilizadores'),
+('funcionario', 'atualizarAvaliacoes'),
+('cliente', 'atualizarCarrinho_FO'),
+('funcionario', 'atualizarCategorias'),
+('funcionario', 'atualizarCursos'),
+('admin', 'atualizarFaturas'),
+('funcionario', 'atualizarProdutos'),
+('funcionario', 'atualizarPromocoes'),
+('cliente', 'atualizarUtilizador_FO'),
+('funcionario', 'atualizarUtilizadores'),
+('cliente', 'checkoutCarrinho_FO'),
+('funcionario', 'cliente'),
+('funcionario', 'criarAvaliacoes'),
+('funcionario', 'criarCategorias'),
+('funcionario', 'criarCursos'),
+('admin', 'criarFaturas'),
+('funcionario', 'criarProdutos'),
+('funcionario', 'criarPromocoes'),
+('admin', 'criarUtilizadores'),
+('cliente', 'enviarAvaliacao_FO'),
+('admin', 'funcionario'),
+('funcionario', 'gerirAvaliacoes'),
+('cliente', 'gerirCarrinho_FO'),
+('funcionario', 'gerirCategorias'),
+('funcionario', 'gerirCursos'),
+('funcionario', 'gerirFaturas'),
+('cliente', 'gerirFaturas_FO'),
+('funcionario', 'gerirProdutos'),
+('funcionario', 'gerirPromocoes'),
+('funcionario', 'gerirUtilizadores'),
+('cliente', 'listaProdutos_FO'),
+('admin', 'mudarRoleUtilizador'),
+('cliente', 'removerFavorito_FO'),
+('funcionario', 'verAvaliacoes'),
+('funcionario', 'verCategorias'),
+('funcionario', 'verCursos'),
+('funcionario', 'verFaturas'),
+('cliente', 'verFaturas_FO'),
+('funcionario', 'verProdutos'),
+('cliente', 'verProdutos_FO'),
+('funcionario', 'verPromocoes'),
+('funcionario', 'verUtilizadores');
 
 -- --------------------------------------------------------
 
@@ -124,6 +252,14 @@ CREATE TABLE `categorias` (
   `id` int NOT NULL,
   `nome` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nome`) VALUES
+(1, 'php'),
+(2, 'php');
 
 -- --------------------------------------------------------
 
@@ -244,11 +380,12 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `verification_token`) VALUES
 (1, 'admin', 'u4mVpCuu4NbB-A0LfcmeWSfhyPgGEL-2', '$2y$13$B9sl6JtHcHJfQHYWa75GGOcgTS.djU3okqoF0mruF/jWFAm8d0IUa', NULL, 'admin@gmail.com', 10, 1704725137, 1704725137, NULL),
-(2, 'Rodrigo', 'FfnNM3Xmth_2fD5XiSLGrmHDKlAOT-GA', '$2y$13$KIcnr55NIwQlP0XwCJFs1e1gshNYwLmCkjGekNLs2xiX3xD2FwXm6', NULL, '2211919@my.ipleiria.pt', 10, 1697379940, 1697379940, NULL),
+(2, 'Rodrigo', 'FfnNM3Xmth_2fD5XiSLGrmHDKlAOT-GA', '$2y$13$KIcnr55NIwQlP0XwCJFs1e1gshNYwLmCkjGekNLs2xiX3xD2FwXm6', NULL, '2211919@my.ipleiria.pt', 0, 1697379940, 1733158581, NULL),
 (3, 'funcionario', '1KGrm3tDJpVRZ5JyavijfrFhxHUrs3ip', '$2y$13$L8etLfluUWM6hgK3YXIyh.sZuKWta0jXMBTE02C5YyOCzWUz.7/52', NULL, 'funcionario@gmail.com', 10, 1704725161, 1704725161, NULL),
 (4, 'cliente1', 'KdqMqFr1nQ61tdUEuc3YX9E71hHvkNLP', '$2y$13$iuUQSVcoe8EGYGOk7QbKWOY8OxgFdqFC7RRicWhODbfZMFeF8j.Wa', NULL, 'cliente1@gmail.com', 10, 1704725457, 1704725457, NULL),
 (5, 'cliente2', 'wCt-vuMiCmgYeJrecDJAQomHKy2npL7w', '$2y$13$RaG8UXgJlE8Awjmh1UBC3eut5amyhD.xANFwIQ4eEI5e7eJhV1vDW', NULL, 'cliente2@gmail.com', 10, 1704725488, 1704725488, NULL),
-(6, 'cliente3', 'aUX08qwBcHtKVbDvyBVODIGZHCcUX0mq', '$2y$13$DmrdbBeNEXO.ZzyDXMbO9uQKdK.k/IyxIxXP6nOjlGL893hbpYlV.', NULL, 'cliente3@gmail.com', 10, 1704725506, 1704725506, NULL);
+(6, 'cliente3', 'aUX08qwBcHtKVbDvyBVODIGZHCcUX0mq', '$2y$13$DmrdbBeNEXO.ZzyDXMbO9uQKdK.k/IyxIxXP6nOjlGL893hbpYlV.', NULL, 'cliente3@gmail.com', 10, 1704725506, 1704725506, NULL),
+(7, 'admin2', 'qrjM_UXkHkey3RRpqQNjtobqdDoB-BNc', '$2y$13$sKg7ElfsA7qePGdUUNZ/xOeAimtJh6bLYh.Pz9agQ4uZJoXCLL1iy', NULL, 'rodrigo@gmail.com', 10, 1733158662, 1733158662, NULL);
 
 -- --------------------------------------------------------
 
@@ -264,6 +401,13 @@ CREATE TABLE `userdata` (
   `telemovel` int DEFAULT NULL,
   `morada` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `userdata`
+--
+
+INSERT INTO `userdata` (`id`, `id_user`, `primeiroNome`, `ultimoNome`, `telemovel`, `morada`) VALUES
+(16, 7, 'Rodrigo', 'Luís', 911115245, 'Rua das flores');
 
 --
 -- Indexes for dumped tables
@@ -398,6 +542,12 @@ ALTER TABLE `userdata`
 --
 
 --
+-- AUTO_INCREMENT for table `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `cursos`
 --
 ALTER TABLE `cursos`
@@ -419,13 +569,13 @@ ALTER TABLE `promocoes`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `userdata`
 --
 ALTER TABLE `userdata`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
